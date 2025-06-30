@@ -38,8 +38,8 @@ const LandingPage = (): React.JSX.Element => {
                             <Link to={card.targetPath} className="text-decoration-none">
                                 <div className="card text-white bg-dark">
                                     <div className="card-body">
-                                        <h5 className="card-title">{card.description}</h5>
-                                        <p className="card-text display-6">{card.title}</p>
+                                        <p className="card-text">{card.description}</p>
+                                        <h5 className="card-title display-6">{card.title}</h5>
                                     </div>
                                 </div>
                             </Link>
