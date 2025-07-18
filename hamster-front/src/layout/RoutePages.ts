@@ -5,6 +5,7 @@ import LicenseInfoPage from "../pages/LicenseInfoPage.tsx";
 import FrequencyBandPage from "../pages/FrequencyBandPage.tsx";
 import CallSignLookupPage from "../pages/CallSignLookupPage.tsx";
 import SdrViewerPage from "../pages/SdrViewerPage.tsx";
+import MeetingRoomPage from "../pages/MeetingRoomPage.tsx";
 
 interface RoutePage {
     path: string;
@@ -19,6 +20,12 @@ export const routePages: RoutePage[] = [
         element: LandingPage,
         label: "landing",
         description: "LandingPage",
+    },
+    {
+        path: "/meeting-rooms",
+        element: MeetingRoomPage,
+        label: "meetingRoom",
+        description: "meetingRoom",
     },
     {
         path: "/antenna-length",
