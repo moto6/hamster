@@ -11,7 +11,7 @@ export interface Building {
     buildingAvailable: boolean;
 }
 
-const IS_MOCK = true;
+export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
 
 export function useBuildingList() {
     const [data, setData] = useState<Building[]>([]);

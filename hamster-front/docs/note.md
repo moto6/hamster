@@ -87,7 +87,7 @@ Data Fetching: Axios 기반 (Custom Hook에서 직접 처리)
 
 2. 아키텍처 규칙: "All-in-One Hook"
 Hook 중심 설계: use[Domain]Dashboard.ts 파일 하나에 Interface, Mock Data, Fetch 로직을 모두 포함한다. (Service 클래스 분리 지양)
-Mock/API 스위치: const IS_MOCK = true; 상수를 사용하여 모킹 데이터와 실제 Axios 호출을 한 줄로 전환 가능하게 설계한다.
+Mock/API 스위치: export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true'; 상수를 사용하여 모킹 데이터와 실제 Axios 호출을 한 줄로 전환 가능하게 설계한다.
 상태 관리: data, isLoading, error, refetch 4종 세트를 기본 반환한다.
 
 3. 코드 및 스타일 가이드

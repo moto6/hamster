@@ -17,7 +17,7 @@ export interface Reservation {
     createdAt: string;
 }
 
-const IS_MOCK = true;
+export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
 
 export function useReservationManagement() {
     const [data, setData] = useState<Reservation[]>([]);

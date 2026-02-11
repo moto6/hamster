@@ -21,7 +21,7 @@ export interface Room {
     roomAvailable: boolean;
 }
 
-const IS_MOCK = true;
+export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
 
 export function useRoomManagement() {
     const [rooms, setRooms] = useState<Room[]>([]);

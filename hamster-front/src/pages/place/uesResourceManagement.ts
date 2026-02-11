@@ -12,7 +12,7 @@ export interface Resource {
     description: string;
 }
 
-const IS_MOCK = true;
+export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
 
 export function useResourceManagement() {
     const [data, setData] = useState<Resource[]>([]);

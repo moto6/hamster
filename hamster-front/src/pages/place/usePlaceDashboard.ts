@@ -24,7 +24,7 @@ export interface PlaceDashboardDto {
     recentReservations: ReservationSummary[];
 }
 
-const IS_MOCK = true; // 💡 false로 바꾸면 실제 API를 호출합니다.
+export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
 
 export function usePlaceDashboard() {
     const [data, setData] = useState<PlaceDashboardDto | null>(null);
