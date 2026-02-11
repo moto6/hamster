@@ -1,3 +1,25 @@
 타입스크립트
 
 @radix-ui
+
+
+핵심 주제 10가지입니다.
+
+Thread vs Coroutine: 물리적 스레드와 논리적 루틴의 차이 (경량 스레드 개념)
+Suspending vs Blocking: 스레드를 점유하며 기다리는가, 스레드를 양보하며 멈추는가
+
+
+The suspend Keyword: 컴파일러가 비동기 콜백 체인을 순차적 코드로 변환하는 마법의 시작점
+Coroutine Builders (launch, async): 결과를 반환하지 않는 작업과 결과를 기다리는 작업의 구분
+Structured Concurrency: 부모와 자식 코루틴의 생명주기를 묶어 메모리 누수를 방지하는 구조
+
+
+Dispatchers (IO, Default, Main): I/O 작업과 CPU 작업에 따라 적절한 스레드 풀을 배정하는 법
+
+withContext: 코드 실행 중에 스레드 환경(Context)을 안전하고 가볍게 전환하는 도구
+
+Reactor Interop (awaitSingle): Mono/Flux를 기다려(Await) 결과값만 쏙 빼오는 브릿지 기법
+
+Flow (Cold Stream): Flux에 대응하는 코틀린 표준의 비동기 데이터 스트림 처리
+
+Sequential by Default: 복잡한 비동기 로직을 일반 if, for, try-catch로 작성하는 패러다임

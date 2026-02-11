@@ -99,6 +99,14 @@ Mock/API 스위치: const IS_MOCK = true; 상수를 사용하여 모킹 데이�
 - TypeScript의 타입 전용 임포트(Type-Only Imports)/ 인라인 타입 전용 임포트(Inline Type-Only Imports) 문법 사용할것
 - cn 은 여기에 있음 : import {cn} from "@/core/utils.ts";
 - React Props 정의 시 추가 속성이 없다면 interface 대신 type 별칭(Alias)을 사용하고, 속성 확장이 있을 때만 interface를 사용하는 TypeScript 정석 패턴을 적용할것
+- React.FormEvent<>는 사용하지 않는다 
+- 함수 호출 시에는 삼항 연산자 대신 명시적인 if/else 문을 사용하여 no-unused-expressions 에러가 없는 정석적인 코드를 작성해야 한다
+- 유니온 타입을 정의할 때 리터럴을 직접 나열하지 마세요. 대신 런타임에 사용할 as const 배열을 먼저 선언하고, (typeof ARRAY)[number] 문법을 통해 타입을 추출하는 'Derived Union Type' 패턴을 적용하여 타입과 데이터의 동기화를 보장해줘.
+  - DRY (Don't Repeat Yourself) 원칙 준수 
+  - Hard-coded 방식: 카테고리가 추가되면 type 정의도 고치고, Select 박스용 array도 고쳐야 합니다. (두 번 일하기)
+  - Derived 방식: RESOURCE_CATEGORIES 배열에 항목만 추가하면 타입은 알아서 따라옵니다. (한 번만 일하기)
+  - 런타임과 컴파일 타임의 완벽한 동기화 : 리액트에서는 UI 렌더링을 위해 실제 **배열(값)**이 필요합니다. 타입을 배열에서 추출하면, UI에 뿌려지는 값과 타입스크립트가 검사하는 값이 절대로 틀어질 일이 없습니다.
+  - 타입 추론의 우수성 : Object.keys()나 Object.values()를 쓸 때 발생하는 번거로운 타입 캐스팅(as ResourceCategory[])이 필요 없습니다. 배열 자체가 이미 가장 좁은(narrow) 타입인 리터럴들의 모음이기 때문입니다.
 
 4. 코드 예시 스니펫 (Reference)
 Mock Pattern: if (IS_MOCK) { return MOCK_DATA; } else { return axios.get(...); }
@@ -207,7 +215,7 @@ src
 │   │   ├── PlaceDashboardPage.tsx
 │   │   ├── useBuildingList.ts
 │   │   └── usePlaceDashboard.ts
-│   ├── TempPage.tsx
+│   ├── SchedulePage.tsx
 │   └── usePlayground1.ts
 └── public
     └── assets
