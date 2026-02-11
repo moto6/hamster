@@ -12,7 +12,6 @@ React 19
 TypeScript
 Vite
 React Router v7
-Zustand (탭 상태 관리 영역에 한정하여 사용)
 ```
 ### Styling
 ```
@@ -59,7 +58,7 @@ element: <SomePage />
   - 재렌더링 최소화
 
 - 구성
-  - TabStore (Zustand)
+  - TabStore
   - 열린 탭 목록
   - activeTab 관리
   - openTab / closeTab

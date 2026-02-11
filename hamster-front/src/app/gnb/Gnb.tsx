@@ -5,7 +5,7 @@ import {GNB_NAV_GROUPS, GNB_NAV_ITEMS} from "@/app/gnb/navigation.config.tsx";
 
 export function Gnb() {
     const navigate = useNavigate()
-    // const openTab = useAdminTabs(s => s.openTab)
+
 
     return (
         <div className="flex flex-col">
@@ -41,15 +41,11 @@ export function Gnb() {
                                 {items.map(item => (
                                     <button
                                         key={item.path}
-                                        onClick={() => navigate(item.path)} // openTab 제거
-                                        className={"w-full text-left px-3 py-2 rounded transition text-sm bg-slate-200 dark:bg-slate-800 font-bold text-blue-600"}
-                                    >
-                                    {/*    className={cn(*/}
-                                    {/*    "w-full text-left px-3 py-2 rounded transition text-sm",*/}
-                                    {/*    pathname === item.path*/}
-                                    {/*        ? "bg-slate-200 dark:bg-slate-800 font-bold text-blue-600"*/}
-                                    {/*        : "hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300"*/}
-                                    {/*)}   */}
+                                        onClick={() => navigate(item.path)}
+                                        className="w-full text-left px-3 py-2 rounded transition text-sm
+                                                text-slate-600 dark:text-slate-300
+                                                hover:bg-slate-200 dark:hover:bg-slate-800
+                                                hover:text-slate-900 dark:hover:text-slate-100">
                                         {item.label}
                                     </button>
                                 ))}
