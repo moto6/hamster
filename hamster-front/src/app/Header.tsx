@@ -17,7 +17,7 @@ export default function Header({ className = "" }: HeaderProps) {
         >
             {/* 좌측 타이틀 */}
             <h1 className="text-lg font-semibold tracking-wide text-slate-900 dark:text-slate-100">
-                MY Libray Admin Demo
+                Admin Demo Front
             </h1>
 
             {/* 우측 유저 영역 */}

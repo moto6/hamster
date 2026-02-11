@@ -52,38 +52,38 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         category: "USER"
     },
     {
-        label: 'PlaceDashboard',
-        path: '/place',
+        label: '공간 현황',
+        path: '/place/main',
         element: <PlaceDashboardPage/>,
         category: "PLACE"
     },
     {
-        label: 'BuildingManagement',
-        path: '/buildings',
+        label: '건물 관리',
+        path: '/place/buildings',
         element: <BuildingManagementPage/>,
         category: "PLACE"
     },
     {
-        label: 'ReservationManagementPage',
-        path: '/ReservationManagementPage',
+        label: '예약 관리자 페이지',
+        path: '/place/reservation',
         element: <ReservationManagementPage/>,
         category: "PLACE"
     },
     {
-        label: 'ResourceManagementPage',
-        path: '/ResourceManagementPage',
+        label: '리소스 관리',
+        path: '/place/resource',
         element: <ResourceManagementPage/>,
         category: "PLACE"
     },
     {
-        label: 'RoomManagementPage',
-        path: '/RoomManagementPage',
+        label: '공간 관리',
+        path: '/place/rooms',
         element: <RoomManagementPage/>,
         category: "PLACE"
     },
     {
-        label: 'SchedulePage',
-        path: '/SchedulePage',
+        label: '(유저) 스케쥴 화면',
+        path: '/place/schedules',
         element: <SchedulePage/>,
         category: "PLACE"
     },
@@ -126,6 +126,6 @@ export const GNB_NAV_GROUPS: NavGroup[] = [
     },
     {
         category: "PLACE",
-        title: "PLACE"
+        title: "공간예약"
     },
 ]

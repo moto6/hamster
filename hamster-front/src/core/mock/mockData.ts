@@ -57,7 +57,7 @@ export const ROOMS_MOCK: Room[] = [
         roomId: 'room-v1',
         buildingId: 'bld-9f2d1a3c',
         buildingName: '태평로 A-Space',
-        roomName: 'Sevastopol',
+        roomName: '타운홀',
         roomFloor: '20층',
         capacity: 50,
         resourceIds: ['res-a1b2c3d4', 'res-q7r8s9t0', 'res-i9j0k1l2'],
@@ -419,9 +419,9 @@ export const ROOMS_MOCK: Room[] = [
 ];
 
 export const RESERVATIONS_MOCK: Reservation[] = [
-    { reservationId: 'rev-v1-01', roomId: 'room-v1', roomName: 'Sevastopol', userName: '경영지원팀', userEmail: 'admin@company.com', date: '2026-02-11', startTime: '09:00', endTime: '11:00', purpose: '전사 타운홀 준비', reservationStatus: 'CHECKED_OUT', createdAt: '2026-02-10 14:00' },
-    { reservationId: 'rev-v1-02', roomId: 'room-v1', roomName: 'Sevastopol', userName: '김이사', userEmail: 'kim@company.com', date: '2026-02-11', startTime: '13:00', endTime: '15:00', purpose: '전사 실적 발표회', reservationStatus: 'CHECKED_OUT', createdAt: '2026-02-10 09:00' },
-    { reservationId: 'rev-v1-03', roomId: 'room-v1', roomName: 'Sevastopol', userName: '박팀장', userEmail: 'park@company.com', date: '2026-02-11', startTime: '15:30', endTime: '17:30', purpose: '신규 비전 공유회', reservationStatus: 'NO_SHOW', createdAt: '2026-02-10 10:00' },
+    { reservationId: 'rev-v1-01', roomId: 'room-v1', roomName: '타운홀', userName: '경영지원팀', userEmail: 'admin@company.com', date: '2026-02-11', startTime: '09:00', endTime: '11:00', purpose: '전사 타운홀 준비', reservationStatus: 'CHECKED_OUT', createdAt: '2026-02-10 14:00' },
+    { reservationId: 'rev-v1-02', roomId: 'room-v1', roomName: '타운홀', userName: '김이사', userEmail: 'kim@company.com', date: '2026-02-11', startTime: '13:00', endTime: '15:00', purpose: '전사 실적 발표회', reservationStatus: 'CHECKED_OUT', createdAt: '2026-02-10 09:00' },
+    { reservationId: 'rev-v1-03', roomId: 'room-v1', roomName: '타운홀', userName: '박팀장', userEmail: 'park@company.com', date: '2026-02-11', startTime: '15:30', endTime: '17:30', purpose: '신규 비전 공유회', reservationStatus: 'NO_SHOW', createdAt: '2026-02-10 10:00' },
     // Summit Room #1 & #2 (임원 회의)
     { reservationId: 'rev-v2-01', roomId: 'room-v2', roomName: 'Summit Room #1', userName: '최대표', userEmail: 'choi@company.com', date: '2026-02-11', startTime: '10:00', endTime: '12:00', purpose: '주간 전략 회의', reservationStatus: 'CHECKED_OUT', createdAt: '2026-02-09 15:00' },
     { reservationId: 'rev-v2-02', roomId: 'room-v2', roomName: 'Summit Room #1', userName: '정본부장', userEmail: 'jung@company.com', date: '2026-02-11', startTime: '14:00', endTime: '15:30', purpose: '대외 파트너십 미팅', reservationStatus: 'CHECKED_IN', createdAt: '2026-02-10 11:00' },
@@ -452,7 +452,7 @@ export const RESERVATIONS_MOCK: Reservation[] = [
     { reservationId: 'rev-v1-1', roomId: 'room-v1', roomName: 'Sevastopol', userName: '경영전략본부', userEmail: 'strategy@co.com', date: '2026-02-11', startTime: '09:00', endTime: '11:00', purpose: '2026 상반기 타운홀', reservationStatus: 'CHECKED_OUT', createdAt: '2026-02-01 09:00' },
     { reservationId: 'rev-v1-2', roomId: 'room-v1', roomName: 'Sevastopol', userName: 'HR팀', userEmail: 'hr@co.com', date: '2026-02-11', startTime: '13:00', endTime: '15:00', purpose: '전사 필수 성희롱 예방교육', reservationStatus: 'CHECKED_OUT', createdAt: '2026-02-05 14:00' },
     { reservationId: 'rev-v1-3', roomId: 'room-v1', roomName: 'Sevastopol', userName: 'IT보안팀', userEmail: 'sec@co.com', date: '2026-02-11', startTime: '16:00', endTime: '18:00', purpose: '전사 보안 점검 공지', reservationStatus: 'NO_SHOW', createdAt: '2026-02-10 10:00' },
-    { reservationId: 'rev-v1-4', roomId: 'room-v1', roomName: 'Sevastopol', userName: '홍보팀', userEmail: 'pr@co.com', date: '2026-02-11', startTime: '19:00', endTime: '21:00', purpose: '언론사 기자 간담회', reservationStatus: 'CHECKED_OUT', createdAt: '2026-02-11 11:00' },
+    { reservationId: 'rev-v1-4', roomId: 'room-v1', roomName: 'Sevastopol', userName: '홍보팀', userEmail: 'pr@co.com', date: '2026-02-11', startTime: '19:00', endTime: '21:00', purpose: '언론사 저녁 만찬 기자 간담회', reservationStatus: 'CHECKED_OUT', createdAt: '2026-02-11 11:00' },
     // v2, v203 (Summit Rooms): 1.5시간 위주 임원 회의
     { reservationId: 'rev-v2-1', roomId: 'room-v2', roomName: 'Summit Room #1', userName: '최대표', userEmail: 'ceo@co.com', date: '2026-02-11', startTime: '10:00', endTime: '11:30', purpose: '주간 임원 회의', reservationStatus: 'CHECKED_OUT', createdAt: '2026-02-09 10:00' },
     { reservationId: 'rev-v2-2', roomId: 'room-v2', roomName: 'Summit Room #1', userName: '재무팀', userEmail: 'finance@co.com', date: '2026-02-11', startTime: '14:00', endTime: '15:30', purpose: '결산 보고', reservationStatus: 'CHECKED_OUT', createdAt: '2026-02-10 09:00' },
