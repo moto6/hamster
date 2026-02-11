@@ -2,10 +2,10 @@ import {Button} from '@/components/place/Button.tsx';
 import {Input} from '@/components/place/Input.tsx';
 import {Label} from '@/components/place/Label.tsx';
 import {Loader2, Search, Send, Trash2} from 'lucide-react';
-import {usePlayground} from "@/pages/usePlayground.ts";
+import {usePlayground1} from "@/pages/usePlayground1.ts";
 
 export default function ComponentPlaygroundPage1() {
-    const {inputValue, isLoading, handleInputChange, simulateLoading} = usePlayground();
+    const {inputValue, isLoading, handleInputChange, simulateLoading} = usePlayground1();
 
     return (
         <div className="space-y-12 font-sans tracking-tight pb-20">

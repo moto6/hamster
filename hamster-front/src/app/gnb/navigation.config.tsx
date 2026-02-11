@@ -7,6 +7,7 @@ import {MyAdminPage} from "@/pages/admin/MyAdminPage.tsx";
 import {PlaceDashboardPage} from "@/pages/place/PlaceDashboardPage.tsx";
 import BuildingListPage from "@/pages/place/BuildingManagementPage.tsx";
 import ComponentPlaygroundPage1 from "@/pages/ComponentPlaygroundPage1.tsx";
+import ComponentPlaygroundPage2 from "@/pages/ComponentPlaygroundPage2.tsx";
 
 export type NavCategory = "ADMIN" | "USER" | "SYSTEM" | "PLACE"
 
@@ -59,8 +60,14 @@ export const GNB_NAV_ITEMS: NavItem[] = [
     },
     {
         label: 'TEST',
-        path: '/playground',
+        path: '/playground1',
         element: <ComponentPlaygroundPage1/>,
+        category: "PLACE"
+    },
+    {
+        label: 'TEST2',
+        path: '/playground2',
+        element: <ComponentPlaygroundPage2/>,
         category: "PLACE"
     },
 

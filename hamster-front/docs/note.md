@@ -103,6 +103,70 @@ Mock/API 스위치: const IS_MOCK = true; 상수를 사용하여 모킹 데이�
 4. 코드 예시 스니펫 (Reference)
 Mock Pattern: if (IS_MOCK) { return MOCK_DATA; } else { return axios.get(...); }
 ```
+```text
+이거는 이미 구현된 코드들이야 필요한 경우에만 가져다가 써
+├── components
+│   └── place
+│       ├── Button.tsx
+│       ├── Input.tsx
+│       ├── Label.tsx
+│       ├── Popover.tsx
+│       ├── RadioGroup.tsx
+│       └── Select.tsx
+
+아래 컴포넌트들은 베이스코드를 넣어줄수 있으니까 알아서 만들지말고 따로 넣어달라고 해
+ ui
+│       ├── accordion.tsx
+│       ├── alert-dialog.tsx
+│       ├── alert.tsx
+│       ├── aspect-ratio.tsx
+│       ├── avatar.tsx
+│       ├── badge.tsx
+│       ├── breadcrumb.tsx
+│       ├── button.tsx
+│       ├── calendar.tsx
+│       ├── card.tsx
+│       ├── carousel.tsx
+│       ├── chart.tsx
+│       ├── checkbox.tsx
+│       ├── collapsible.tsx
+│       ├── command.tsx
+│       ├── context-menu.tsx
+│       ├── dialog.tsx
+│       ├── drawer.tsx
+│       ├── dropdown-menu.tsx
+│       ├── form.tsx
+│       ├── hover-card.tsx
+│       ├── input-otp.tsx
+│       ├── input.tsx
+│       ├── label.tsx
+│       ├── menubar.tsx
+│       ├── navigation-menu.tsx
+│       ├── pagination.tsx
+│       ├── popover.tsx
+│       ├── progress.tsx
+│       ├── radio-group.tsx
+│       ├── resizable.tsx
+│       ├── scroll-area.tsx
+│       ├── select.tsx
+│       ├── separator.tsx
+│       ├── sheet.tsx
+│       ├── sidebar.tsx
+│       ├── skeleton.tsx
+│       ├── slider.tsx
+│       ├── sonner.tsx
+│       ├── switch.tsx
+│       ├── table.tsx
+│       ├── tabs.tsx
+│       ├── textarea.tsx
+│       ├── toggle-group.tsx
+│       ├── toggle.tsx
+│       ├── tooltip.tsx
+│       ├── use-mobile.ts
+│       └── utils.ts
+
+
+```
 ```
 src
 ├── app
@@ -144,7 +208,7 @@ src
 │   │   ├── useBuildingList.ts
 │   │   └── usePlaceDashboard.ts
 │   ├── TempPage.tsx
-│   └── usePlayground.ts
+│   └── usePlayground1.ts
 └── public
     └── assets
 
