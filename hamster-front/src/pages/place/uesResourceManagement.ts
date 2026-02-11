@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import {RESOURCES_MOCK} from "@/core/mock/mockData.ts";
+import {mockDelay, RESOURCES_MOCK} from "@/core/mock/mockData.ts";
 
 export const RESOURCE_CATEGORIES = ["디스플레이", "필기도구", "전자기기", "음향장비", "기타"] as const;
 export type ResourceCategory = (typeof RESOURCE_CATEGORIES)[number];
@@ -23,7 +23,7 @@ export function useResourceManagement() {
         try {
             setIsLoading(true);
             if (IS_MOCK) {
-                await new Promise(resolve => setTimeout(resolve, 500));
+                await mockDelay();``
                 setData(RESOURCES_MOCK);
             } else {
                 const response = await axios.get<Resource[]>('/api/resources');

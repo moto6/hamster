@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
 import axios from 'axios';
-import {PLACE_DASHBOARD_MOCK} from "@/core/mock/mockData.ts";
+import {mockDelay, PLACE_DASHBOARD_MOCK} from "@/core/mock/mockData.ts";
 import type {ReservationStatus} from "@/pages/place/useSchedule.ts";
 
 export interface PlaceSummary {
@@ -38,7 +38,7 @@ export function usePlaceDashboard() {
 
             if (IS_MOCK) {
                 // 모킹 모드: 0.5초 대기 후 상수 데이터 반환
-                await new Promise(resolve => setTimeout(resolve, 500));
+                await mockDelay();
                 setData(PLACE_DASHBOARD_MOCK);
             } else {
                 // 실제 API 모드: axios 호출

@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
 import axios, {AxiosError} from 'axios';
-import {BUILDINGS_MOCK} from "@/core/mock/mockData.ts";
+import {BUILDINGS_MOCK, mockDelay} from "@/core/mock/mockData.ts";
 
 export interface Building {
     id: string;
@@ -23,7 +23,7 @@ export function useBuildingList() {
             setIsLoading(true);
             setError(null);
             if (IS_MOCK) {
-                await new Promise((resolve) => setTimeout(resolve, 400));
+                await mockDelay();
                 setData(BUILDINGS_MOCK);
             } else {
                 const response = await axios.get<Building[]>('http://localhost:8080/api/buildings');

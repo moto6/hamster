@@ -4,7 +4,7 @@ import {Button} from '@/components/place/Button';
 import {Input} from '@/components/place/Input';
 import {Label} from '@/components/place/Label';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/place/Select';
-import {type ReservationState, useReservationManagement} from './useReservationManagement';
+import {useReservationManagement} from './useReservationManagement';
 import {useState} from "react";
 
 export default function ReservationManagementPage() {
@@ -20,11 +20,33 @@ export default function ReservationManagementPage() {
         return matchesSearch && matchesStatus;
     });
 
-    const statusMap: Record<ReservationState, { text: string; class: string }> = {
-        confirmed: {text: '확정', class: 'bg-emerald-50 text-emerald-600'},
-        pending: {text: '대기', class: 'bg-amber-50 text-amber-600'},
-        cancelled: {text: '취소', class: 'bg-rose-50 text-rose-600'},
-    };
+    const startHourOptions = Array.from({ length: 13 }, (_, i) => {
+        const h = i + 8
+        return h.toString().padStart(2, '0') + ':00'
+    })
+
+    const statusMap = {
+        BOOKED: {
+            class: "bg-slate-900 text-white",
+            text: "예약됨"
+        },
+        CHECKED_IN: {
+            class: "bg-amber-400 text-amber-950",
+            text: "입실"
+        },
+        CANCELLED: {
+            class: "bg-slate-100 text-slate-400",
+            text: "취소"
+        },
+        NO_SHOW: {
+            class: "bg-rose-100 text-rose-600",
+            text: "노쇼"
+        },
+        CHECKED_OUT: {
+            class: "bg-slate-200 text-slate-600",
+            text: "퇴실"
+        }
+    } as const
 
     return (
         <div className="space-y-8 font-sans tracking-tight">
@@ -37,17 +59,44 @@ export default function ReservationManagementPage() {
             <div
                 className="grid grid-cols-1 md:flex gap-4 items-end bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                 <div className="flex-1 space-y-1.5">
-                    <Label htmlFor="search">검색</Label>
+                    <Label htmlFor="search">회의실</Label>
                     <div className="relative">
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16}/>
                         <Input
                             id="search"
                             className="pl-10"
-                            placeholder="회의실 또는 예약자 검색..."
+                            placeholder="회의실 입력"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
                     </div>
+                </div>
+                <div className="flex-1 space-y-1.5">
+                    <Label htmlFor="search">예약자 검색</Label>
+                    <Input
+                        id="search"
+                        className="pl-10"
+                        placeholder="이메일 입력"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                </div>
+                <div className="flex-1 space-y-1.5">
+                    <Label>시작 시간 선택</Label>
+
+                    <Select value={searchTerm} onValueChange={setSearchTerm}>
+                        <SelectTrigger>
+                            <SelectValue placeholder="시작시간 선택" />
+                        </SelectTrigger>
+
+                        <SelectContent>
+                            {startHourOptions.map(hour => (
+                                <SelectItem key={hour} value={hour}>
+                                    {hour}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
                 </div>
                 <div className="w-full md:w-48 space-y-1.5">
                     <Label>상태 필터</Label>
@@ -97,20 +146,22 @@ export default function ReservationManagementPage() {
                             </td>
                             <td className="px-6 py-4 text-right">
                                 <div className="flex justify-end gap-2">
-                                    {res.reservationStatus === 'pending' && (
+                                    {res.reservationStatus === 'BOOKED' && (
                                         <>
                                             <Button size="sm" variant="outline"
                                                     className="h-8 w-8 p-0 border-emerald-200 text-emerald-600 hover:bg-emerald-50"
-                                                    onClick={() => updateStatus(res.reservationId, 'confirmed')}><Check size={14}/></Button>
+                                                    onClick={() => updateStatus(res.reservationId, 'CHECKED_IN')}><Check
+                                                size={14}/></Button>
                                             <Button size="sm" variant="outline"
                                                     className="h-8 w-8 p-0 border-rose-200 text-rose-600 hover:bg-rose-50"
-                                                    onClick={() => updateStatus(res.reservationId, 'cancelled')}><X
+                                                    onClick={() => updateStatus(res.reservationId, 'CANCELLED')}><X
                                                 size={14}/></Button>
                                         </>
                                     )}
-                                    {res.reservationStatus === 'confirmed' && (
+                                    {res.reservationStatus === 'CHECKED_IN' && (
                                         <Button size="sm" variant="ghost" className="h-8 text-rose-500 hover:bg-rose-50"
-                                                onClick={() => updateStatus(res.reservationId, 'cancelled')}>예약 취소</Button>
+                                                onClick={() => updateStatus(res.reservationId, 'CANCELLED')}>예약
+                                            취소</Button>
                                     )}
                                 </div>
                             </td>

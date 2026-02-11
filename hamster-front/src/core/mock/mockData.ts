@@ -4,7 +4,12 @@ import type {Reservation} from "@/pages/place/useReservationManagement";
 import type {PlaceDashboardDto} from "@/pages/place/usePlaceDashboard";
 import type {Resource} from "@/pages/place/uesResourceManagement.ts";
 
-// --- [단일 진실 공급원: 카테고리] ---
+export const MOCK_DELAY_MS = 350;
+
+export function mockDelay(ms: number = MOCK_DELAY_MS) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export const RESOURCE_CATEGORIES = ["디스플레이", "필기도구", "통신장비", "음향장비", "전자기기", "기타"] as const;
 
 // --- [1. 빌딩 데이터] ---

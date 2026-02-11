@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
 import axios from 'axios';
-import {BUILDINGS_MOCK, RESOURCES_MOCK, ROOMS_MOCK} from "@/core/mock/mockData.ts";
+import {BUILDINGS_MOCK, mockDelay, RESOURCES_MOCK, ROOMS_MOCK} from "@/core/mock/mockData.ts";
 import type {Resource} from "@/pages/place/uesResourceManagement.ts";
 
 export interface Building {
@@ -33,7 +33,7 @@ export function useRoomManagement() {
         try {
             setIsLoading(true);
             if (IS_MOCK) {
-                await new Promise(resolve => setTimeout(resolve, 500));
+                await mockDelay();
                 setRooms(ROOMS_MOCK);
             } else {
                 const response = await axios.get<Room[]>('/api/rooms');

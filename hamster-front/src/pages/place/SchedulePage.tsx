@@ -35,7 +35,8 @@ export function SchedulePage() {
     }, {} as Record<string, Room[]>);
 
     return (
-        <div className="space-y-6 font-sans tracking-tight pb-20">
+        <div className="overflow-x-auto">
+            <div className="space-y-6 font-sans tracking-tight pb-20 min-w-[1200px]">
             <header className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
                     <h1 className="text-2xl font-bold text-slate-900">회의실 일정표</h1>
@@ -103,7 +104,7 @@ export function SchedulePage() {
                                     const roomRes = reservations.filter(res => res.roomId === room.roomId);
                                     return (
                                         <div key={room.roomId}
-                                             className="flex border-b border-slate-100 last:border-0 group">
+                                             className="flex border-b border-slate-100 last:border-0 group min-h-[68px]">
                                             <div
                                                 className="w-56 p-4 border-r border-slate-100 bg-white group-hover:bg-slate-50 transition-colors">
                                                 <div className="font-bold text-slate-900 text-sm">{room.roomName}</div>
@@ -126,7 +127,7 @@ export function SchedulePage() {
                                                         key={res.reservationId}
                                                         style={getReservationStyle(res.startTime, res.endTime)}
                                                         className={cn(
-                                                            "absolute top-3 bottom-3 rounded-xl border p-2 shadow-sm transition-all hover:scale-[1.02] hover:z-10 cursor-pointer overflow-hidden flex flex-col justify-center",
+                                                            "absolute top-1/2 -translate-y-1/2 rounded-xl border p-2 min-w-[60px] min-h-[68px] shadow-sm transition-all hover:scale-[1.02] hover:z-10 cursor-pointer overflow-hidden flex flex-col justify-center",
                                                             statusMap[res.reservationStatus]
                                                         )}
                                                     >
@@ -163,6 +164,7 @@ export function SchedulePage() {
                     취소
                 </div>
             </footer>
+        </div>
         </div>
     );
 }
