@@ -1,9 +1,7 @@
 // @/app/AdminLayout.tsx
 
-import {TabContainer} from "@/app/tab/TabContainer.tsx";
-import {TabBar} from "@/app/tab/TabBar.tsx";
 import {Gnb} from "@/app/gnb/Gnb.tsx";
-import {Link} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 import Header from "@/app/Header.tsx";
 import Footer from "@/app/Footer.tsx";
 
@@ -41,17 +39,12 @@ export function AdminLayout() {
 
             {/* 우측 메인 영역 */}
             <div className="flex-1 flex flex-col min-w-0">
-
                 <Header/>
-
-                {/* 콘텐츠 영역 */}
-                <main className=" flex-1 flex flex-col">
-                    <TabBar/>
+                <main className=" flex-1 flex flex-col min-h-0">
                     <div className="flex-1 overflow-y-auto px-8 py-6">
-                        <TabContainer/>
+                        <Outlet/>
                     </div>
                 </main>
-
                 <Footer/>
             </div>
         </div>

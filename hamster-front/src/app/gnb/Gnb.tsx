@@ -1,11 +1,11 @@
 // @/app/gnb/Gnb.tsx
 import {useNavigate} from 'react-router-dom'
 import {GNB_NAV_GROUPS, GNB_NAV_ITEMS} from "@/app/gnb/navigation.config.tsx";
-import {useAdminTabs} from "@/app/tab/tabs.ts";
+
 
 export function Gnb() {
     const navigate = useNavigate()
-    const openTab = useAdminTabs(s => s.openTab)
+    // const openTab = useAdminTabs(s => s.openTab)
 
     return (
         <div className="flex flex-col">
@@ -41,22 +41,15 @@ export function Gnb() {
                                 {items.map(item => (
                                     <button
                                         key={item.path}
-                                        onClick={() => {
-                                            openTab({
-                                                key: item.path,
-                                                path: item.path,
-                                                title: item.label,
-                                                element: item.element,
-                                            })
-
-                                            navigate(item.path)
-                                        }}
-                                        className="
-                      w-full text-left px-3 py-2 rounded
-                      hover:bg-slate-800
-                      transition
-                    "
+                                        onClick={() => navigate(item.path)} // openTab 제거
+                                        className={"w-full text-left px-3 py-2 rounded transition text-sm bg-slate-200 dark:bg-slate-800 font-bold text-blue-600"}
                                     >
+                                    {/*    className={cn(*/}
+                                    {/*    "w-full text-left px-3 py-2 rounded transition text-sm",*/}
+                                    {/*    pathname === item.path*/}
+                                    {/*        ? "bg-slate-200 dark:bg-slate-800 font-bold text-blue-600"*/}
+                                    {/*        : "hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300"*/}
+                                    {/*)}   */}
                                         {item.label}
                                     </button>
                                 ))}

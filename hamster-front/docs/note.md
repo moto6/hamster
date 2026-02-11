@@ -108,7 +108,10 @@ Mock/API 스위치: export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'tru
   - 런타임과 컴파일 타임의 완벽한 동기화 : 리액트에서는 UI 렌더링을 위해 실제 **배열(값)**이 필요합니다. 타입을 배열에서 추출하면, UI에 뿌려지는 값과 타입스크립트가 검사하는 값이 절대로 틀어질 일이 없습니다.
   - 타입 추론의 우수성 : Object.keys()나 Object.values()를 쓸 때 발생하는 번거로운 타입 캐스팅(as ResourceCategory[])이 필요 없습니다. 배열 자체가 이미 가장 좁은(narrow) 타입인 리터럴들의 모음이기 때문입니다.
 
-4. 코드 예시 스니펫 (Reference)
+4. 개발 및 코드 추가시 주의사항
+- 정석적인 방법으로 개발하며, Best Practice 방법으로 널리 인정받는 방향으로 개발되어야만 합니다
+
+5. 코드 예시 스니펫 (Reference)
 Mock Pattern: if (IS_MOCK) { return MOCK_DATA; } else { return axios.get(...); }
 ```
 ```text
