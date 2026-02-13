@@ -1,5 +1,5 @@
 import { Button } from '@/components/place/Button';
-import { Label } from '@/components/place/Label';
+import { Label } from '@/components/core/Label';
 import {
     Select,
     SelectContent,
@@ -13,8 +13,8 @@ import {
     PopoverContent,
     PopoverTrigger
 } from '@/components/place/Popover';
-import { usePlayground2 } from '@/pages/usePlayground2.ts';
 import { Settings, Info, Bell, Monitor, Sun, Moon } from 'lucide-react';
+import {usePlayground2} from "@/pages/playground/usePlayground2.ts";
 
 export default function ComponentPlaygroundPage2() {
     const {

@@ -1,0 +1,92 @@
+{
+  "content": [
+    {
+      "id": 1,
+      "bookSkuId": 1,
+      "bookIsbn": "9788936433598",
+      "bookTitle": "채식주의자",
+      "userId": 101,
+      "userName": "김철수",
+      "rating": 5,
+      "review": "정말 인상 깊은 작품입니다. 한강 작가의 문체가 매력적이에요.",
+      "createdAt": "2024-02-01T16:00:00Z",
+      "updatedAt": "2024-02-01T16:00:00Z"
+    },
+    {
+      "id": 2,
+      "bookSkuId": 1,
+      "bookIsbn": "9788936433598",
+      "bookTitle": "채식주의자",
+      "userId": 102,
+      "userName": "이영희",
+      "rating": 4,
+      "review": "맨부커상 수상작답게 훌륭한 소설입니다.",
+      "createdAt": "2024-02-03T14:20:00Z",
+      "updatedAt": "2024-02-03T14:20:00Z"
+    },
+    {
+      "id": 3,
+      "bookSkuId": 2,
+      "bookIsbn": "9788934942467",
+      "bookTitle": "82년생 김지영",
+      "userId": 103,
+      "userName": "박민수",
+      "rating": 5,
+      "review": "우리 사회의 문제를 잘 담아낸 작품. 모두가 읽어봤으면 합니다.",
+      "createdAt": "2024-02-05T10:30:00Z",
+      "updatedAt": "2024-02-05T10:30:00Z"
+    },
+    {
+      "id": 4,
+      "bookSkuId": 2,
+      "bookIsbn": "9788934942467",
+      "bookTitle": "82년생 김지영",
+      "userId": 104,
+      "userName": "정지훈",
+      "rating": 4,
+      "review": "공감되는 부분이 많았어요. 추천합니다.",
+      "createdAt": "2024-02-06T09:15:00Z",
+      "updatedAt": "2024-02-06T09:15:00Z"
+    },
+    {
+      "id": 5,
+      "bookSkuId": 3,
+      "bookIsbn": "9788932917245",
+      "bookTitle": "코스모스",
+      "userId": 105,
+      "userName": "최서연",
+      "rating": 5,
+      "review": "과학의 아름다움을 느낄 수 있는 명저입니다.",
+      "createdAt": "2024-02-07T11:00:00Z",
+      "updatedAt": "2024-02-07T11:00:00Z"
+    },
+    {
+      "id": 6,
+      "bookSkuId": 4,
+      "bookIsbn": "9788932473901",
+      "bookTitle": "사피엔스",
+      "userId": 106,
+      "userName": "강동원",
+      "rating": 5,
+      "review": "인류의 역사를 새로운 관점에서 바라볼 수 있게 해주는 책.",
+      "createdAt": "2024-02-08T13:45:00Z",
+      "updatedAt": "2024-02-08T13:45:00Z"
+    },
+    {
+      "id": 7,
+      "bookSkuId": 4,
+      "bookIsbn": "9788932473901",
+      "bookTitle": "사피엔스",
+      "userId": 107,
+      "userName": "한지민",
+      "rating": 4,
+      "review": "흥미로운 내용이 많지만 다소 어려운 부분도 있어요.",
+      "createdAt": "2024-02-09T15:20:00Z",
+      "updatedAt": "2024-02-09T15:20:00Z"
+    }
+  ],
+  "totalElements": 7,
+  "totalPages": 1,
+  "currentPage": 0,
+  "pageSize": 20
+}

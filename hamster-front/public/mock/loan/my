@@ -1,0 +1,81 @@
+{
+  "content": [
+    {
+      "id": 1,
+      "userId": 101,
+      "userName": "김철수",
+      "userEmail": "chulsoo@example.com",
+      "loanDate": "2024-02-01T10:00:00Z",
+      "dueDate": "2024-02-15T23:59:59Z",
+      "returnDate": "2024-02-14T15:30:00Z",
+      "status": "RETURNED",
+      "totalItems": 2,
+      "createdAt": "2024-02-01T10:00:00Z",
+      "updatedAt": "2024-02-14T15:30:00Z",
+      "details": [
+        {
+          "id": 1,
+          "loanMasterId": 1,
+          "bookSkuId": 1,
+          "inventoryId": 101,
+          "bookTitle": "채식주의자",
+          "bookIsbn": "9788936433598",
+          "callNumber": "813.7-한12ㅊ",
+          "loanDate": "2024-02-01T10:00:00Z",
+          "dueDate": "2024-02-15T23:59:59Z",
+          "returnDate": "2024-02-14T15:30:00Z",
+          "status": "RETURNED",
+          "createdAt": "2024-02-01T10:00:00Z",
+          "updatedAt": "2024-02-14T15:30:00Z"
+        },
+        {
+          "id": 2,
+          "loanMasterId": 1,
+          "bookSkuId": 3,
+          "inventoryId": 103,
+          "bookTitle": "코스모스",
+          "bookIsbn": "9788932917245",
+          "callNumber": "443.1-세68ㅋ",
+          "loanDate": "2024-02-01T10:00:00Z",
+          "dueDate": "2024-02-15T23:59:59Z",
+          "returnDate": "2024-02-14T15:30:00Z",
+          "status": "RETURNED",
+          "createdAt": "2024-02-01T10:00:00Z",
+          "updatedAt": "2024-02-14T15:30:00Z"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "userId": 101,
+      "userName": "김철수",
+      "userEmail": "chulsoo@example.com",
+      "loanDate": "2024-02-08T11:00:00Z",
+      "dueDate": "2024-02-22T23:59:59Z",
+      "status": "ACTIVE",
+      "totalItems": 1,
+      "createdAt": "2024-02-08T11:00:00Z",
+      "updatedAt": "2024-02-08T11:00:00Z",
+      "details": [
+        {
+          "id": 5,
+          "loanMasterId": 4,
+          "bookSkuId": 5,
+          "inventoryId": 105,
+          "bookTitle": "트렌드 코리아 2025",
+          "bookIsbn": "9788970127248",
+          "callNumber": "321.97-김211ㅌ-2025",
+          "loanDate": "2024-02-08T11:00:00Z",
+          "dueDate": "2024-02-22T23:59:59Z",
+          "status": "ACTIVE",
+          "createdAt": "2024-02-08T11:00:00Z",
+          "updatedAt": "2024-02-08T11:00:00Z"
+        }
+      ]
+    }
+  ],
+  "totalElements": 2,
+  "totalPages": 1,
+  "currentPage": 0,
+  "pageSize": 20
+}

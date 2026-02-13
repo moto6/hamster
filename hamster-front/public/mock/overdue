@@ -1,0 +1,56 @@
+{
+  "content": [
+    {
+      "id": 1,
+      "loanDetailId": 4,
+      "userId": 103,
+      "userName": "박민수",
+      "userEmail": "minsoo@example.com",
+      "bookSkuId": 4,
+      "bookTitle": "사피엔스",
+      "bookIsbn": "9788932473901",
+      "callNumber": "909-하231ㅅ",
+      "dueDate": "2024-02-03T23:59:59Z",
+      "overdueDays": 9,
+      "fineAmount": 900,
+      "createdAt": "2024-02-04T00:00:00Z",
+      "updatedAt": "2024-02-12T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "loanDetailId": 6,
+      "userId": 108,
+      "userName": "윤서준",
+      "userEmail": "seojun@example.com",
+      "bookSkuId": 1,
+      "bookTitle": "채식주의자",
+      "bookIsbn": "9788936433598",
+      "callNumber": "813.7-한12ㅊ",
+      "dueDate": "2024-02-06T23:59:59Z",
+      "overdueDays": 6,
+      "fineAmount": 600,
+      "createdAt": "2024-02-07T00:00:00Z",
+      "updatedAt": "2024-02-12T00:00:00Z"
+    },
+    {
+      "id": 3,
+      "loanDetailId": 7,
+      "userId": 109,
+      "userName": "이하은",
+      "userEmail": "haeun@example.com",
+      "bookSkuId": 2,
+      "bookTitle": "82년생 김지영",
+      "bookIsbn": "9788934942467",
+      "callNumber": "813.7-조211ㅍ",
+      "dueDate": "2024-02-10T23:59:59Z",
+      "overdueDays": 2,
+      "fineAmount": 200,
+      "createdAt": "2024-02-11T00:00:00Z",
+      "updatedAt": "2024-02-12T00:00:00Z"
+    }
+  ],
+  "totalElements": 3,
+  "totalPages": 1,
+  "currentPage": 0,
+  "pageSize": 20
+}

@@ -1,8 +1,8 @@
 import {Button} from '@/components/place/Button.tsx';
 import {Input} from '@/components/place/Input.tsx';
-import {Label} from '@/components/place/Label.tsx';
+import {Label} from '@/components/core/Label.tsx';
 import {Loader2, Search, Send, Trash2} from 'lucide-react';
-import {usePlayground1} from "@/pages/usePlayground1.ts";
+import {usePlayground1} from "@/pages/playground/usePlayground1.ts";
 
 export default function ComponentPlaygroundPage1() {
     const {inputValue, isLoading, handleInputChange, simulateLoading} = usePlayground1();

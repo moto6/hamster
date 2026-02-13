@@ -1,0 +1,66 @@
+{
+  "content": [
+    {
+      "id": 1,
+      "userId": 104,
+      "userName": "정지훈",
+      "userEmail": "jihoon@example.com",
+      "bookSkuId": 2,
+      "bookTitle": "82년생 김지영",
+      "bookIsbn": "9788934942467",
+      "reservationDate": "2024-02-10T09:00:00Z",
+      "availableDate": "2024-02-19T10:00:00Z",
+      "expiryDate": "2024-02-22T23:59:59Z",
+      "status": "예약대출가능",
+      "queuePosition": 1,
+      "createdAt": "2024-02-10T09:00:00Z",
+      "updatedAt": "2024-02-19T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "userId": 105,
+      "userName": "최서연",
+      "userEmail": "seoyeon@example.com",
+      "bookSkuId": 2,
+      "bookTitle": "82년생 김지영",
+      "bookIsbn": "9788934942467",
+      "reservationDate": "2024-02-11T14:30:00Z",
+      "status": "예약대기",
+      "queuePosition": 2,
+      "createdAt": "2024-02-11T14:30:00Z",
+      "updatedAt": "2024-02-11T14:30:00Z"
+    },
+    {
+      "id": 3,
+      "userId": 106,
+      "userName": "강동원",
+      "userEmail": "dongwon@example.com",
+      "bookSkuId": 4,
+      "bookTitle": "사피엔스",
+      "bookIsbn": "9788932473901",
+      "reservationDate": "2024-02-08T16:00:00Z",
+      "availableDate": "2024-02-12T10:00:00Z",
+      "status": "대출됨",
+      "queuePosition": 1,
+      "createdAt": "2024-02-08T16:00:00Z",
+      "updatedAt": "2024-02-12T11:00:00Z"
+    },
+    {
+      "id": 4,
+      "userId": 107,
+      "userName": "한지민",
+      "userEmail": "jimin@example.com",
+      "bookSkuId": 5,
+      "bookTitle": "트렌드 코리아 2025",
+      "bookIsbn": "9788970127248",
+      "reservationDate": "2024-02-09T10:20:00Z",
+      "status": "예약취소",
+      "createdAt": "2024-02-09T10:20:00Z",
+      "updatedAt": "2024-02-10T09:00:00Z"
+    }
+  ],
+  "totalElements": 4,
+  "totalPages": 1,
+  "currentPage": 0,
+  "pageSize": 20
+}

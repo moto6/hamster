@@ -2,7 +2,7 @@ import {Check, Clock, Search, X,} from 'lucide-react';
 import {cn} from "@/core/utils";
 import {Button} from '@/components/place/Button';
 import {Input} from '@/components/place/Input';
-import {Label} from '@/components/place/Label';
+import {Label} from '@/components/core/Label';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/place/Select';
 import {useReservationManagement} from './useReservationManagement';
 import {useState} from "react";

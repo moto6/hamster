@@ -1,0 +1,66 @@
+{
+  "period": "1시간",
+  "updatedAt": "2024-02-12T14:00:00Z",
+  "rankings": [
+    {
+      "rank": 1,
+      "bookSkuId": 2,
+      "isbn": "9788934942467",
+      "title": "82년생 김지영",
+      "author": "조남주",
+      "publisher": "민음사",
+      "coverImageUrl": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=300",
+      "ratingCount": 45,
+      "ratingCountChange": 12,
+      "averageRating": 4.8
+    },
+    {
+      "rank": 2,
+      "bookSkuId": 4,
+      "isbn": "9788932473901",
+      "title": "사피엔스",
+      "author": "유발 하라리",
+      "publisher": "김영사",
+      "coverImageUrl": "https://images.unsplash.com/photo-1491841573634-28140fc7ced7?w=300",
+      "ratingCount": 38,
+      "ratingCountChange": 10,
+      "averageRating": 4.7
+    },
+    {
+      "rank": 3,
+      "bookSkuId": 1,
+      "isbn": "9788936433598",
+      "title": "채식주의자",
+      "author": "한강",
+      "publisher": "창비",
+      "coverImageUrl": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=300",
+      "ratingCount": 32,
+      "ratingCountChange": 8,
+      "averageRating": 4.5
+    },
+    {
+      "rank": 4,
+      "bookSkuId": 3,
+      "isbn": "9788932917245",
+      "title": "코스모스",
+      "author": "칼 세이건",
+      "publisher": "사이언스북스",
+      "coverImageUrl": "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=300",
+      "ratingCount": 28,
+      "ratingCountChange": 7,
+      "averageRating": 4.9
+    },
+    {
+      "rank": 5,
+      "bookSkuId": 5,
+      "isbn": "9788970127248",
+      "title": "트렌드 코리아 2025",
+      "author": "김난도 외",
+      "publisher": "미래의창",
+      "coverImageUrl": "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=300",
+      "ratingCount": 25,
+      "ratingCountChange": 6,
+      "averageRating": 4.3
+    }
+  ]
+}

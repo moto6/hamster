@@ -1,0 +1,124 @@
+{
+  "rankings": [
+    {
+      "rank": 1,
+      "bookSkuId": 4,
+      "isbn": "9788932473901",
+      "title": "사피엔스",
+      "author": "유발 하라리",
+      "publisher": "김영사",
+      "coverImageUrl": "https://images.unsplash.com/photo-1491841573634-28140fc7ced7?w=300",
+      "hotScore": 95.8,
+      "averageRating": 4.7,
+      "totalRatings": 1247
+    },
+    {
+      "rank": 2,
+      "bookSkuId": 2,
+      "isbn": "9788934942467",
+      "title": "82년생 김지영",
+      "author": "조남주",
+      "publisher": "민음사",
+      "coverImageUrl": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=300",
+      "hotScore": 93.2,
+      "averageRating": 4.8,
+      "totalRatings": 1105
+    },
+    {
+      "rank": 3,
+      "bookSkuId": 1,
+      "isbn": "9788936433598",
+      "title": "채식주의자",
+      "author": "한강",
+      "publisher": "창비",
+      "coverImageUrl": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=300",
+      "hotScore": 89.5,
+      "averageRating": 4.5,
+      "totalRatings": 987
+    },
+    {
+      "rank": 4,
+      "bookSkuId": 3,
+      "isbn": "9788932917245",
+      "title": "코스모스",
+      "author": "칼 세이건",
+      "publisher": "사이언스북스",
+      "coverImageUrl": "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=300",
+      "hotScore": 87.3,
+      "averageRating": 4.9,
+      "totalRatings": 856
+    },
+    {
+      "rank": 5,
+      "bookSkuId": 5,
+      "isbn": "9788970127248",
+      "title": "트렌드 코리아 2025",
+      "author": "김난도 외",
+      "publisher": "미래의창",
+      "coverImageUrl": "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=300",
+      "hotScore": 82.1,
+      "averageRating": 4.3,
+      "totalRatings": 742
+    },
+    {
+      "rank": 6,
+      "bookSkuId": 6,
+      "isbn": "9788934985839",
+      "title": "달러구트 꿈 백화점",
+      "author": "이미예",
+      "publisher": "팩토리나인",
+      "coverImageUrl": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300",
+      "hotScore": 78.6,
+      "averageRating": 4.6,
+      "totalRatings": 625
+    },
+    {
+      "rank": 7,
+      "bookSkuId": 7,
+      "isbn": "9788954682633",
+      "title": "아몬드",
+      "author": "손원평",
+      "publisher": "창비",
+      "coverImageUrl": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=300",
+      "hotScore": 75.4,
+      "averageRating": 4.4,
+      "totalRatings": 589
+    },
+    {
+      "rank": 8,
+      "bookSkuId": 8,
+      "isbn": "9788936434267",
+      "title": "파친코",
+      "author": "이민진",
+      "publisher": "문학사상",
+      "coverImageUrl": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=300",
+      "hotScore": 72.8,
+      "averageRating": 4.6,
+      "totalRatings": 512
+    },
+    {
+      "rank": 9,
+      "bookSkuId": 9,
+      "isbn": "9788936478018",
+      "title": "1984",
+      "author": "조지 오웰",
+      "publisher": "민음사",
+      "coverImageUrl": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300",
+      "hotScore": 69.2,
+      "averageRating": 4.7,
+      "totalRatings": 478
+    },
+    {
+      "rank": 10,
+      "bookSkuId": 10,
+      "isbn": "9788936433659",
+      "title": "소년이 온다",
+      "author": "한강",
+      "publisher": "창비",
+      "coverImageUrl": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=300",
+      "hotScore": 66.5,
+      "averageRating": 4.5,
+      "totalRatings": 445
+    }
+  ]
+}

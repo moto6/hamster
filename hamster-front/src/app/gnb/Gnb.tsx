@@ -27,12 +27,8 @@ export function Gnb() {
                     return (
                         <div key={group.category}>
                             {/* 그룹 타이틀 */}
-                            <div className="
-                px-3 mb-1
-                text-xs uppercase
-                tracking-wider
-                text-slate-400
-              ">
+                            <div className=" px-3 mb-1 text-xs uppercase
+                                            tracking-wider text-slate-400">
                                 {group.title}
                             </div>
 

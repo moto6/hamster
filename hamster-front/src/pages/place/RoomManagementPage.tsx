@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Plus, Edit2, Trash2, Users, MapPin, Building2, Check, X } from "lucide-react";
-import { cn } from "@/core/utils";
-import { Button } from "@/components/place/Button";
-import { Input } from "@/components/place/Input";
-import { Label } from "@/components/place/Label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/place/Select";
-import { useRoomManagement } from "./useRoomManagement";
-import type { Room, Resource } from "./useRoomManagement";
+import React, {useState} from "react";
+import {Building2, Check, Edit2, MapPin, Plus, Trash2, Users, X} from "lucide-react";
+import {cn} from "@/core/utils";
+import {Button} from "@/components/place/Button";
+import {Input} from "@/components/place/Input";
+import {Label} from "@/components/core/Label";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/place/Select";
+import {type Room, useRoomManagement} from "@/pages/place/useRoomManagement.ts";
+import type {Resource} from "@/pages/place/uesResourceManagement.ts";
 
 
 export default function RoomManagementPage() {
@@ -47,6 +47,8 @@ export default function RoomManagementPage() {
             capacity: Number(formData.capacity),
             resourceIds: formData.resources,
             roomAvailable: formData.roomAvailable,
+            roomFloorMap: "",
+            roomLocationNote: "",
         };
 
         if (editingRoom) {

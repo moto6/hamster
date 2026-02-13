@@ -1,0 +1,109 @@
+{
+  "content": [
+    {
+      "id": 1,
+      "userId": 101,
+      "userName": "김철수",
+      "userEmail": "chulsoo@example.com",
+      "loanDate": "2024-02-01T10:00:00Z",
+      "dueDate": "2024-02-15T23:59:59Z",
+      "returnDate": "2024-02-14T15:30:00Z",
+      "status": "RETURNED",
+      "totalItems": 2,
+      "createdAt": "2024-02-01T10:00:00Z",
+      "updatedAt": "2024-02-14T15:30:00Z",
+      "details": [
+        {
+          "id": 1,
+          "loanMasterId": 1,
+          "bookSkuId": 1,
+          "inventoryId": 101,
+          "bookTitle": "채식주의자",
+          "bookIsbn": "9788936433598",
+          "callNumber": "813.7-한12ㅊ",
+          "loanDate": "2024-02-01T10:00:00Z",
+          "dueDate": "2024-02-15T23:59:59Z",
+          "returnDate": "2024-02-14T15:30:00Z",
+          "status": "RETURNED",
+          "createdAt": "2024-02-01T10:00:00Z",
+          "updatedAt": "2024-02-14T15:30:00Z"
+        },
+        {
+          "id": 2,
+          "loanMasterId": 1,
+          "bookSkuId": 3,
+          "inventoryId": 103,
+          "bookTitle": "코스모스",
+          "bookIsbn": "9788932917245",
+          "callNumber": "443.1-세68ㅋ",
+          "loanDate": "2024-02-01T10:00:00Z",
+          "dueDate": "2024-02-15T23:59:59Z",
+          "returnDate": "2024-02-14T15:30:00Z",
+          "status": "RETURNED",
+          "createdAt": "2024-02-01T10:00:00Z",
+          "updatedAt": "2024-02-14T15:30:00Z"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 102,
+      "userName": "이영희",
+      "userEmail": "younghee@example.com",
+      "loanDate": "2024-02-05T14:20:00Z",
+      "dueDate": "2024-02-19T23:59:59Z",
+      "status": "ACTIVE",
+      "totalItems": 1,
+      "createdAt": "2024-02-05T14:20:00Z",
+      "updatedAt": "2024-02-05T14:20:00Z",
+      "details": [
+        {
+          "id": 3,
+          "loanMasterId": 2,
+          "bookSkuId": 2,
+          "inventoryId": 102,
+          "bookTitle": "82년생 김지영",
+          "bookIsbn": "9788934942467",
+          "callNumber": "813.7-조211ㅍ",
+          "loanDate": "2024-02-05T14:20:00Z",
+          "dueDate": "2024-02-19T23:59:59Z",
+          "status": "ACTIVE",
+          "createdAt": "2024-02-05T14:20:00Z",
+          "updatedAt": "2024-02-05T14:20:00Z"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "userId": 103,
+      "userName": "박민수",
+      "userEmail": "minsoo@example.com",
+      "loanDate": "2024-01-20T09:30:00Z",
+      "dueDate": "2024-02-03T23:59:59Z",
+      "status": "OVERDUE",
+      "totalItems": 1,
+      "createdAt": "2024-01-20T09:30:00Z",
+      "updatedAt": "2024-02-03T23:59:59Z",
+      "details": [
+        {
+          "id": 4,
+          "loanMasterId": 3,
+          "bookSkuId": 4,
+          "inventoryId": 104,
+          "bookTitle": "사피엔스",
+          "bookIsbn": "9788932473901",
+          "callNumber": "909-하231ㅅ",
+          "loanDate": "2024-01-20T09:30:00Z",
+          "dueDate": "2024-02-03T23:59:59Z",
+          "status": "OVERDUE",
+          "createdAt": "2024-01-20T09:30:00Z",
+          "updatedAt": "2024-02-03T23:59:59Z"
+        }
+      ]
+    }
+  ],
+  "totalElements": 3,
+  "totalPages": 1,
+  "currentPage": 0,
+  "pageSize": 20
+}

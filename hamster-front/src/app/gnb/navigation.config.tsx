@@ -1,20 +1,22 @@
 // @/app/gnb/config/navigation.config.tsx
 
 import type {ReactNode} from "react";
-import {DashboardPage} from "@/pages/admin/DashboardPage.tsx";
-import {UserPage} from "@/pages/admin/DemoPage.tsx";
-import {MyAdminPage} from "@/pages/admin/MyAdminPage.tsx";
+
 import {PlaceDashboardPage} from "@/pages/place/PlaceDashboardPage.tsx";
 import BuildingManagementPage from "@/pages/place/BuildingManagementPage.tsx";
-import ComponentPlaygroundPage1 from "@/pages/ComponentPlaygroundPage1.tsx";
-import ComponentPlaygroundPage2 from "@/pages/ComponentPlaygroundPage2.tsx";
 
 import ReservationManagementPage from "@/pages/place/ReservationManagementPage.tsx";
 import ResourceManagementPage from "@/pages/place/ResourceManagementPage.tsx";
 import RoomManagementPage from "@/pages/place/RoomManagementPage.tsx";
 import {SchedulePage} from "@/pages/place/SchedulePage.tsx";
+import {DashboardPage} from "@/pages/playground/DashboardPage.tsx";
+import {MyAdminPage} from "@/pages/playground/MyAdminPage.tsx";
+import {UserPage} from "@/pages/playground/DemoPage.tsx";
+import {AdminLoanHistoryPage} from "@/pages/library/admin/AdminLoanHistoryPage.tsx";
+import {AdminReservationPage} from "@/pages/library/admin/AdminReservationPage.tsx";
+import {OverdueManagementPage} from "@/pages/library/admin/OverdueManagementPage.tsx";
 
-export type NavCategory = "ADMIN" | "USER" | "SYSTEM" | "PLACE"
+export type NavCategory = "TEST" | "USER" | "SYSTEM" | "PLACE" | "LIBRARY"
 
 interface NavGroup {
     category: NavCategory
@@ -37,19 +39,19 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         label: 'Dashboard',
         path: '/admin',
         element: <DashboardPage/>,
-        category: "ADMIN"
+        category: "TEST"
     },
     {
         label: 'my admin',
         path: '/my-admin',
         element: <MyAdminPage/>,
-        category: "ADMIN"
+        category: "TEST"
     },
     {
         label: 'Users',
         path: '/users',
         element: <UserPage/>,
-        category: "USER"
+        category: "TEST"
     },
     {
         label: '공간 현황',
@@ -87,6 +89,25 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         element: <SchedulePage/>,
         category: "PLACE"
     },
+    {
+        label: '대출정보',
+        path: '/loansInfo',
+        element: <AdminLoanHistoryPage/>,
+        category: "LIBRARY"
+    },
+    {
+        label: '예약정보',
+        path: '/library-admin/reservation',
+        element: <AdminReservationPage/>,
+        category: "LIBRARY"
+    },
+    {
+        label: '연체내역',
+        path: '/library-admin/overdue',
+        element: <OverdueManagementPage/>,
+        category: "LIBRARY"
+    },
+]
     /*
         {
             label: '',
@@ -97,24 +118,22 @@ export const GNB_NAV_ITEMS: NavItem[] = [
     */
 
 
+// {
+//     label: 'TEST',
+//     path: '/playground1',
+//     element: <ComponentPlaygroundPage1/>,
+// },
+// {
+//     label: 'TEST2',
+//     path: '/playground2',
+//     element: <ComponentPlaygroundPage2/>,
+// },
 
-    {
-        label: 'TEST',
-        path: '/playground1',
-        element: <ComponentPlaygroundPage1/>,
-    },
-    {
-        label: 'TEST2',
-        path: '/playground2',
-        element: <ComponentPlaygroundPage2/>,
-    },
-
-]
 
 export const GNB_NAV_GROUPS: NavGroup[] = [
     {
-        category: "ADMIN",
-        title: "🎯admin",
+        category: "TEST",
+        title: "🎯테스트",
     },
     {
         category: "SYSTEM",
@@ -122,10 +141,14 @@ export const GNB_NAV_GROUPS: NavGroup[] = [
     },
     {
         category: "USER",
-        title: "👤 User"
+        title: "👤 User",
     },
     {
         category: "PLACE",
-        title: "공간예약"
+        title: "공간예약",
+    },
+    {
+        category: "LIBRARY",
+        title: "도서관",
     },
 ]
