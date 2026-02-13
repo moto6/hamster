@@ -1,0 +1,7 @@
+rootProject.name = 'hamster-back'
+include 'hamster-api'
+include 'hamster-batch'
+//
+include 'library-core'
+include 'place-core'
+include 'foundation'
