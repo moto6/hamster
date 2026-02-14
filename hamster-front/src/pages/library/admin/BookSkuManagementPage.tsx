@@ -115,61 +115,79 @@ export function BookSkuManagementPage() {
                 </CardContent>
             </Card>
 
-            <Card>
+            <Card className="overflow-hidden border-slate-200 shadow-sm">
                 <CardContent className="p-0">
                     <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>ISBN</TableHead>
-                                <TableHead>도서명</TableHead>
-                                <TableHead>저자</TableHead>
-                                <TableHead>출판사</TableHead>
-                                <TableHead>출판년도</TableHead>
-                                <TableHead>청구기호</TableHead>
-                                <TableHead>총 권수</TableHead>
-                                <TableHead>대출가능</TableHead>
-                                <TableHead className="text-right">작업</TableHead>
+                        <TableHeader className="bg-slate-50/50"> {/* 헤더 배경 추가 */}
+                            <TableRow className="hover:bg-transparent">
+                                <TableHead
+                                    className="w-[140px] text-xs font-semibold uppercase tracking-wider text-slate-500">ISBN</TableHead>
+                                <TableHead
+                                    className="text-xs font-semibold uppercase tracking-wider text-slate-500">도서명</TableHead>
+                                <TableHead
+                                    className="text-xs font-semibold uppercase tracking-wider text-slate-500">저자/출판사</TableHead>
+                                <TableHead
+                                    className="text-xs font-semibold uppercase tracking-wider text-slate-500">청구기호</TableHead>
+                                <TableHead
+                                    className="text-center text-xs font-semibold uppercase tracking-wider text-slate-500">재고</TableHead>
+                                <TableHead
+                                    className="text-right text-xs font-semibold uppercase tracking-wider text-slate-500">작업</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
                             {loading ? (
-                                <TableRow>
-                                    <TableCell colSpan={9} className="text-center py-8 text-slate-500">
-                                        로딩 중...
-                                    </TableCell>
-                                </TableRow>
+                                <TableRow><TableCell colSpan={6} className="h-32 text-center text-muted-foreground">데이터를
+                                    불러오는 중입니다...</TableCell></TableRow>
                             ) : books.content.length === 0 ? (
-                                <TableRow>
-                                    <TableCell colSpan={9} className="text-center py-8 text-slate-500">
-                                        등록된 도서가 없습니다
-                                    </TableCell>
-                                </TableRow>
+                                <TableRow><TableCell colSpan={6} className="h-32 text-center text-muted-foreground">등록된
+                                    도서 데이터가 없습니다.</TableCell></TableRow>
                             ) : (
                                 books.content.map((book) => (
-                                    <TableRow key={book.id}>
-                                        <TableCell className="font-mono text-sm">{book.isbn}</TableCell>
-                                        <TableCell className="font-medium">{book.title}</TableCell>
-                                        <TableCell>{book.author}</TableCell>
-                                        <TableCell>{book.publisher}</TableCell>
-                                        <TableCell>{book.publishYear}</TableCell>
-                                        <TableCell className="font-mono text-sm">{book.callNumber}</TableCell>
-                                        <TableCell>{book.totalCopies}</TableCell>
-                                        <TableCell>{book.availableCopies}</TableCell>
+                                    <TableRow key={book.id} className="group transition-colors hover:bg-slate-50/50">
+                                        {/* 1. ISBN: 모노톤으로 코드 느낌 강조 */}
+                                        <TableCell className="font-mono text-xs text-slate-500">{book.isbn}</TableCell>
+
+                                        {/* 2. 도서명: 가장 굵게 하여 주인공으로 만듦 */}
+                                        <TableCell>
+                                            <div className="font-semibold text-slate-900">{book.title}</div>
+                                            <div className="text-xs text-muted-foreground md:hidden">{book.author}</div>
+                                        </TableCell>
+
+                                        {/* 3. 저자/출판사: 두 정보를 묶어서 공간 효율성 확보 */}
+                                        <TableCell>
+                                            <div className="text-sm text-slate-700">{book.author}</div>
+                                            <div
+                                                className="text-xs text-slate-400">{book.publisher}, {book.publishYear}</div>
+                                        </TableCell>
+
+                                        {/* 4. 청구기호: 배경을 살짝 깔아 '태그' 느낌 주기 */}
+                                        <TableCell>
+                <span
+                    className="inline-flex items-center rounded-md bg-slate-100 px-2 py-1 font-mono text-xs font-medium text-slate-600">
+                  {book.callNumber}
+                </span>
+                                        </TableCell>
+
+                                        {/* 5. 재고: 숫자 데이터는 정렬과 대비가 중요 */}
+                                        <TableCell className="text-center">
+                                            <div
+                                                className="text-sm font-medium text-slate-900">{book.availableCopies} / {book.totalCopies}</div>
+                                            <div className="text-[10px] uppercase text-slate-400">Available</div>
+                                        </TableCell>
+
+                                        {/* 6. 작업: Group Hover 기능을 써서 마우스를 올렸을 때만 선명하게 */}
                                         <TableCell className="text-right">
-                                            <Button
-                                                variant="ghost"
-                                                size="sm"
-                                                onClick={() => handleEdit(book)}
-                                            >
-                                                <Edit className="size-4"/>
-                                            </Button>
-                                            <Button
-                                                variant="ghost"
-                                                size="sm"
-                                                onClick={() => handleDelete(book.id)}
-                                            >
-                                                <Trash2 className="size-4 text-red-500"/>
-                                            </Button>
+                                            <div
+                                                className="flex justify-end gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+                                                <Button variant="ghost" size="icon" className="size-8"
+                                                        onClick={() => handleEdit(book)}>
+                                                    <Edit className="size-4 text-slate-500"/>
+                                                </Button>
+                                                <Button variant="ghost" size="icon" className="size-8 hover:bg-red-50"
+                                                        onClick={() => handleDelete(book.id)}>
+                                                    <Trash2 className="size-4 text-red-400"/>
+                                                </Button>
+                                            </div>
                                         </TableCell>
                                     </TableRow>
                                 ))
