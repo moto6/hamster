@@ -38,7 +38,7 @@ export function PlaceDashboardPage() {
                         </thead>
                         <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                         {data.recentReservations.map((item) => (
-                            <tr key={item.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+                            <tr key={item.reservationId} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
                                 <td className="px-6 py-4 font-semibold text-slate-700 dark:text-slate-300">{item.placeName}</td>
                                 <td className="px-6 py-4 text-slate-600 dark:text-slate-400">{item.userName}</td>
                                 <td className="px-6 py-4 text-slate-500 italic">

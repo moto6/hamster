@@ -110,7 +110,7 @@ export function MyAdminPage() {
                             values={loanData}
                             gutterSize={3}
                             transformDayElement={(element, value) =>
-                                React.cloneElement(element, {
+                                React.cloneElement(element as any, { // ✅ as React.ReactElement 추가
                                     rx: 2,
                                     ry: 2,
                                     fill: getLoanColor(value?.count),
@@ -147,7 +147,7 @@ export function MyAdminPage() {
                             values={returnData}
                             gutterSize={3}
                             transformDayElement={(element, value) =>
-                                React.cloneElement(element, {
+                                React.cloneElement(element as any, { // ✅ as React.ReactElement 추가
                                     rx: 2,
                                     ry: 2,
                                     fill: getReturnColor(value?.count),
