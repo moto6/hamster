@@ -1,17 +1,5 @@
 # Library Management System - API Documentation
 
-## Base URL
-- Production: `http://localhost:8080`
-- Mock/Development: `/mock` (served from `/public/mock`)
-
-## Environment Configuration
-```bash
-# .env
-VITE_API_BASE_URL=http://localhost:8080  # For backend API
-# VITE_API_BASE_URL=/mock                # For mock mode
-```
-
-
 ## 📚 Book SKU Management APIs
 
 ### 1. Get Book SKU List

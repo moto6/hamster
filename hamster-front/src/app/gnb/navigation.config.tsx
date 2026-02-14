@@ -97,34 +97,35 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         element: <SchedulePage/>,
         category: "PLACE"
     },
+    //
     {
-        label: '대출정보',
-        path: '/loansInfo',
+        label: '도서 SKU 관리',
+        path: '/admin/book/sku',
+        element: <BookSkuManagementPage/>,
+        category: "LIBRARY-ADMIN"
+    },
+    {
+        label: '대출 기록 조회',
+        path: '/admin/loans',
         element: <AdminLoanHistoryPage/>,
         category: "LIBRARY-ADMIN"
     },
     {
-        label: '예약정보',
-        path: '/library-admin/reservation',
+        label: '예약 관리',
+        path: '/admin/reservation',
         element: <AdminReservationPage/>,
         category: "LIBRARY-ADMIN"
     },
     {
-        label: '연체내역',
+        label: '연체 관리',
         path: '/library-admin/overdue',
         element: <OverdueManagementPage/>,
         category: "LIBRARY-ADMIN"
     },
     {
-        label: '책 인기랭킹',
-        path: '/book-rating',
+        label: '도서 평점 관리',
+        path: '/admin/rating',
         element: <BookRatingManagementPage/>,
-        category: "LIBRARY-ADMIN"
-    },
-    {
-        label: 'SKU 관리',
-        path: 'book-sku',
-        element: <BookSkuManagementPage/>,
         category: "LIBRARY-ADMIN"
     },
     {
@@ -134,32 +135,32 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         category: "LIBRARY-USER"
     },
     {
-        label: 'MyReservationPage',
-        path: 'MyReservationPage',
+        label: '나의 예약 도서',
+        path: '/library/reservations',
         element: <MyReservationPage/>,
         category: "LIBRARY-USER"
     },
     {
-        label: 'MyLoanHistoryPage',
-        path: 'MyLoanHistoryPage',
+        label: '나의 대출 기록',
+        path: '/library/loans',
         element: <MyLoanHistoryPage/>,
         category: "LIBRARY-USER"
     },
     {
-        label: 'HotRankingPage',
-        path: 'HotRankingPage',
+        label: '핫 랭킹 추천',
+        path: '/library/hot-ranking',
         element: <HotRankingPage/>,
         category: "LIBRARY-USER"
     },
     {
-        label: 'BookSearchPage',
-        path: 'BookSearchPage',
+        label: '자료 검색',
+        path: '/library/search',
         element: <BookSearchPage/>,
         category: "LIBRARY-USER"
     },
     {
-        label: 'BookRatingViewPage',
-        path: 'BookRatingViewPage',
+        label: '실시간 랭킹',
+        path: '/library/realtime-ranking',
         element: <BookRatingViewPage/>,
         category: "LIBRARY-USER"
     },
@@ -196,15 +197,15 @@ export const GNB_NAV_GROUPS: NavGroup[] = [
         title: "⚙️System",
     },
     {
-        category: "LIBRARY-USER",
-        title: "👤도서관 이용자",
-    },
-    {
         category: "PLACE",
         title: "공간예약",
     },
     {
         category: "LIBRARY-ADMIN",
         title: "도서관 관리자",
+    },
+    {
+        category: "LIBRARY-USER",
+        title: "👤도서관 이용자",
     },
 ]

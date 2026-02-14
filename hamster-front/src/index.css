@@ -5,21 +5,26 @@
 
 /* Tailwind v4 theme tokens */
 @theme {
-    --font-sans:
-            "Noto Sans KR",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Apple Color Emoji",
-            "Segoe UI Emoji",
-            "Segoe UI Symbol",
-            "Noto Color Emoji";
+    /* Typography */
+    --font-sans: "Noto Sans KR", ui-sans-serif, system-ui, "Noto Color Emoji";
+    /* Semantic Colors (룩앤필) */
+    --color-background: #f8fafc;        /* 전체 배경: slate-50 */
+    --color-card: #ffffff;
+    --color-border: #e2e8f0;            /* slate-200: 절대 검정 금지 */
+    --color-input: #f1f5f9;             /* slate-100 */
+    --color-ring: #cbd5e1;              /* slate-300: 포커스 시 은은하게 */
+    --color-primary: #0f172a;           /* 강조색: slate-900 */
+    --color-muted-foreground: #64748b;  /* 보조 텍스트: slate-500 */
+    /* Border Radius */
+    --radius-xl: 12px;                  /* 카드용 */
+    --radius-md: 6px;                   /* 버튼/인풋용 */
+    /* Shadow */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
 /* Global base */
 :root {
-    font-family: var(--font-sans);
+    font-family: var(--font-sans), system-ui;
     letter-spacing: -0.02em;
     font-feature-settings: "tnum";
 }
