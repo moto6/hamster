@@ -23,6 +23,7 @@ import {MyLoanHistoryPage} from "@/pages/library/user/MyLoanHistoryPage.tsx";
 import {HotRankingPage} from "@/pages/library/user/HotRankingPage.tsx";
 import {BookSearchPage} from "@/pages/library/user/BookSearchPage.tsx";
 import {BookRatingViewPage} from "@/pages/library/user/BookRatingViewPage.tsx";
+import {BookSkuManagementPageV2} from "@/pages/library/admin/BookSkuManagementPageV2.tsx";
 
 export type NavCategory = "TEST" | "LIBRARY-USER" | "SYSTEM" | "PLACE" | "LIBRARY-ADMIN"
 
@@ -102,6 +103,12 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         label: '장서/SKU 관리',
         path: '/admin/book/sku',
         element: <BookSkuManagementPage/>,
+        category: "LIBRARY-ADMIN"
+    },
+    {
+        label: '장서/SKU 관리_v2',
+        path: '/admin/book/sku2',
+        element: <BookSkuManagementPageV2/>,
         category: "LIBRARY-ADMIN"
     },
     {
