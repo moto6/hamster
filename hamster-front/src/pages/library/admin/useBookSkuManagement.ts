@@ -38,6 +38,14 @@ export function useBookSkuManagement() {
         pageSize: 20,
     });
 
+    const updatePageSize = (size: number) => {
+        setFilter(prev => ({
+            ...prev,
+            pageSize: size,
+            page: 0 // 갯수가 바뀌면 1페이지(0)로 리셋
+        }));
+    };
+
     // Fetch books
     const fetchBooks = async () => {
         setLoading(true);
@@ -47,7 +55,6 @@ export function useBookSkuManagement() {
             if (filter.category) params.append('category', filter.category);
             params.append('page', filter.page.toString());
             params.append('pageSize', filter.pageSize.toString());
-
             const response = await libraryApiClient.get<PaginatedResponse<BookSkuMaster>>(
                 `/book/sku?${params.toString()}`
             );
@@ -95,9 +102,10 @@ export function useBookSkuManagement() {
         }
     };
 
+    // 2. filter가 변경될 때마다 자동 페칭 (선택 사항)
     useEffect(() => {
         fetchBooks();
-    }, [filter]);
+    }, [filter.pageSize, filter.page, filter.keyword]);
 
     return {
         books,
@@ -106,6 +114,7 @@ export function useBookSkuManagement() {
         setFilter,
         createBook,
         updateBook,
+        updatePageSize,
         deleteBook,
         refetch: fetchBooks,
     };

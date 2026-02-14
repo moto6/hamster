@@ -130,8 +130,8 @@ export function AdminLoanHistoryPage() {
                 <CardContent className="p-0">
                     <Table>
                         <TableHeader>
-                            <TableRow>
-                                <TableHead>대출번호</TableHead>
+                            <TableRow className="border-b border-slate-100 pb-4">
+                                <TableHead className="px-4">대출번호</TableHead>
                                 <TableHead>사용자</TableHead>
                                 <TableHead>이메일</TableHead>
                                 <TableHead>대출일</TableHead>
@@ -143,14 +143,13 @@ export function AdminLoanHistoryPage() {
                         </TableHeader>
                         <TableBody>
                             {loading ? (
-                                <TableRow>
+                                <TableRow className="border-b border-slate-100 pb-4">
                                     <TableCell colSpan={8} className="text-center py-8 text-zinc-500">
                                         로딩 중...
                                     </TableCell>
                                 </TableRow>
                             ) : (loans?.content?.length ?? 0) === 0 ? (
-                                /* 가이드라인: Optional Chaining 및 Nullish Coalescing으로 undefined 방어 */
-                                <TableRow>
+                                <TableRow className="border-b border-slate-100 pb-4">
                                     <TableCell colSpan={8} className="text-center py-8 text-zinc-500">
                                         조회된 대출 기록이 없습니다
                                     </TableCell>

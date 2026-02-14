@@ -27,8 +27,13 @@
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
 }
-
+.ag-theme-custom .ag-header-cell-label {
+    display: flex;
+    align-items: center;
+}
 /* Global base */
 :root {
     font-family: var(--font-sans), system-ui;

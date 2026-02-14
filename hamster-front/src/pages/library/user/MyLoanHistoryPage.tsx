@@ -95,7 +95,7 @@ export function MyLoanHistoryPage() {
                 <CardContent className="p-0">
                     <Table>
                         <TableHeader>
-                            <TableRow>
+                            <TableRow className="border-b border-slate-100 pb-4">
                                 <TableHead>도서명</TableHead>
                                 <TableHead>ISBN</TableHead>
                                 <TableHead>청구기호</TableHead>

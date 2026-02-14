@@ -94,13 +94,12 @@ export function MyReservationPage() {
                     </div>
                 </CardContent>
             </Card>
-
             <Card>
                 <CardContent className="p-0">
                     <Table>
                         <TableHeader>
-                            <TableRow>
-                                <TableHead>도서명</TableHead>
+                            <TableRow className="border-b border-slate-100 pb-4">
+                                <TableHead className="px-4">도서명</TableHead>
                                 <TableHead>ISBN</TableHead>
                                 <TableHead>예약일시</TableHead>
                                 <TableHead>대출가능일</TableHead>

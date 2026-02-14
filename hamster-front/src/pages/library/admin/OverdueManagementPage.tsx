@@ -56,8 +56,8 @@ export function OverdueManagementPage() {
                 <CardContent className="p-0">
                     <Table>
                         <TableHeader>
-                            <TableRow>
-                                <TableHead>연체자</TableHead>
+                            <TableRow className="border-b border-slate-100 pb-4">
+                                <TableHead className="px-4">연체자</TableHead>
                                 <TableHead>이메일</TableHead>
                                 <TableHead>도서명</TableHead>
                                 <TableHead>ISBN</TableHead>

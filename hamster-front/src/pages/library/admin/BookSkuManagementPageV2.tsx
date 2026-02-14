@@ -1,4 +1,4 @@
-import {useMemo, useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {AgGridReact} from 'ag-grid-react';
 import {AllCommunityModule, type ColDef, ModuleRegistry, type RowClickedEvent} from 'ag-grid-community';
 import {useBookSkuManagement} from './useBookSkuManagement.ts';
@@ -8,12 +8,14 @@ import {Input} from "@/components/library/input.tsx";
 import {cn} from "@/core/utils.ts";
 import {Edit, Plus, Search, Trash2, X} from 'lucide-react';
 
+
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 export function BookSkuManagementPageV2() {
-    const defaultUserPageSize: number = 20;
+    const gridRef = React.useRef<any>(null);
+    const defaultUserPageSize: number = 100;
     const [pageSize, setPageSize] = useState(defaultUserPageSize);
-    const { books, loading, filter, setFilter, deleteBook } = useBookSkuManagement();
+    const {books, loading, filter, setFilter, deleteBook, updatePageSize} = useBookSkuManagement();
 
     // Drawer 관련 상태
     const [selectedBook, setSelectedBook] = useState<any | null>(null);
@@ -24,14 +26,15 @@ export function BookSkuManagementPageV2() {
         {
             field: 'isbn',
             headerName: 'ISBN',
-            width: 150,
-            cellClass: 'font-mono text-xs text-slate-500 flex items-center'
+            width: 140,
+            cellClass: 'font-mono text-xs text-slate-500 flex items-center justify-center'
         },
         {
             field: 'title',
             headerName: '도서명',
-            flex: 1,
-            cellClass: 'font-semibold text-slate-900 flex items-center'
+            minWidth: 200,
+            flex: 2,
+            cellClass: 'font-semibold text-slate-900 flex items-center '
         },
         {
             field: 'author',
@@ -48,17 +51,17 @@ export function BookSkuManagementPageV2() {
             field: 'callNumber',
             headerName: '청구기호',
             width: 130,
-            cellRenderer: (p: any) => (
-                <div className="flex items-center h-full">
-                    <span className="bg-slate-100 px-2 py-0.5 rounded text-xs font-mono text-slate-600">
-                        {p.value}
-                    </span>
-                </div>
+            cellClass: "flex items-center justify-center",
+            cellRenderer: (p: { value: string }) => (
+                <span className="bg-slate-100 px-2 py-0.5 rounded text-xs font-mono text-slate-600 leading-none">
+                    {p.value}
+                </span>
             )
         },
         {
             headerName: '재고',
             width: 100,
+            cellClass: 'font-mono text-xs text-slate-500 flex items-center justify-center',
             cellRenderer: (p: any) => (
                 <div className="flex items-center h-full font-medium">
                     {p.data.availableCopies} / {p.data.totalCopies}
@@ -153,7 +156,12 @@ export function BookSkuManagementPageV2() {
                         <select
                             className="h-9 w-24 rounded-md border border-slate-200 bg-white px-3 text-sm outline-none focus:border-ring transition-colors cursor-pointer"
                             value={pageSize}
-                            onChange={(e) => setPageSize(Number(e.target.value))}
+                            onChange={(e) => {
+                                const newSize = Number(e.target.value);
+                                setPageSize(newSize); // AG Grid
+                                updatePageSize(newSize); // API 호출용 훅 상태 갱신
+                                gridRef.current?.api.setGridOption('paginationPageSize', newSize);
+                            }}
                         >
                             <option value={20}>20개</option>
                             <option value={50}>50개</option>
@@ -167,16 +175,24 @@ export function BookSkuManagementPageV2() {
             <Card className="overflow-hidden border-slate-200 shadow-sm">
                 <div className="ag-theme-custom w-full h-[600px]">
                     <AgGridReact
+                        ref={gridRef}
                         rowData={books.content}
                         columnDefs={columnDefs}
                         defaultColDef={defaultColDef}
                         onRowClicked={onRowClicked}
                         rowStyle={{ cursor: 'pointer' }}
                         loading={loading}
+                        enableCellTextSelection={true}
+                        ensureDomOrder={true}
                         animateRows={true}
-                        headerHeight={48}
-                        rowHeight={56}
+                        headerHeight={40}
+                        rowHeight={48}
                         suppressCellFocus={true}
+                        pagination={true}
+                        paginationPageSize={pageSize}
+                        onComponentStateChanged={(params) => {
+                            params.api.paginationGoToPage(0);
+                        }}
                     />
                 </div>
             </Card>

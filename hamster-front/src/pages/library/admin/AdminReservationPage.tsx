@@ -31,7 +31,7 @@ export function AdminReservationPage() {
             </div>
 
             <Card>
-                <CardHeader>
+                <CardHeader className="border-b border-slate-100 pb-4">
                     <CardTitle>검색 조건</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -104,8 +104,8 @@ export function AdminReservationPage() {
                 <CardContent className="p-0">
                     <Table>
                         <TableHeader>
-                            <TableRow>
-                                <TableHead>예약번호</TableHead>
+                            <TableRow className="border-b border-slate-100 pb-4">
+                                <TableHead className="px-4">예약번호</TableHead>
                                 <TableHead>예약자</TableHead>
                                 <TableHead>이메일</TableHead>
                                 <TableHead>도서명</TableHead>
@@ -118,14 +118,14 @@ export function AdminReservationPage() {
                         </TableHeader>
                         <TableBody>
                             {loading ? (
-                                <TableRow>
+                                <TableRow className="border-b border-slate-100 pb-4">
                                     <TableCell colSpan={9} className="text-center py-8 text-slate-500">
                                         로딩 중...
                                     </TableCell>
                                 </TableRow>
                                 //) : reservations.content.length === 0 ? (
                             ) : (reservations?.content?.length ?? 0) === 0 ? (
-                                <TableRow>
+                                <TableRow className="border-b border-slate-100 pb-4">
                                     <TableCell colSpan={9} className="text-center py-8 text-slate-500">
                                         조회된 예약 내역이 없습니다
                                     </TableCell>
