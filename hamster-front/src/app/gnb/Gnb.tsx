@@ -18,6 +18,7 @@ export function Gnb() {
             <nav className="flex-1 px-2 py-3 space-y-4 overflow-y-auto">
 
                 {GNB_NAV_GROUPS.map(group => {
+                    if (group.hidden) return
                     const items = GNB_NAV_ITEMS.filter(
                         i => i.category === group.category && !i.hidden
                     )

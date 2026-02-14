@@ -30,6 +30,7 @@ export type NavCategory = "TEST" | "LIBRARY-USER" | "SYSTEM" | "PLACE" | "LIBRAR
 interface NavGroup {
     category: NavCategory
     title: string
+    hidden?: boolean;
 }
 
 interface NavItem {
@@ -51,7 +52,7 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         category: "TEST"
     },
     {
-        label: 'my admin',
+        label: '나의 계정정보',
         path: '/my-admin',
         element: <MyAdminPage/>,
         category: "TEST"
@@ -60,7 +61,8 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         label: 'Users',
         path: '/users',
         element: <UserPage/>,
-        category: "TEST"
+        category: "TEST",
+        hidden: true,
     },
     {
         label: '공간 현황',
@@ -197,15 +199,13 @@ export const GNB_NAV_ITEMS: NavItem[] = [
 export const GNB_NAV_GROUPS: NavGroup[] = [
     {
         category: "TEST",
-        title: "🎯테스트",
+        title: "🎯개발테스트",
+        hidden: false,
     },
     {
         category: "SYSTEM",
         title: "⚙️System",
-    },
-    {
-        category: "PLACE",
-        title: "공간예약",
+        hidden: true,
     },
     {
         category: "LIBRARY-ADMIN",
@@ -214,5 +214,9 @@ export const GNB_NAV_GROUPS: NavGroup[] = [
     {
         category: "LIBRARY-USER",
         title: "👤도서관 이용자",
+    },
+    {
+        category: "PLACE",
+        title: "공간예약",
     },
 ]
