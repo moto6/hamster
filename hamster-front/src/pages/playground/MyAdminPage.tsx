@@ -2,6 +2,7 @@
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/library/card.tsx";
 import {ResponsiveContainer, Tooltip, Treemap} from "recharts";
 import CalendarHeatmap from "react-calendar-heatmap";
+import React from "react";
 
 const treemapData_bookInventory = [
     {name: '문학', size: 1416, fill: '#b8d98d'},
@@ -25,6 +26,20 @@ const treemapData_Loan = [
     {name: '기술과학', size: 1585, fill: '#8ec96d'},
     {name: '언어', size: 511, fill: '#1a912b'},
 ];
+
+const getLoanColor = (count?: number) => {
+    if (!count || count === 0) return "#e5e7eb"; // slate-200
+    if (count <= 1) return "#bbf7d0";            // green-200
+    if (count <= 3) return "#4ade80";            // green-400
+    return "#16a34a";                            // green-600
+};
+
+const getReturnColor = (count?: number) => {
+    if (!count || count === 0) return "#e5e7eb"; // slate-200
+    if (count <= 1) return "#fed7aa";            // orange-200
+    if (count <= 3) return "#fb923c";            // orange-400
+    return "#ea580c";                            // orange-600
+};
 
 const generateMockData = (baseCount: number) => {
     return Array.from({length: 100}, (_, i) => {
@@ -79,75 +94,83 @@ const CustomizedContent = (props: any) => {
 export function MyAdminPage() {
     return (
         <div className="space-y-6">
-            {/* ✅ 상단 히트맵 영역: 좌우 배치 */}
+            {/* ================= 히트맵 ================= */}
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-
-                {/* 대출 현황 히트맵 (초록) */}
-                <Card className="overflow-hidden">
+                {/* 대출 */}
+                <Card>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium text-slate-600">대출 현황 (최근 1년)</CardTitle>
+                        <CardTitle className="text-sm font-medium text-slate-600">
+                            대출 현황 (최근 1년)
+                        </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                        <div className="loan-heatmap">
-                            <CalendarHeatmap
-                                gutterSize={3}
-                                startDate={new Date('2025-01-01')}
-                                endDate={new Date('2026-02-14')}
-                                values={loanData}
-                                classForValue={(value) => {
-                                    if (!value || value.count === 0) return "color-empty";
-                                    if (value.count <= 1) return "color-loan-1";
-                                    if (value.count <= 3) return "color-loan-2";
-                                    return "color-loan-3";
-                                }}
-                            />
-                        </div>
-                        <div className="flex justify-end items-center gap-1.5 mt-2 text-[10px] text-slate-400">
+                    <CardContent className="pt-3 pb-4">
+                        <CalendarHeatmap
+                            startDate={new Date("2025-01-01")}
+                            endDate={new Date("2026-02-14")}
+                            values={loanData}
+                            gutterSize={3}
+                            transformDayElement={(element, value) =>
+                                React.cloneElement(element, {
+                                    rx: 2,
+                                    ry: 2,
+                                    fill: getLoanColor(value?.count),
+                                    stroke: "transparent",
+                                })
+                            }
+                        />
+
+                        {/* 범례 */}
+                        <div className="mt-3 flex items-center justify-end gap-2 text-xs text-muted-foreground">
                             <span>Less</span>
                             <div className="flex gap-1">
-                                <div className="size-2.5 rounded-sm bg-slate-100"/>
-                                <div className="size-2.5 rounded-sm bg-green-200"/>
-                                <div className="size-2.5 rounded-sm bg-green-400"/>
-                                <div className="size-2.5 rounded-sm bg-green-600"/>
+                                <div className="size-3 rounded-sm bg-slate-200"/>
+                                <div className="size-3 rounded-sm bg-green-200"/>
+                                <div className="size-3 rounded-sm bg-green-400"/>
+                                <div className="size-3 rounded-sm bg-green-600"/>
                             </div>
                             <span>More</span>
                         </div>
                     </CardContent>
                 </Card>
 
-                {/* 반납 현황 히트맵 (주황) */}
-                <Card className="overflow-hidden">
+                {/* 반납 */}
+                <Card>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium text-slate-600">반납 현황 (최근 1년)</CardTitle>
+                        <CardTitle className="text-sm font-medium text-slate-600">
+                            반납 현황 (최근 1년)
+                        </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                        <div className="return-heatmap">
-                            <CalendarHeatmap
-                                gutterSize={3}
-                                startDate={new Date('2025-01-01')}
-                                endDate={new Date('2026-02-14')}
-                                values={returnData}
-                                classForValue={(value) => {
-                                    if (!value || value.count === 0) return "color-empty";
-                                    if (value.count <= 1) return "color-loan-1";
-                                    if (value.count <= 3) return "color-loan-2";
-                                    return "color-loan-3";
-                                }}
-                            />
-                        </div>
-                        <div className="flex justify-end items-center gap-1.5 mt-2 text-[10px] text-slate-400">
+                    <CardContent className="pt-3 pb-4">
+                        <CalendarHeatmap
+                            startDate={new Date("2025-01-01")}
+                            endDate={new Date("2026-02-14")}
+                            values={returnData}
+                            gutterSize={3}
+                            transformDayElement={(element, value) =>
+                                React.cloneElement(element, {
+                                    rx: 2,
+                                    ry: 2,
+                                    fill: getReturnColor(value?.count),
+                                    stroke: "transparent",
+                                })
+                            }
+                        />
+
+                        {/* 범례 */}
+                        <div className="mt-3 flex items-center justify-end gap-2 text-xs text-muted-foreground">
                             <span>Less</span>
                             <div className="flex gap-1">
-                                <div className="size-2.5 rounded-sm bg-slate-100"/>
-                                <div className="size-2.5 rounded-sm bg-orange-200"/>
-                                <div className="size-2.5 rounded-sm bg-orange-400"/>
-                                <div className="size-2.5 rounded-sm bg-orange-600"/>
+                                <div className="size-3 rounded-sm bg-slate-200"/>
+                                <div className="size-3 rounded-sm bg-orange-200"/>
+                                <div className="size-3 rounded-sm bg-orange-400"/>
+                                <div className="size-3 rounded-sm bg-orange-600"/>
                             </div>
                             <span>More</span>
                         </div>
                     </CardContent>
                 </Card>
             </div>
+
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <Card className="col-span-2">
