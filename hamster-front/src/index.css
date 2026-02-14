@@ -1,14 +1,25 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+/* Web font */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
 
+/* Tailwind v4 theme tokens */
 @theme {
-    --font-sans: "Noto Sans KR", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-sans:
+            "Noto Sans KR",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol",
+            "Noto Color Emoji";
 }
 
+/* Global base */
 :root {
     font-family: var(--font-sans);
     letter-spacing: -0.02em;
-    /* 숫자 고정폭*/
     font-feature-settings: "tnum";
 }

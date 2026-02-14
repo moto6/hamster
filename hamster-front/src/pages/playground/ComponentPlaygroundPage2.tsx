@@ -1,5 +1,5 @@
 import { Button } from '@/components/place/Button';
-import { Label } from '@/components/core/Label';
+import { Label } from '@/components/core/label.tsx';
 import {
     Select,
     SelectContent,

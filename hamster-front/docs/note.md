@@ -159,8 +159,8 @@ src
 ├── components
 │   └── place
 │       ├── Button.tsx
-│       ├── Input.tsx
-│       ├── Label.tsx
+│       ├── input.tsx
+│       ├── label.tsx
 │       ├── Popover.tsx
 │       ├── RadioGroup.tsx
 │       └── Select.tsx

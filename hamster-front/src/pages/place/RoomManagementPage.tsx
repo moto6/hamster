@@ -3,7 +3,7 @@ import {Building2, Check, Edit2, MapPin, Plus, Trash2, Users, X} from "lucide-re
 import {cn} from "@/core/utils";
 import {Button} from "@/components/place/Button";
 import {Input} from "@/components/place/Input";
-import {Label} from "@/components/core/Label";
+import {Label} from "@/components/core/label.tsx";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/place/Select";
 import {type Room, useRoomManagement} from "@/pages/place/useRoomManagement.ts";
 import type {Resource} from "@/pages/place/uesResourceManagement.ts";

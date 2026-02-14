@@ -15,8 +15,16 @@ import {UserPage} from "@/pages/playground/DemoPage.tsx";
 import {AdminLoanHistoryPage} from "@/pages/library/admin/AdminLoanHistoryPage.tsx";
 import {AdminReservationPage} from "@/pages/library/admin/AdminReservationPage.tsx";
 import {OverdueManagementPage} from "@/pages/library/admin/OverdueManagementPage.tsx";
+import {BookRatingManagementPage} from "@/pages/library/admin/BookRatingManagementPage.tsx";
+import {BookSkuManagementPage} from "@/pages/library/admin/BookSkuManagementPage.tsx";
+import {RealtimeRankingPage} from "@/pages/library/user/RealtimeRankingPage.tsx";
+import {MyReservationPage} from "@/pages/library/user/MyReservationPage.tsx";
+import {MyLoanHistoryPage} from "@/pages/library/user/MyLoanHistoryPage.tsx";
+import {HotRankingPage} from "@/pages/library/user/HotRankingPage.tsx";
+import {BookSearchPage} from "@/pages/library/user/BookSearchPage.tsx";
+import {BookRatingViewPage} from "@/pages/library/user/BookRatingViewPage.tsx";
 
-export type NavCategory = "TEST" | "USER" | "SYSTEM" | "PLACE" | "LIBRARY"
+export type NavCategory = "TEST" | "LIBRARY-USER" | "SYSTEM" | "PLACE" | "LIBRARY-ADMIN"
 
 interface NavGroup {
     category: NavCategory
@@ -93,19 +101,67 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         label: '대출정보',
         path: '/loansInfo',
         element: <AdminLoanHistoryPage/>,
-        category: "LIBRARY"
+        category: "LIBRARY-ADMIN"
     },
     {
         label: '예약정보',
         path: '/library-admin/reservation',
         element: <AdminReservationPage/>,
-        category: "LIBRARY"
+        category: "LIBRARY-ADMIN"
     },
     {
         label: '연체내역',
         path: '/library-admin/overdue',
         element: <OverdueManagementPage/>,
-        category: "LIBRARY"
+        category: "LIBRARY-ADMIN"
+    },
+    {
+        label: '책 인기랭킹',
+        path: '/book-rating',
+        element: <BookRatingManagementPage/>,
+        category: "LIBRARY-ADMIN"
+    },
+    {
+        label: 'SKU 관리',
+        path: 'book-sku',
+        element: <BookSkuManagementPage/>,
+        category: "LIBRARY-ADMIN"
+    },
+    {
+        label: 'RealtimeRankingPage',
+        path: '/RealtimeRankingPage',
+        element: <RealtimeRankingPage/>,
+        category: "LIBRARY-USER"
+    },
+    {
+        label: 'MyReservationPage',
+        path: 'MyReservationPage',
+        element: <MyReservationPage/>,
+        category: "LIBRARY-USER"
+    },
+    {
+        label: 'MyLoanHistoryPage',
+        path: 'MyLoanHistoryPage',
+        element: <MyLoanHistoryPage/>,
+        category: "LIBRARY-USER"
+    },
+    {
+        label: 'HotRankingPage',
+        path: 'HotRankingPage',
+        element: <HotRankingPage/>,
+        category: "LIBRARY-USER"
+    },
+    {
+        label: 'BookSearchPage',
+        path: 'BookSearchPage',
+        element: <BookSearchPage/>,
+        category: "LIBRARY-USER"
+    },
+    {
+        label: 'BookRatingViewPage',
+        path: 'BookRatingViewPage',
+        element: <BookRatingViewPage/>,
+        category: "LIBRARY-USER"
     },
 ]
     /*
@@ -140,15 +196,15 @@ export const GNB_NAV_GROUPS: NavGroup[] = [
         title: "⚙️System",
     },
     {
-        category: "USER",
-        title: "👤 User",
+        category: "LIBRARY-USER",
+        title: "👤도서관 이용자",
     },
     {
         category: "PLACE",
         title: "공간예약",
     },
     {
-        category: "LIBRARY",
-        title: "도서관",
+        category: "LIBRARY-ADMIN",
+        title: "도서관 관리자",
     },
 ]

@@ -1,6 +1,6 @@
 import {Button} from '@/components/place/Button.tsx';
 import {Input} from '@/components/place/Input.tsx';
-import {Label} from '@/components/core/Label.tsx';
+import {Label} from '@/components/core/label.tsx';
 import {Loader2, Search, Send, Trash2} from 'lucide-react';
 import {usePlayground1} from "@/pages/playground/usePlayground1.ts";
 

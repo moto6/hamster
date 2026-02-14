@@ -1,19 +1,15 @@
-import type {ChangeEvent} from 'react';
-import {useAdminLoanHistory} from './useAdminLoanHistory.ts';
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from '@/components/library/select.tsx';
+import {useMyLoanHistory} from './useMyLoanHistory.ts';
+import {Button} from '@/components/library/button.tsx';
+import {Input} from '@/components/library/input.tsx';
+import {Label} from '@/components/core/label.tsx';
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow,} from '@/components/library/table.tsx';
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/library/card.tsx';
-import {AlertCircle, Search} from 'lucide-react';
+import {AlertCircle, BookOpen, Search} from 'lucide-react';
 import {Badge} from '@/components/library/badge.tsx';
-import {Input} from "@/components/library/input.tsx";
-import {Button} from "@/components/library/button.tsx";
-import {Label} from "@/components/core/label.tsx";
 
+export function MyLoanHistoryPage() {
+    const {loans, loading, filter, setFilter, dateError} = useMyLoanHistory();
 
-export function AdminLoanHistoryPage() {
-    const {loans, loading, filter, setFilter, dateError, SEARCH_TYPES} = useAdminLoanHistory();
-
-    // 가이드라인: 상태에 따른 배지 생성 (정석적인 매핑 방법)
     const getStatusBadge = (status: string) => {
         const variants: Record<string, "default" | "secondary" | "destructive"> = {
             'ACTIVE': 'default',
@@ -25,87 +21,40 @@ export function AdminLoanHistoryPage() {
             'RETURNED': '반납완료',
             'OVERDUE': '연체중',
         };
-
-        return (
-            <Badge variant={variants[status] ?? 'default'}>
-                {labels[status] ?? status}
-            </Badge>
-        );
-    };
-
-    // 가이드라인: 핸들러에서 any 제거 및 명시적 if/else 사용 (필요 시 확장)
-    const handleSearchTypeChange = (value: typeof filter.searchType) => {
-        setFilter({
-            ...filter,
-            searchType: value,
-            page: 0
-        });
-    };
-
-    const handleInputChange = (e: ChangeEvent<HTMLInputElement>, field: keyof typeof filter) => {
-        setFilter({
-            ...filter,
-            [field]: e.target.value,
-            page: 0
-        });
+        return <Badge variant={variants[status] || 'default'}>{labels[status] || status}</Badge>;
     };
 
     return (
         <div className="space-y-6">
-            <div>
-                <h1 className="text-2xl font-bold tracking-tight">대출 기록 조회</h1>
-                <p className="text-sm text-zinc-500 mt-1">유저별, 도서별 대출 기록을 조회합니다</p>
+            <div className="flex items-center gap-3">
+                <BookOpen className="size-8 text-blue-600"/>
+                <div>
+                    <h1>나의 대출 기록</h1>
+                    <p className="text-sm text-slate-500 mt-1">나의 도서 대출 이력을 확인합니다</p>
+                </div>
             </div>
 
             <Card>
                 <CardHeader>
-                    <CardTitle>검색 조건</CardTitle>
+                    <CardTitle>조회 기간 설정</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                    <div className="grid grid-cols-4 gap-4">
-                        <div className="space-y-2">
-                            <Label>검색 유형</Label>
-                            <Select
-                                value={filter.searchType}
-                                onValueChange={handleSearchTypeChange}
-                            >
-                                <SelectTrigger>
-                                    <SelectValue/>
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {SEARCH_TYPES.map((type) => (
-                                        <SelectItem key={type} value={type}>
-                                            {type}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label>검색어</Label>
-                            <Input
-                                placeholder="검색어 입력..."
-                                value={filter.keyword}
-                                onChange={(e) => handleInputChange(e, 'keyword')}
-                            />
-                        </div>
-
+                    <div className="grid grid-cols-2 gap-4 max-w-md">
                         <div className="space-y-2">
                             <Label>시작일</Label>
                             <Input
                                 type="date"
                                 value={filter.startDate}
-                                onChange={(e) => handleInputChange(e, 'startDate')}
+                                onChange={(e) => setFilter({...filter, startDate: e.target.value, page: 0})}
                             />
                         </div>
 
                         <div className="space-y-2">
-                            <Label>종료일</Label>
+                            <Label>종료일 (오늘)</Label>
                             <Input
                                 type="date"
                                 value={filter.endDate}
-                                onChange={(e) => handleInputChange(e, 'endDate')}
+                                onChange={(e) => setFilter({...filter, endDate: e.target.value, page: 0})}
                             />
                         </div>
                     </div>
@@ -117,10 +66,26 @@ export function AdminLoanHistoryPage() {
                         </div>
                     )}
 
-                    <div className="flex justify-end">
+                    <div className="flex gap-2">
                         <Button>
                             <Search className="size-4 mr-2"/>
                             조회
+                        </Button>
+                        <Button
+                            variant="outline"
+                            onClick={() => {
+                                const today = new Date().toISOString().split('T')[0];
+                                const defaultStart = new Date();
+                                defaultStart.setDate(defaultStart.getDate() - 30);
+                                setFilter({
+                                    ...filter,
+                                    startDate: defaultStart.toISOString().split('T')[0],
+                                    endDate: today,
+                                    page: 0,
+                                });
+                            }}
+                        >
+                            최근 30일
                         </Button>
                     </div>
                 </CardContent>
@@ -131,36 +96,34 @@ export function AdminLoanHistoryPage() {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>대출번호</TableHead>
-                                <TableHead>사용자</TableHead>
-                                <TableHead>이메일</TableHead>
+                                <TableHead>도서명</TableHead>
+                                <TableHead>ISBN</TableHead>
+                                <TableHead>청구기호</TableHead>
                                 <TableHead>대출일</TableHead>
                                 <TableHead>반납예정일</TableHead>
                                 <TableHead>반납일</TableHead>
-                                <TableHead>대출권수</TableHead>
                                 <TableHead>상태</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
                             {loading ? (
                                 <TableRow>
-                                    <TableCell colSpan={8} className="text-center py-8 text-zinc-500">
+                                    <TableCell colSpan={7} className="text-center py-8 text-slate-500">
                                         로딩 중...
                                     </TableCell>
                                 </TableRow>
                             ) : (loans?.content?.length ?? 0) === 0 ? (
-                                /* 가이드라인: Optional Chaining 및 Nullish Coalescing으로 undefined 방어 */
                                 <TableRow>
-                                    <TableCell colSpan={8} className="text-center py-8 text-zinc-500">
-                                        조회된 대출 기록이 없습니다
+                                    <TableCell colSpan={7} className="text-center py-8 text-slate-500">
+                                        대출 기록이 없습니다
                                     </TableCell>
                                 </TableRow>
                             ) : (
                                 loans.content.map((loan) => (
                                     <TableRow key={loan.id}>
-                                        <TableCell className="font-mono text-xs">#{loan.id}</TableCell>
-                                        <TableCell className="font-medium">{loan.userName}</TableCell>
-                                        <TableCell>{loan.userEmail}</TableCell>
+                                        <TableCell className="font-medium">{loan.bookTitle}</TableCell>
+                                        <TableCell className="font-mono text-sm">{loan.bookIsbn}</TableCell>
+                                        <TableCell className="font-mono text-sm">{loan.callNumber}</TableCell>
                                         <TableCell>{new Date(loan.loanDate).toLocaleDateString()}</TableCell>
                                         <TableCell>{new Date(loan.dueDate).toLocaleDateString()}</TableCell>
                                         <TableCell>
@@ -168,7 +131,6 @@ export function AdminLoanHistoryPage() {
                                                 ? new Date(loan.returnDate).toLocaleDateString()
                                                 : '-'}
                                         </TableCell>
-                                        <TableCell>{loan.totalItems}권</TableCell>
                                         <TableCell>{getStatusBadge(loan.status)}</TableCell>
                                     </TableRow>
                                 ))
@@ -178,8 +140,8 @@ export function AdminLoanHistoryPage() {
                 </CardContent>
             </Card>
 
-            {(loans?.totalPages ?? 0) > 1 && (
-                <div className="flex justify-center gap-2 mt-4">
+            {loans.totalPages > 1 && (
+                <div className="flex justify-center gap-2">
                     <Button
                         variant="outline"
                         disabled={filter.page === 0}
@@ -187,12 +149,12 @@ export function AdminLoanHistoryPage() {
                     >
                         이전
                     </Button>
-                    <div className="flex items-center px-4 text-sm font-medium">
+                    <div className="flex items-center px-4">
                         {filter.page + 1} / {loans.totalPages}
                     </div>
                     <Button
                         variant="outline"
-                        disabled={filter.page >= (loans?.totalPages ?? 0) - 1}
+                        disabled={filter.page >= loans.totalPages - 1}
                         onClick={() => setFilter({...filter, page: filter.page + 1})}
                     >
                         다음

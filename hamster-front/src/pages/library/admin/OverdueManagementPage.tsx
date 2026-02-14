@@ -4,7 +4,7 @@ import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow,} from '@/
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/library/card.tsx';
 import {AlertTriangle, Search} from 'lucide-react';
 import {Badge} from '@/components/library/badge.tsx';
-import {Input} from "@/components/library/Input.tsx";
+import {Input} from "@/components/library/input.tsx";
 
 export function OverdueManagementPage() {
     const {overdues, loading, filter, setFilter} = useOverdueManagement();
