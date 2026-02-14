@@ -99,7 +99,7 @@ export const GNB_NAV_ITEMS: NavItem[] = [
     },
     //
     {
-        label: '도서 SKU 관리',
+        label: '장서/SKU 관리',
         path: '/admin/book/sku',
         element: <BookSkuManagementPage/>,
         category: "LIBRARY-ADMIN"

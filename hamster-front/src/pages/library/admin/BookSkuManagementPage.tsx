@@ -3,8 +3,8 @@ import {useBookSkuManagement} from './useBookSkuManagement.ts';
 import {Button} from '@/components/library/button.tsx';
 import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle,} from '@/components/library/dialog.tsx';
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow,} from '@/components/library/table.tsx';
-import {Card, CardContent, CardHeader, CardTitle} from '@/components/library/card.tsx';
-import {Edit, Plus, Search, Trash2} from 'lucide-react';
+import {Card, CardContent} from '@/components/library/card.tsx';
+import {Edit, Plus, Trash2} from 'lucide-react';
 import {Textarea} from '@/components/library/textarea.tsx';
 import {Input} from "@/components/library/input.tsx";
 import {Label} from "@/components/core/label.tsx";
@@ -85,7 +85,7 @@ export function BookSkuManagementPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1>도서 SKU 관리</h1>
+                    <h1 className="text-2xl font-semibold text-slate-700">장서/SKU 관리</h1>
                     <p className="text-sm text-slate-500 mt-1">도서 마스터 데이터를 관리합니다</p>
                 </div>
                 <Button onClick={() => {
@@ -97,22 +97,20 @@ export function BookSkuManagementPage() {
                 </Button>
             </div>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle>검색 필터</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <div className="flex gap-3">
+            <Card className="bg-slate-50/50">
+                <CardContent className="p-4">
+                    <div className="flex gap-2">
+                        {/*<CardHeader>*/}
+                        {/*    <CardTitle>검색 필터</CardTitle>*/}
+                        {/*</CardHeader>*/}
                         <Input
                             placeholder="도서명, ISBN, 저자 검색..."
                             value={filter.keyword}
                             onChange={(e) => setFilter({...filter, keyword: e.target.value, page: 0})}
                             className="max-w-md"
                         />
-                        <Button variant="outline">
-                            <Search className="size-4 mr-2"/>
-                            검색
-                        </Button>
+                        <Button>검색</Button>
+                        {/*<Search className="size-4 mr-2"/>*/}
                     </div>
                 </CardContent>
             </Card>
