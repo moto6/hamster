@@ -90,12 +90,15 @@ export function MyAdminPage() {
                     <CardContent>
                         <div className="loan-heatmap">
                             <CalendarHeatmap
+                                gutterSize={3}
                                 startDate={new Date('2025-01-01')}
                                 endDate={new Date('2026-02-14')}
                                 values={loanData}
                                 classForValue={(value) => {
-                                    if (!value) return 'color-empty';
-                                    return `color-loan-${value.count}`;
+                                    if (!value || value.count === 0) return "color-empty";
+                                    if (value.count <= 1) return "color-loan-1";
+                                    if (value.count <= 3) return "color-loan-2";
+                                    return "color-loan-3";
                                 }}
                             />
                         </div>
@@ -120,12 +123,15 @@ export function MyAdminPage() {
                     <CardContent>
                         <div className="return-heatmap">
                             <CalendarHeatmap
+                                gutterSize={3}
                                 startDate={new Date('2025-01-01')}
                                 endDate={new Date('2026-02-14')}
                                 values={returnData}
                                 classForValue={(value) => {
-                                    if (!value) return 'color-empty';
-                                    return `color-return-${value.count}`;
+                                    if (!value || value.count === 0) return "color-empty";
+                                    if (value.count <= 1) return "color-loan-1";
+                                    if (value.count <= 3) return "color-loan-2";
+                                    return "color-loan-3";
                                 }}
                             />
                         </div>
