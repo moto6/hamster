@@ -1,16 +1,18 @@
-import { useMemo, useState } from 'react';
-import { AgGridReact } from 'ag-grid-react';
-import { AllCommunityModule, type ColDef, ModuleRegistry, type RowClickedEvent } from 'ag-grid-community';
-import { useBookSkuManagement } from './useBookSkuManagement.ts';
-import { Button } from '@/components/library/button.tsx';
-import { Card, CardContent } from '@/components/library/card.tsx';
-import { Input } from "@/components/library/input.tsx";
-import { cn } from "@/core/utils.ts";
-import { Edit, Plus, Search, Trash2, X } from 'lucide-react';
+import {useMemo, useState} from 'react';
+import {AgGridReact} from 'ag-grid-react';
+import {AllCommunityModule, type ColDef, ModuleRegistry, type RowClickedEvent} from 'ag-grid-community';
+import {useBookSkuManagement} from './useBookSkuManagement.ts';
+import {Button} from '@/components/library/button.tsx';
+import {Card, CardContent} from '@/components/library/card.tsx';
+import {Input} from "@/components/library/input.tsx";
+import {cn} from "@/core/utils.ts";
+import {Edit, Plus, Search, Trash2, X} from 'lucide-react';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 export function BookSkuManagementPageV2() {
+    const defaultUserPageSize: number = 20;
+    const [pageSize, setPageSize] = useState(defaultUserPageSize);
     const { books, loading, filter, setFilter, deleteBook } = useBookSkuManagement();
 
     // Drawer 관련 상태
@@ -117,17 +119,46 @@ export function BookSkuManagementPageV2() {
 
             {/* 검색 필터 */}
             <Card className="bg-slate-50/50 shadow-none border-slate-200">
-                <CardContent className="p-4">
-                    <div className="flex gap-2">
-                        <div className="relative flex-1 max-w-md">
+                <CardContent className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div className="flex flex-1 items-center gap-2 max-w-2xl">
+                        <select
+                            className="h-9 w-32 rounded-md border border-slate-200 bg-white px-3 text-sm outline-none focus:border-ring transition-colors cursor-pointer shrink-0"
+                            // value={searchType} onChange={(e) => setSearchType(e.target.value)}
+                        >
+                            <option value="isbn">ISBN</option>
+                            <option value="title">도서명</option>
+                            <option value="author">저자</option>
+                            <option value="callNumber">청구기호</option>
+                        </select>
+                        {/* 검색어 입력창 */}
+                        <div className="relative flex-1">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground"/>
                             <Input
-                                placeholder="ISBN, 제목, 저자로 검색..."
+                                placeholder="검색어를 입력하세요"
                                 value={filter.keyword}
                                 onChange={(e) => setFilter({...filter, keyword: e.target.value})}
                                 className="pl-9 bg-white"
                             />
                         </div>
+
+                        {/* 검색 버튼 */}
+                        <Button className="shrink-0">
+                            검색
+                        </Button>
+                    </div>
+
+                    {/* 오른쪽: 페이지 크기 선택 */}
+                    <div className="flex items-center gap-2 shrink-0">
+                        <span className="text-sm text-slate-500 font-medium">보기</span>
+                        <select
+                            className="h-9 w-24 rounded-md border border-slate-200 bg-white px-3 text-sm outline-none focus:border-ring transition-colors cursor-pointer"
+                            value={pageSize}
+                            onChange={(e) => setPageSize(Number(e.target.value))}
+                        >
+                            <option value={20}>20개</option>
+                            <option value={50}>50개</option>
+                            <option value={100}>100개</option>
+                        </select>
                     </div>
                 </CardContent>
             </Card>
