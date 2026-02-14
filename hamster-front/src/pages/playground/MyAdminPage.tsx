@@ -42,7 +42,7 @@ const getReturnColor = (count?: number) => {
 };
 
 const generateMockData = (baseCount: number) => {
-    return Array.from({length: 100}, (_, i) => {
+    return Array.from({length: 470}, (_, i) => {
         const date = new Date();
         date.setDate(date.getDate() - i);
         return {
