@@ -49,10 +49,11 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         label: 'Dashboard',
         path: '/admin',
         element: <DashboardPage/>,
-        category: "TEST"
+        category: "TEST",
+        hidden: true,
     },
     {
-        label: '나의 계정정보',
+        label: '도서관 이용 현황',
         path: '/my-admin',
         element: <MyAdminPage/>,
         category: "TEST"
