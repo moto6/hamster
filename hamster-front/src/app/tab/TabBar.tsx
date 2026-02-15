@@ -1,40 +1,38 @@
-// // @/app/tab/TabBar.tsx
-// import {useNavigate} from 'react-router-dom'
-// import {useAdminTabs} from "@/app/tab/tabs.ts";
-//
-// export function TabBar() {
-//     const {tabs, activeKey, closeTab, setActive} = useAdminTabs()
-//     const navigate = useNavigate()
-//
-//     return (
-//         <div className="flex bg-slate-100 border-b border-slate-300">
-//             {tabs.map(tab => (
-//                 <div
-//                     key={tab.key}
-//                     className={`
-//             flex items-center gap-2 px-4 py-2 text-sm cursor-pointer
-//             border-r border-slate-300
-//             ${tab.key === activeKey
-//                         ? 'bg-white font-semibold'
-//                         : 'hover:bg-slate-200'}
-//           `}
-//                     onClick={() => {
-//                         setActive(tab.key)
-//                         navigate(tab.path)
-//                     }}
-//                 >
-//                     {tab.title}
-//                     <button
-//                         onClick={(e) => {
-//                             e.stopPropagation()
-//                             closeTab(tab.key)
-//                         }}
-//                         className="text-slate-400 hover:text-red-500"
-//                     >
-//                         ✕
-//                     </button>
-//                 </div>
-//             ))}
-//         </div>
-//     )
-// }
+// @/app/tab/TabBar.tsx
+
+import {X} from "lucide-react";
+import {cn} from "@/core/utils.ts";
+import {useTab} from "@/app/tab/tabs.ts";
+
+export function TabBar() {
+    const {tabs, activeTabId, setActiveTab, closeTab} = useTab();
+
+    return (
+        <div
+            className="flex items-center gap-1 px-4 bg-white border-b border-border h-10 overflow-x-auto no-scrollbar shrink-0">
+            {tabs.map((tab) => (
+                <div
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={cn(
+                        "group flex items-center gap-2 px-3 h-8 min-w-[120px] rounded-t-md cursor-pointer text-sm transition-all border-x border-t border-transparent",
+                        activeTabId === tab.id ? "bg-background border-border text-primary font-medium" : "text-muted-foreground hover:bg-slate-50"
+                    )}
+                >
+                    <span className="truncate flex-1 text-xs">{tab.label}</span>
+                    {tab.closable !== false && (
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                closeTab(tab.id);
+                            }}
+                            className="p-0.5 rounded-full hover:bg-slate-200 text-muted-foreground transition-colors"
+                        >
+                            <X size={14} strokeWidth={2}/>
+                        </button>
+                    )}
+                </div>
+            ))}
+        </div>
+    );
+}
