@@ -14,7 +14,7 @@ export function useRealtimeRanking() {
             params.append('period', period);
 
             const response = await libraryApiClient.get<RankingBook[]>(
-                `/library/realtime-ranking?${params.toString()}`
+                `/ranking/realtime?${params.toString()}`
             );
             //setRankings(response.data); // 배열이 아닐때 빈값만 던지는 타입검증
             if (Array.isArray(response.data)) {
