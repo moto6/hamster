@@ -1,3 +1,4 @@
+//@/components/library/table.tsx
 import {cn} from "@/core/utils.ts";
 
 function Table({className, ...props}: React.ComponentProps<"table">) {

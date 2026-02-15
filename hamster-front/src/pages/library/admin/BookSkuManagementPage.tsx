@@ -1,3 +1,4 @@
+//@/pages/library/admin/BookSkuManagementPage.tsx
 import {useState} from 'react';
 import {useBookSkuManagement} from './useBookSkuManagement.ts';
 import {Button} from '@/components/library/button.tsx';
@@ -118,7 +119,7 @@ export function BookSkuManagementPage() {
             <Card className="overflow-hidden border-slate-200 shadow-sm">
                 <CardContent className="p-0">
                     <Table>
-                        <TableHeader className="bg-slate-50/50"> {/* 헤더 배경 추가 */}
+                        <TableHeader className="bg-slate-50/50">
                             <TableRow className="hover:bg-transparent">
                                 <TableHead
                                     className="w-[140px] text-xs font-semibold uppercase tracking-wider text-slate-500">ISBN</TableHead>
