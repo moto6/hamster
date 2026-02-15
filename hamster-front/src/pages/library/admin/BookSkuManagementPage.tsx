@@ -139,7 +139,7 @@ export function BookSkuManagementPage() {
                             {loading ? (
                                 <TableRow><TableCell colSpan={6} className="h-32 text-center text-muted-foreground">데이터를
                                     불러오는 중입니다...</TableCell></TableRow>
-                            ) : books.content.length === 0 ? (
+                            ) : ((books?.content?.length ?? 0) === 0) ? (
                                 <TableRow><TableCell colSpan={6} className="h-32 text-center text-muted-foreground">등록된
                                     도서 데이터가 없습니다.</TableCell></TableRow>
                             ) : (
