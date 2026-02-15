@@ -122,6 +122,11 @@ export function HotRankingPage() {
                 <div className="text-center py-12 text-slate-500">
                     로딩 중...
                 </div>
+            ) : (rankings?.length ?? 0) === 0 ? (// ✅ 1. 데이터가 없거나(null/undefined) 빈 배열일 때
+                <div
+                    className="text-center py-12 text-slate-400 bg-slate-50 rounded-lg border border-dashed border-slate-200">
+                    랭킹 데이터가 없습니다.
+                </div>
             ) : (
                 <div className="grid gap-4">
                     {rankings.map((book) => (
