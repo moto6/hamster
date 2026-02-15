@@ -1,5 +1,4 @@
 // @/app/tab/TabBar.tsx
-
 import {X} from "lucide-react";
 import {cn} from "@/core/utils.ts";
 import {useTab} from "@/app/tab/tabs.ts";
@@ -8,27 +7,36 @@ export function TabBar() {
     const {tabs, activeTabId, setActiveTab, closeTab} = useTab();
 
     return (
-        <div
-            className="flex items-center gap-1 px-4 bg-white border-b border-border h-10 overflow-x-auto no-scrollbar shrink-0">
+        <div className="flex items-end gap-0.5 h-full overflow-x-auto no-scrollbar">
             {tabs.map((tab) => (
                 <div
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={cn(
-                        "group flex items-center gap-2 px-3 h-8 min-w-[120px] rounded-t-md cursor-pointer text-sm transition-all border-x border-t border-transparent",
-                        activeTabId === tab.id ? "bg-background border-border text-primary font-medium" : "text-muted-foreground hover:bg-slate-50"
+                        // 기본 스타일: Header 높이에 맞춤
+                        "group flex items-center gap-2 px-3 h-[calc(100%-4px)] min-w-[100px] max-w-[180px] cursor-pointer text-xs transition-all relative",
+                        "border-x border-slate-100",
+                        activeTabId === tab.id
+                            ? "bg-slate-50 text-[#0176d3] font-bold border-x-slate-200"
+                            : "text-slate-500 hover:bg-slate-50 opacity-80"
                     )}
                 >
-                    <span className="truncate flex-1 text-xs">{tab.label}</span>
+                    {/* 세일즈포스 스타일 상단 하이라이트 바 */}
+                    {activeTabId === tab.id && (
+                        <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#0176d3]"/>
+                    )}
+
+                    <span className="truncate flex-1">{tab.label}</span>
+
                     {tab.closable !== false && (
                         <button
                             onClick={(e) => {
                                 e.stopPropagation();
                                 closeTab(tab.id);
                             }}
-                            className="p-0.5 rounded-full hover:bg-slate-200 text-muted-foreground transition-colors"
+                            className="p-0.5 rounded-md hover:bg-slate-200 text-slate-400 hover:text-slate-600 transition-colors"
                         >
-                            <X size={14} strokeWidth={2}/>
+                            <X size={12} strokeWidth={2.5}/>
                         </button>
                     )}
                 </div>

@@ -29,8 +29,10 @@ export function AdminLayout() {
 
             {/* 우측 메인 영역 */}
             <div className="flex-1 flex flex-col min-w-0">
-                <Header/>
-                <TabBar/>
+                <Header>
+                    <TabBar/>
+                </Header>
+
                 <main className="flex-1 relative min-h-0 overflow-hidden bg-slate-50">
                     <TabContainer/>
                 </main>

@@ -1,43 +1,41 @@
+// @/app/Header.tsx
+import React from "react";
+
 interface HeaderProps {
-    className?: string
+    className?: string;
+    children?: React.ReactNode; // 탭 바를 받기 위한 children 추가
 }
 
-export default function Header({ className = "" }: HeaderProps) {
+export default function Header({ className = "", children }: HeaderProps) {
     return (
         <header
             className={`
-        h-16
-        flex items-center
-        border-b border-slate-200
-        bg-white
-        px-6
-        dark:bg-slate-900 dark:border-slate-700
-        ${className}
-      `}
+                h-12 
+                flex items-center
+                border-b border-slate-200
+                bg-white
+                px-4
+                dark:bg-slate-900 dark:border-slate-700
+                ${className}
+            `}
         >
-            {/* 좌측 타이틀 */}
-            <h1 className="text-lg font-semibold tracking-wide text-slate-900 dark:text-slate-100">
-                Admin Demo Front
+            {/* 좌측 타이틀 (크기 축소) */}
+            <h1 className="text-sm font-bold tracking-tight text-slate-900 dark:text-slate-100 shrink-0 mr-4">
+                Admin Demo
             </h1>
 
-            {/* 우측 유저 영역 */}
-            <div className="ml-auto flex items-center gap-3">
-                <div className="
-          w-8 h-8
-          rounded-full
-          bg-slate-300
-          dark:bg-slate-700
-          flex items-center justify-center
-          text-xs font-medium
-          text-slate-700 dark:text-slate-200
-        ">
+            {/* 중간 영역: 여기에 TabBar가 들어갑니다 */}
+            <div className="flex-1 h-full overflow-hidden">
+                {children}
+            </div>
+
+            {/* 우측 유저 영역 (간소화) */}
+            <div className="ml-auto flex items-center gap-2 shrink-0">
+                <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold">
                     U
                 </div>
-
-                <span className="text-sm text-slate-600 dark:text-slate-400">
-          User
-        </span>
+                <span className="text-xs text-slate-500 hidden sm:inline">User</span>
             </div>
         </header>
-    )
+    );
 }

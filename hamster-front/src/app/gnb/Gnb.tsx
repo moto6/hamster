@@ -2,10 +2,8 @@
 import {useNavigate} from 'react-router-dom'
 import {GNB_NAV_GROUPS, GNB_NAV_ITEMS} from "@/app/gnb/navigation.config.tsx";
 
-
 export function Gnb() {
     const navigate = useNavigate()
-
 
     return (
         <div className="flex flex-col">
