@@ -8,6 +8,6 @@ class BookPersistenceAdapter(
     private val jpaRepository: JpaBookSkuRepository
 ) : SaveBookSkuPort {
     override fun save(bookSku: BookSku?) {
-        TODO("Not yet implemented")
+        println(bookSku.toString())
     }
 }

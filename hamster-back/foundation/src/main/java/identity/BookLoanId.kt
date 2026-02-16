@@ -1,6 +1,6 @@
-package identity;
+package identity
 
-public record BookLoanId (
-        String id
-){
-}
+@JvmRecord
+data class BookLoanId(
+    val id: String
+)

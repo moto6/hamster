@@ -1,4 +1,5 @@
-package name;
+package name
 
-public record EmailAddress() {
-}
+class EmailAddress(
+    val name: String
+)

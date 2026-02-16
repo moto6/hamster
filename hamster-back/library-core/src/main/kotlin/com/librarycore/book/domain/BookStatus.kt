@@ -1,6 +1,6 @@
-package com.librarycore.book.domain;
+package com.librarycore.book.domain
 
-public enum BookStatus {
+enum class BookStatus {
     AVAILABLE,
     LOANED,
     RESERVED,

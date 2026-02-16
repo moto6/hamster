@@ -1,18 +1,18 @@
-package identity;
+package identity
 
-import java.util.UUID;
+import java.util.UUID
 
-public record UserId(
-        String id
+@JvmRecord
+data class UserId(
+    val id: String
 ) {
-
-    public UserId {
-        if (id == null || id.isBlank()) {
-            throw new IllegalArgumentException("UserId must not be null or blank");
-        }
+    init {
+        require(id.isBlank()) { "UserId must not be null or blank" }
     }
 
-    public static UserId generate() {
-        return new UserId(UUID.randomUUID().toString());
+    companion object {
+        fun generate(): UserId {
+            return UserId(UUID.randomUUID().toString())
+        }
     }
 }

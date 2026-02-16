@@ -1,18 +1,10 @@
 plugins {
-    id 'java'
-//    id 'org.springframework.boot' version '4.0.2'
-    id 'io.spring.dependency-management' version '1.1.7'
+    id 'org.jetbrains.kotlin.jvm' version '2.2.21'
 }
 
 group = 'com'
 version = '0.0.1-SNAPSHOT'
 description = 'library-core'
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
 
 repositories {
     mavenCentral()
@@ -20,14 +12,11 @@ repositories {
 
 dependencies {
     implementation(project(":foundation"))
-    implementation 'org.projectlombok:lombok:1.18.42'
-
-//    implementation 'org.springframework.boot:spring-boot-starter'
-//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    // Source: https://mvnrepository.com/artifact/org.projectlombok/lombok
 }
 
-tasks.named('test') {
+test {
     useJUnitPlatform()
 }

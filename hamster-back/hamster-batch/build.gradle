@@ -20,15 +20,23 @@ repositories {
 }
 
 dependencies {
+	//
+	implementation 'org.jetbrains.kotlin:kotlin-reflect'
+	implementation 'tools.jackson.module:jackson-module-kotlin'
+	testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	//
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'io.projectreactor.kotlin:reactor-kotlin-extensions'
-	implementation 'org.jetbrains.kotlin:kotlin-reflect'
 	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-reactor'
-	implementation 'tools.jackson.module:jackson-module-kotlin'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webflux-test'
-	testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
 	testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	//
+	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'org.postgresql:r2dbc-postgresql'
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-r2dbc-test'
+
 }
 
 kotlin {

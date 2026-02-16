@@ -19,6 +19,6 @@ export const API_MAP: ApiConfig[] = [
 
 
     // 고민이 필요함
-    {url: '/api/library/v0/else/rating', description: "rating"},
+    {url: '/api/library/v0/tbd', description: "1시간단위, 30분단위 레이팅 실시간랭킹 의미한건데 데이터부터 다시 다 뜯어고쳐야함"},
 
 ];

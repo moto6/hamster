@@ -1,6 +1,7 @@
-package identity;
+package identity
 
-public record BookReservationId(
-        String id
-) {
-}
+
+@JvmRecord
+data class BookReservationId(
+    val id: String
+)

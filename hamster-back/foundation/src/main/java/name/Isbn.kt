@@ -1,6 +1,5 @@
-package name;
+package name
 
-public record Isbn(
-        String value
-) {
-}
+data class Isbn(
+    val name: String
+)
