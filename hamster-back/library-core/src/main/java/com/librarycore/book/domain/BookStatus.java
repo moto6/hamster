@@ -1,4 +1,4 @@
-package com.librarycore.book;
+package com.librarycore.book.domain;
 
 public enum BookStatus {
     AVAILABLE,

@@ -1,4 +1,6 @@
 package name;
 
-public class Isbn {
+public record Isbn(
+        String value
+) {
 }

@@ -1,10 +1,11 @@
-package com.librarycore.book;
+package com.librarycore.book.domain;
 
 import identity.BookInventoryId;
+import identity.BookSkuId;
 
 public record BookInventory(
         BookInventoryId bookInventoryId,
-        String bookSkuId,
+        BookSkuId bookSkuId,
         BookStatus status
 ) {
 

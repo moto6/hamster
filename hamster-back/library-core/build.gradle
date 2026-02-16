@@ -20,10 +20,12 @@ repositories {
 
 dependencies {
     implementation(project(":foundation"))
+    implementation 'org.projectlombok:lombok:1.18.42'
 
 //    implementation 'org.springframework.boot:spring-boot-starter'
 //    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // Source: https://mvnrepository.com/artifact/org.projectlombok/lombok
 }
 
 tasks.named('test') {
