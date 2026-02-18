@@ -15,8 +15,8 @@ import java.util.UUID
 @Service
 class JwtAuthAdaptor(
     private val authHistoryOutPort: AuthHistoryOutPort,
-    @Value("\${jwt.secret}") private val secretKey: String,
-    @Value("\${jwt.expiration}") private val expiration: Long
+    @Value("\${custom.jwt.secret}") private val secretKey: String,
+    @Value("\${custom.jwt.expiration}") private val expiration: Long
 ) : AuthTokenPort {
     private val key = Keys.hmacShaKeyFor(secretKey.toByteArray())
     private val jwtParser = Jwts.parser()

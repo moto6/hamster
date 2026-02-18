@@ -6,10 +6,10 @@ import com.librarycore.book.app.cotract.BookOutPort
 import com.librarycore.book.domain.BookSku
 
 class BookPersistenceAdapter(
-    private val jpaRepository: BookSkuMasterRepository
+    private val repository: BookSkuMasterRepository
 ) : BookOutPort {
     override suspend fun saveSku(bookSku: BookSku) {
         println(bookSku.toString())
-        jpaRepository.save(BookSkuMasterRecord.from(bookSku))
+        repository.save(BookSkuMasterRecord.from(bookSku))
     }
 }

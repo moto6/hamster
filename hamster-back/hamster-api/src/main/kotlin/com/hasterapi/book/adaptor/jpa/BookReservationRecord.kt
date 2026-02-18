@@ -6,7 +6,7 @@ import org.springframework.data.relational.core.mapping.Table
 import java.time.LocalDateTime
 
 @Table("reservation")
-data class ReservationRecord(
+data class BookReservationRecord(
     @Id val id: Long? = null,
     val userId: Long,
     val bookSkuId: Long,
