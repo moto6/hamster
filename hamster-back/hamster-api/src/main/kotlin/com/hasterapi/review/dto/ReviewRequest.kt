@@ -1,4 +1,4 @@
-package com.hasterapi.review
+package com.hasterapi.review.dto
 
 data class ReviewRequest(
     val foo: String = "demo"
