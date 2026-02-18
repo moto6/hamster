@@ -33,14 +33,14 @@ class BookController(
         return searchBookUseCase.getDetail(isbn)
     }
 
-    @GetMapping
+    @GetMapping("/reserve")
     suspend fun getMyReservations(@AuthPrincipal authInfo: AuthInfo) {
         reservationUseCase.findMyReservations(UserId(authInfo.userId))
     }
 
-    @PostMapping
+    @PostMapping("/reserve")
     suspend fun reserve(@RequestBody req: ReserveRequest) = reservationUseCase.reserve(req.toCommand())
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/reserve/{id}")
     suspend fun cancel(@PathVariable id: Long) = reservationUseCase.cancel(id)
 }

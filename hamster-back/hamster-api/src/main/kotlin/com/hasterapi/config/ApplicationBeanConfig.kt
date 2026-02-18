@@ -20,6 +20,10 @@ import com.librarycore.loan.app.contract.LoanPersistenceOutPort
 import com.librarycore.loan.app.contract.LoanUseCase
 import com.librarycore.loan.app.service.AdminLoanService
 import com.librarycore.loan.app.service.LoanService
+import com.librarycore.review.RankingService
+import com.librarycore.review.RankingUseCase
+import com.librarycore.review.ReviewService
+import com.librarycore.review.ReviewUseCase
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -53,6 +57,18 @@ class ApplicationBeanConfig {
         return BookReservationPersistAdaptor(bookReservationRepository)
     }
 
+    @Bean
+    fun registerLoanPersistenceOutPort(
+    ): LoanPersistenceOutPort {
+        return LoanPersistenceAdaptor()
+    }
+
+    @Bean
+    fun registerLoanUseCase(
+    ): LoanUseCase {
+        return LoanService()
+    }
+
 
     // === 아래로는 mock
     @Bean
@@ -75,17 +91,16 @@ class ApplicationBeanConfig {
     }
 
     @Bean
-    fun registerLoanPersistenceOutPort(
-    ): LoanPersistenceOutPort {
-        return LoanPersistenceAdaptor()
+    fun registerReviewUseCase(
+    ): ReviewUseCase {
+        return ReviewService()
     }
 
     @Bean
-    fun registerLoanUseCase(
-    ): LoanUseCase {
-        return LoanService()
+    fun registerRankingUseCase(
+    ): RankingUseCase {
+        return RankingService()
     }
-
 }
 /*
 
