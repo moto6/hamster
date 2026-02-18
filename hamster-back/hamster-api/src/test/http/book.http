@@ -1,8 +1,22 @@
-POST  localhost:8080/api/books/v0/admin/books
+###
+POST  localhost:8080/api/v0/library/admin/books
 Content-Type: application/json
 
 {
   "isbn": "9788960777330",
   "title": "클린 아키텍처",
+  "author": "로버트 C. 마틴",
+  "publisherName": "에이콘출판사",
   "quantity": 10
+}
+
+
+###
+POST  localhost:8080/api/library/v0/books
+Content-Type: application/json
+
+{
+"isbn": "9788960777330",
+"title": "클린 아키텍처",
+"quantity": 10
 }
