@@ -20,7 +20,6 @@ class JwtAuthWebFilter(
 
     override fun filter(exchange: ServerWebExchange, chain: WebFilterChain): Mono<Void> = mono {
         val token = extractToken(exchange)
-        log.info("f")
         if (token != null) {
             try {
                 val authInfo = authTokenPort.verify(token)

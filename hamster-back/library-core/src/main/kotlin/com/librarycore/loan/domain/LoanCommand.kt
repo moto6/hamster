@@ -1,9 +1,7 @@
-package com.librarycore.loan
+package com.librarycore.loan.domain
 
 import java.time.LocalDate
 
-
-@JvmRecord
 data class LoanCommand(
     val loanId: String,
     val userId: String,

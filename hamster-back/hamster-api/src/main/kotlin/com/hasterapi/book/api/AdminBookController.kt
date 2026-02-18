@@ -29,7 +29,6 @@ class AdminBookController(
 
     @PostMapping
     suspend fun registerBook(@RequestBody request: BookRegisterRequest): BookRegisterResponse {
-        log.info("ee")
         val result = bookSkuUseCase.register(request.toCommand())
         return BookRegisterResponse.fromResult(result)
     }

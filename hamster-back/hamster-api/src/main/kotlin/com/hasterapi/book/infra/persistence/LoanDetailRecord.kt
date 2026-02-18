@@ -1,6 +1,6 @@
 package com.hasterapi.book.app.jpa
 
-import com.librarycore.loan.LoanStatus
+import com.librarycore.loan.domain.LoanStatus
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
 import java.time.LocalDateTime

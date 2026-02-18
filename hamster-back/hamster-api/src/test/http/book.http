@@ -1,6 +1,7 @@
-###
-POST  localhost:8080/api/v0/library/admin/books
+### 정상적으로 책이 등록되어야 한다
+POST {{server}}/api/v0/library/admin/books
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "isbn": "9788960777330",
@@ -11,9 +12,10 @@ Content-Type: application/json
 }
 
 
-###
-POST  localhost:8080/api/library/v0/books
+### 에러 핸들링 예시
+POST {{server}}/api/library/v0/books
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
 "isbn": "9788960777330",

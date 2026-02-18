@@ -1,6 +1,6 @@
 package com.librarycore.loan.app.contract
 
-import com.librarycore.loan.LoanCommand
+import com.librarycore.loan.domain.LoanCommand
 import com.librarycore.loan.app.contract.payload.LoanOverdueResult
 import com.librarycore.loan.app.contract.payload.LoanResult
 import com.librarycore.loan.app.contract.payload.ManageLoanQuery

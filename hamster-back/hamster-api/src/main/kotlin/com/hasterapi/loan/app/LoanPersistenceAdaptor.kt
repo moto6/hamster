@@ -1,6 +1,6 @@
 package com.hasterapi.loan.app
 
-import com.librarycore.loan.LoanCommand
+import com.librarycore.loan.domain.LoanCommand
 import com.librarycore.loan.app.contract.LoanPersistenceOutPort
 import com.librarycore.loan.app.contract.payload.LoanOverdueResult
 import com.librarycore.loan.app.contract.payload.LoanResult

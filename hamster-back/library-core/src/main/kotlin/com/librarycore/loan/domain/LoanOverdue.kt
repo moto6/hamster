@@ -1,9 +1,7 @@
-package com.librarycore.loan
+package com.librarycore.loan.domain
 
 import java.time.LocalDate
 
-
-@JvmRecord
 data class LoanOverdue(
     val loanId: String,
     val loanDate: LocalDate,
