@@ -24,7 +24,21 @@ data class BookSkuMasterRecord(
 ) {
     companion object {
         fun from(bookSku: BookSku): BookSkuMasterRecord {
-            TODO("Not yet implemented")
+            return BookSkuMasterRecord(
+                isbn = bookSku.isbn.name,
+                title = bookSku.title,
+                author = bookSku.author,
+                publisher = null,
+                publishYear = null,
+                callNumber = null,
+                category = null,
+                description = null,
+                coverImageUrl = null,
+                totalCopies = bookSku.inventories.size,
+                availableCopies = 0,
+                createdAt = LocalDateTime.now(),
+                updatedAt = LocalDateTime.now()
+            )
         }
     }
 }
