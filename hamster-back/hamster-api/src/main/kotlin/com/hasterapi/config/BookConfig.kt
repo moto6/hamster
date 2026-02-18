@@ -1,9 +1,9 @@
 package com.hasterapi.config
 
-import com.hasterapi.book.adaptor.jpa.JpaBookSkuRepository
+import com.hasterapi.book.adaptor.jpa.BookSkuMasterRepository
 import com.hasterapi.book.adaptor.persistence.BookPersistenceAdapter
-import com.librarycore.book.app.port.RegisterBookSkuUseCase
-import com.librarycore.book.app.port.SaveBookSkuPort
+import com.librarycore.book.app.cotract.AdminBookSkuUseCase
+import com.librarycore.book.app.cotract.BookOutPort
 import com.librarycore.book.app.service.AdminBookService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -12,14 +12,15 @@ import org.springframework.context.annotation.Configuration
 class BookConfig {
     @Bean
     fun registerBookSkuUseCase(
-        saveBookSkuPort: SaveBookSkuPort
-    ): RegisterBookSkuUseCase {
-        return AdminBookService(saveBookSkuPort)
+        bookOutPort: BookOutPort
+    ): AdminBookSkuUseCase {
+        return AdminBookService(bookOutPort)
     }
 
     @Bean
     fun registerSaveBookSkuPort(
-    ): SaveBookSkuPort {
-        return BookPersistenceAdapter(JpaBookSkuRepository())
+        bookSkuMasterRepository: BookSkuMasterRepository
+    ): BookOutPort {
+        return BookPersistenceAdapter(bookSkuMasterRepository)
     }
 }

@@ -5,11 +5,11 @@ import identity.BookSkuId
 import name.Isbn
 
 data class BookSku(
-    val bookSkuId: BookSkuId?,
-    val title: String?,
-    val author: String?,
-    val isbn: Isbn?,
-    val inventories: MutableList<BookInventory?>?
+    val bookSkuId: BookSkuId,
+    val title: String,
+    val author: String,
+    val isbn: Isbn,
+    val inventories: MutableList<BookInventory>,
 
 ) {
     fun addInventories(quantity: Int) {

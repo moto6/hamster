@@ -7,3 +7,5 @@ include 'library-core'
 include 'place-core'
 //
 include 'foundation'
+
+include 'iam-core'

@@ -1,35 +1,46 @@
 package com.librarycore.book.app.service
 
-import com.librarycore.book.app.port.RegisterBookSkuUseCase
-import com.librarycore.book.app.port.SaveBookSkuPort
-import com.librarycore.book.app.port.cmd.BookSkuRegisterCommand
-import com.librarycore.book.domain.BookInventory
+import collections.CursorPage
+import com.librarycore.book.app.cotract.AdminBookSkuUseCase
+import com.librarycore.book.app.cotract.BookOutPort
+import com.librarycore.book.app.cotract.payload.BookSkuRegisterCommand
+import com.librarycore.book.app.cotract.payload.BookSkuRegisterResult
+import com.librarycore.book.app.cotract.payload.BookSkuResult
+import com.librarycore.book.app.cotract.payload.BookSkuSearchQuery
+import com.librarycore.book.app.cotract.payload.BookUpdateCommand
 import com.librarycore.book.domain.BookSku
 import identity.BookSkuId
 import name.Isbn
 import java.util.UUID
 
-class AdminBookService(saveBookSkuPort: SaveBookSkuPort) : RegisterBookSkuUseCase {
-    private val saveBookSkuPort: SaveBookSkuPort
-
-    init {
-        this.saveBookSkuPort = saveBookSkuPort
-    }
-
-    override fun register(bookSkuRegisterCommand: BookSkuRegisterCommand) {
-        // 1. 도메인 객체 생성
+class AdminBookService(
+    private val bookOutPort: BookOutPort,
+) : AdminBookSkuUseCase {
+    override suspend fun register(bookSkuRegisterCommand: BookSkuRegisterCommand): BookSkuRegisterResult {
         val bookSku = BookSku(
             BookSkuId(UUID.randomUUID().toString()),
             bookSkuRegisterCommand.title,
             "auth",
             Isbn(bookSkuRegisterCommand.isbn),
-            ArrayList<BookInventory?>()
+            ArrayList()
         )
+        bookSku.addInventories(bookSkuRegisterCommand.quantity)
+        bookOutPort.saveSku(bookSku)
+        return BookSkuRegisterResult.fromModel(bookSku)
+    }
 
-        // 2. 비즈니스 로직 실행
-        bookSku.addInventories(bookSkuRegisterCommand.quantity!!)
+    override suspend fun update(
+        id: Long,
+        command: BookUpdateCommand
+    ): BookSkuResult {
+        TODO("Not yet implemented")
+    }
 
-        // 3. 결과 저장 요청 (Port 호출)
-        saveBookSkuPort.save(bookSku)
+    override suspend fun delete(id: Long) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun listSkus(query: BookSkuSearchQuery): CursorPage<BookSkuResult> {
+        TODO("Not yet implemented")
     }
 }

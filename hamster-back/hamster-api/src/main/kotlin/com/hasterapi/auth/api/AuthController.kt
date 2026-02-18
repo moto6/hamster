@@ -2,8 +2,7 @@ package com.hasterapi.auth.api
 
 import com.hasterapi.auth.api.dto.JwtIssueRequest
 import com.hasterapi.auth.api.dto.JwtIssueResponse
-import com.hasterapi.auth.application.IssueTokenUseCase
-import com.hasterapi.auth.application.impl.IssueTokenCommand
+import com.hasterapi.auth.application.AuthTokenPort
 import org.springframework.http.HttpHeaders
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -14,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/auth/v0")
 class AuthController(
-    private val issueTokenUseCase: IssueTokenUseCase
+    private val authTokenPort: AuthTokenPort,
 ) {
     @PostMapping("/tokens")
     suspend fun issueToken(@RequestBody request: JwtIssueRequest): ResponseEntity<JwtIssueResponse> {
-        val token = issueTokenUseCase.issue(request.toCommand())
+        val token = authTokenPort.issue(request.toCommand())
         return ResponseEntity.ok()
             .header(HttpHeaders.AUTHORIZATION, "Bearer $token")
             .body(JwtIssueResponse(accessToken = token))

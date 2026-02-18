@@ -1,8 +1,0 @@
-POST  localhost:8080/api/library/v0/admin/books
-Content-Type: application/json
-
-{
-  "isbn": "9788960777330",
-  "title": "클린 아키텍처",
-  "quantity": 10
-}

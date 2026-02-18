@@ -1,6 +1,6 @@
 package com.hasterapi.auth.api.dto
 
-import com.hasterapi.auth.application.impl.IssueTokenCommand
+import com.hasterapi.auth.application.payload.IssueTokenCommand
 
 data class JwtIssueRequest(
     val displayName: String,//id

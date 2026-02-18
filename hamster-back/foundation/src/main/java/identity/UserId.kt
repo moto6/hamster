@@ -4,7 +4,7 @@ import java.util.UUID
 
 @JvmRecord
 data class UserId(
-    val id: String
+    val id: String,
 ) {
     init {
         require(id.isBlank()) { "UserId must not be null or blank" }
