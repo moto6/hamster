@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/auth/v0")
+@RequestMapping("/api/v0/auth")
 class AuthController(
     private val authTokenPort: AuthTokenPort,
 ) {

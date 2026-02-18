@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/library/v0/books")
+@RequestMapping("/api/v0/library/books")
 class BookController(
     private val searchBookUseCase: SearchBookUseCase,
     private val reservationUseCase: ReservationUseCase,

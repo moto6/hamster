@@ -1,5 +1,6 @@
 package com.hasterapi.review
 
+import com.hasterapi.review.dto.ReviewRequest
 import com.librarycore.review.RankingQuery
 import com.librarycore.review.RankingUseCase
 import com.librarycore.review.ReviewUseCase
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/library/v0/review")
+@RequestMapping("/api/v0/library/review")
 class ReviewController(
     private val reviewUseCase: ReviewUseCase,
     private val rankingUseCase: RankingUseCase,

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/library/v0/admin/loans")
+@RequestMapping("/api/v0/library/admin/loans")
 class AdminLoanController(
     private val adminLoanUseCase: AdminLoanUseCase
 ) {

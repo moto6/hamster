@@ -8,6 +8,8 @@ import com.librarycore.book.app.cotract.AdminReservationUseCase
 import com.librarycore.book.app.cotract.payload.BookSkuResult
 import com.librarycore.book.app.cotract.payload.BookSkuSearchQuery
 import com.librarycore.book.app.cotract.payload.ReservationQuery
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -18,23 +20,24 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/library/v0/admin/books")
+@RequestMapping("/api/v0/library/admin/books")
 class AdminBookController(
     private val bookSkuUseCase: AdminBookSkuUseCase,
     private val reservationUseCase: AdminReservationUseCase,
 ) {
+    private val log: Logger = LoggerFactory.getLogger(AdminBookController::class.java)
+
+    @PostMapping
+    suspend fun registerBook(@RequestBody request: BookRegisterRequest): BookRegisterResponse {
+        log.info("ee")
+        val result = bookSkuUseCase.register(request.toCommand())
+        return BookRegisterResponse.fromResult(result)
+    }
+
     @GetMapping
     suspend fun getSkus(params: BookSkuSearchQuery): BookSkuResult {
         bookSkuUseCase.listSkus(params)
         TODO("")
-    }
-
-    @PostMapping
-    suspend fun registerBook(@RequestBody request: BookRegisterRequest): BookRegisterResponse {
-        bookSkuUseCase.register(
-            request.toCommand()
-        )
-        return BookRegisterResponse()
     }
 
     @PutMapping("/{bookSkuId}")
