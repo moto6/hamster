@@ -1,4 +1,4 @@
-package com.hasterapi.auth.application
+package com.hasterapi.auth.app
 
 @Target(AnnotationTarget.VALUE_PARAMETER)
 @Retention(AnnotationRetention.RUNTIME)

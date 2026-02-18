@@ -1,6 +1,6 @@
 package com.hasterapi.auth.infra.jwt
 
-import com.hasterapi.auth.application.AuthTokenPort
+import com.hasterapi.auth.app.AuthTokenPort
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import kotlinx.coroutines.reactor.mono
 import org.slf4j.Logger
@@ -10,7 +10,6 @@ import org.springframework.web.server.ServerWebExchange
 import org.springframework.web.server.WebFilter
 import org.springframework.web.server.WebFilterChain
 import reactor.core.publisher.Mono
-import reactor.kotlin.core.publisher.toMono
 
 @Component
 class JwtAuthWebFilter(

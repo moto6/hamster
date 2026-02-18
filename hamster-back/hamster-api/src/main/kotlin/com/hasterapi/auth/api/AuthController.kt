@@ -2,7 +2,7 @@ package com.hasterapi.auth.api
 
 import com.hasterapi.auth.api.dto.JwtIssueRequest
 import com.hasterapi.auth.api.dto.JwtIssueResponse
-import com.hasterapi.auth.application.AuthTokenPort
+import com.hasterapi.auth.app.AuthTokenPort
 import org.springframework.http.HttpHeaders
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping

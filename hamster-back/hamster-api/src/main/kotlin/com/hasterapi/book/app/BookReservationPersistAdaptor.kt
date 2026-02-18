@@ -1,6 +1,6 @@
-package com.hasterapi.book.adaptor.persistence
+package com.hasterapi.book.app.persistence
 
-import com.hasterapi.book.adaptor.jpa.BookReservationRepository
+import com.hasterapi.book.app.jpa.BookReservationRepository
 import com.librarycore.book.app.cotract.ReservationOutPort
 import com.librarycore.book.domain.BookReservation
 

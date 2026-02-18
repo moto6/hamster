@@ -1,7 +1,7 @@
 package com.hasterapi.loan.api
 
 import com.hasterapi.auth.api.AuthInfo
-import com.hasterapi.auth.application.AuthPrincipal
+import com.hasterapi.auth.app.AuthPrincipal
 import com.librarycore.loan.app.contract.LoanUseCase
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

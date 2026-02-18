@@ -1,4 +1,4 @@
-package com.hasterapi.auth.application
+package com.hasterapi.auth.app
 
 interface AuthHistoryOutPort {
     suspend fun saveHistory(jti: String, issuer: String, token: String)

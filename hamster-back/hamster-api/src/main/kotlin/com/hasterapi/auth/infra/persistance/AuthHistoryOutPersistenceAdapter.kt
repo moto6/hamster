@@ -1,6 +1,6 @@
 package com.hasterapi.auth.infra.persistance
 
-import com.hasterapi.auth.application.AuthHistoryOutPort
+import com.hasterapi.auth.app.AuthHistoryOutPort
 import org.springframework.stereotype.Component
 import java.time.LocalDateTime
 

@@ -1,4 +1,4 @@
-package com.hasterapi.auth.application.payload
+package com.hasterapi.auth.app.payload
 
 data class IssueTokenCommand(
     val userId: String,

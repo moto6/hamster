@@ -1,4 +1,4 @@
-package com.hasterapi.book.adaptor.jpa
+package com.hasterapi.book.app.jpa
 
 import com.librarycore.loan.LoanStatus
 import org.springframework.data.annotation.Id

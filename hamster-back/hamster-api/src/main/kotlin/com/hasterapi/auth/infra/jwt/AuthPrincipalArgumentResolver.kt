@@ -1,7 +1,7 @@
 package com.hasterapi.auth.infra.jwt
 
 import com.hasterapi.auth.api.AuthInfo
-import com.hasterapi.auth.application.AuthPrincipal
+import com.hasterapi.auth.app.AuthPrincipal
 import org.springframework.core.MethodParameter
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.BindingContext

@@ -1,4 +1,4 @@
-package com.hasterapi.book.adaptor.jpa
+package com.hasterapi.book.app.jpa
 
 import com.librarycore.book.domain.BookSku
 import org.springframework.data.annotation.Id

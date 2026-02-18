@@ -1,4 +1,4 @@
-package com.hasterapi.book.adaptor.jpa
+package com.hasterapi.book.app.jpa
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table

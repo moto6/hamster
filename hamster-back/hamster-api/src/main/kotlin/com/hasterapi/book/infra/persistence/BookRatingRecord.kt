@@ -1,15 +1,16 @@
-package com.hasterapi.book.adaptor.jpa
+package com.hasterapi.book.app.jpa
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
 import java.time.LocalDateTime
 
-@Table("loan_overdue")
-data class LoanOverdueRecord(
+@Table("book_rating")
+data class BookRatingRecord(
     @Id val id: Long? = null,
-    val loanDetailId: Long,
-    val overdueDays: Int,
-    val fineAmount: Int,
+    val bookSkuId: Long,
+    val userId: Long,
+    val rating: Int,
+    val review: String?,
     val createdAt: LocalDateTime = LocalDateTime.now(),
     val updatedAt: LocalDateTime = LocalDateTime.now()
 )

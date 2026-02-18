@@ -2,7 +2,7 @@ package com.hasterapi.book.api
 
 import collections.CursorPage
 import com.hasterapi.auth.api.AuthInfo
-import com.hasterapi.auth.application.AuthPrincipal
+import com.hasterapi.auth.app.AuthPrincipal
 import com.hasterapi.book.api.dto.ReserveRequest
 import com.librarycore.book.app.cotract.ReservationUseCase
 import com.librarycore.book.app.cotract.SearchBookUseCase

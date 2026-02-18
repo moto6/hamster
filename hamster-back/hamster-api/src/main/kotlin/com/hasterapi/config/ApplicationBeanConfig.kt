@@ -1,10 +1,10 @@
 package com.hasterapi.config
 
-import com.hasterapi.book.adaptor.jpa.BookReservationRepository
-import com.hasterapi.book.adaptor.jpa.BookSkuMasterRepository
-import com.hasterapi.book.adaptor.persistence.BookPersistenceAdapter
-import com.hasterapi.book.adaptor.persistence.BookReservationPersistAdaptor
-import com.hasterapi.loan.adaptor.LoanPersistenceAdaptor
+import com.hasterapi.book.app.jpa.BookReservationRepository
+import com.hasterapi.book.app.jpa.BookSkuMasterRepository
+import com.hasterapi.book.app.persistence.BookPersistenceAdapter
+import com.hasterapi.book.app.persistence.BookReservationPersistAdaptor
+import com.hasterapi.loan.app.LoanPersistenceAdaptor
 import com.librarycore.book.app.cotract.AdminBookSkuUseCase
 import com.librarycore.book.app.cotract.AdminReservationUseCase
 import com.librarycore.book.app.cotract.BookOutPort

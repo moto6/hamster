@@ -1,4 +1,4 @@
-package com.hasterapi.loan.adaptor
+package com.hasterapi.loan.app
 
 import com.librarycore.loan.LoanCommand
 import com.librarycore.loan.app.contract.LoanPersistenceOutPort
