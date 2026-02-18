@@ -1,0 +1,7 @@
+POST  localhost:8080/api/auth/v0/tokens
+Content-Type: application/json
+
+{
+  "displayName": "demo",
+  "email": "demo@demo.com"
+}

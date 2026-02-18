@@ -12,22 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/v0/auth")
+@RequestMapping("/api/auth/v0")
 class AuthController(
     private val issueTokenUseCase: IssueTokenUseCase
 ) {
     @PostMapping("/tokens")
     suspend fun issueToken(@RequestBody request: JwtIssueRequest): ResponseEntity<JwtIssueResponse> {
-        val token = issueTokenUseCase.issue(
-            IssueTokenCommand(
-                request.email,
-                request.email,
-                request.displayName
-            )
-        )
-
+        val token = issueTokenUseCase.issue(request.toCommand())
         return ResponseEntity.ok()
             .header(HttpHeaders.AUTHORIZATION, "Bearer $token")
-            .body(JwtIssueResponse(token))
+            .body(JwtIssueResponse(accessToken = token))
     }
 }

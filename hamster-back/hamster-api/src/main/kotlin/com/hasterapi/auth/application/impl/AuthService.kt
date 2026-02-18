@@ -1,26 +1,26 @@
 package com.hasterapi.auth.application.impl
 
-import com.hasterapi.auth.application.AuthHistoryPort
+import com.hasterapi.auth.application.AuthHistoryOutPort
 import com.hasterapi.auth.application.IssueTokenUseCase
-import com.hasterapi.auth.application.TokenGeneratorPort
+import com.hasterapi.auth.application.TokenGeneratorOutPort
 import org.springframework.stereotype.Service
 import java.util.UUID
 
 @Service
 class AuthService(
-    private val tokenGenerator: TokenGeneratorPort,
-    private val authHistoryPort: AuthHistoryPort,
+    private val tokenGenerator: TokenGeneratorOutPort,
+    private val authHistoryOutPort: AuthHistoryOutPort,
 ) : IssueTokenUseCase {
     override suspend fun issue(command: IssueTokenCommand): String {
         val jti = UUID.randomUUID().toString()
         val payload = mapOf(
-            "usr" to command.ldap,
+            "usr" to command.userId,
             "eml" to command.email,
             "dnm" to command.displayName
         )
 
         val token = tokenGenerator.generate(payload, jti)
-        authHistoryPort.saveHistory(jti, command.ldap, token)
+        authHistoryOutPort.saveHistory(jti, command.userId, token)
 
         return token
     }

@@ -1,5 +1,7 @@
 package com.hasterapi.auth.api.dto
 
 data class JwtIssueResponse(
-    val auth: String,
+    val tokenType: String = "Bearer ",
+    val accessToken: String,
+    val expiresIn: Long? = null,
 )
