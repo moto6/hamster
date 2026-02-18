@@ -1,6 +1,6 @@
 package com.librarycore.review
 
-class ReviewService:ReviewUseCase {
+class ReviewService : ReviewUseCase {
     override fun getRatingStats(isbn: String): Any {
         TODO("Not yet implemented")
     }

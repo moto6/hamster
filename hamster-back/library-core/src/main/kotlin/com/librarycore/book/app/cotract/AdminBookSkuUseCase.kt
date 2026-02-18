@@ -9,7 +9,7 @@ import com.librarycore.book.app.cotract.payload.BookUpdateCommand
 
 
 interface AdminBookSkuUseCase {
-    suspend fun register(bookSkuRegisterCommand: BookSkuRegisterCommand) : BookSkuRegisterResult
+    suspend fun register(bookSkuRegisterCommand: BookSkuRegisterCommand): BookSkuRegisterResult
     suspend fun update(id: Long, command: BookUpdateCommand): BookSkuResult
     suspend fun delete(id: Long)
     suspend fun listSkus(query: BookSkuSearchQuery): CursorPage<BookSkuResult>

@@ -11,7 +11,7 @@ data class BookSku(
     val isbn: Isbn,
     val inventories: MutableList<BookInventory>,
 
-) {
+    ) {
     fun addInventories(quantity: Int) {
         require(quantity > 0) { "수량은 0보다 커야 합니다." }
         for (i in 0..<quantity) {

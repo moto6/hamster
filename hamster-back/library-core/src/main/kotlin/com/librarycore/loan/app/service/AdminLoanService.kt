@@ -8,7 +8,7 @@ import com.librarycore.loan.app.contract.payload.ManageOverdueResult
 
 class AdminLoanService(
     private val loanPersistenceOutPort: LoanPersistenceOutPort,
-): AdminLoanUseCase {
+) : AdminLoanUseCase {
     override suspend fun findAllLoans(query: ManageLoanQuery): List<ManageLoanResult> {
         loanPersistenceOutPort.findLoansByQuery(ManageLoanQuery())
         TODO("Not yet implemented")

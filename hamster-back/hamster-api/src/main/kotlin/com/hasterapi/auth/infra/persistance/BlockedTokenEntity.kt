@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
 
 @Table("blocked_tokens")
- class BlockedTokenEntity(
+class BlockedTokenEntity(
     @Id val jti: String,
     val expiresAt: java.time.LocalDateTime
 )

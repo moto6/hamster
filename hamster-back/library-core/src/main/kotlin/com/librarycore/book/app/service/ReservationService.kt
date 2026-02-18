@@ -5,7 +5,7 @@ import com.librarycore.book.app.cotract.ReservationUseCase
 import com.librarycore.book.app.cotract.payload.UserReservationResult
 import identity.UserId
 
-class ReservationService: ReservationUseCase {
+class ReservationService : ReservationUseCase {
     override fun findMyReservations(userId: UserId): CursorPage<UserReservationResult> {
         TODO("Not yet implemented")
     }
