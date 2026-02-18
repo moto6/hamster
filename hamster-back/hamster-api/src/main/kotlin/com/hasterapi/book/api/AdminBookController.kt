@@ -1,8 +1,7 @@
-package com.hasterapi.book
+package com.hasterapi.book.api
 
-import com.hasterapi.book.dto.BookRequest
+import com.hasterapi.book.api.dto.BookRequest
 import com.librarycore.book.app.port.RegisterBookSkuUseCase
-import com.librarycore.book.app.port.cmd.BookSkuRegisterCommand
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.springframework.http.ResponseEntity
@@ -19,12 +18,7 @@ class AdminBookController(
     @PostMapping
     suspend fun registerBook(@RequestBody request: BookRequest): ResponseEntity<String> =
         withContext(Dispatchers.IO) {
-            val bookSkuRegisterCommand = BookSkuRegisterCommand(
-                request.isbn,
-                request.title,
-                request.quantity
-            )
-            registerUseCase.register(bookSkuRegisterCommand)
+            registerUseCase.register(request.toCommand())
             ResponseEntity.ok("Success")
         }
 }

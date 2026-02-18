@@ -1,6 +1,6 @@
-package com.hasterapi.adaptor.persistence
+package com.hasterapi.book.adaptor.persistence
 
-import com.hasterapi.adaptor.jpa.JpaBookSkuRepository
+import com.hasterapi.book.adaptor.jpa.JpaBookSkuRepository
 import com.librarycore.book.app.port.SaveBookSkuPort
 import com.librarycore.book.domain.BookSku
 

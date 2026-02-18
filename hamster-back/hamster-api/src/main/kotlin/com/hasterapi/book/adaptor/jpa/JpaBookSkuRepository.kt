@@ -1,4 +1,4 @@
-package com.hasterapi.adaptor.jpa
+package com.hasterapi.book.adaptor.jpa
 
 import org.springframework.stereotype.Component
 

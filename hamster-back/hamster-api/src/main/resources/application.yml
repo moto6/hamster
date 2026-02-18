@@ -1,6 +1,6 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/library
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/library
     username: localuser
     password: localpass
     driver-class-name: org.postgresql.Driver
@@ -11,3 +11,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+jwt:
+  secret: asqwecfqwfqwfqwfqwfqwfqwfqwfqwfqwfqwf123123123123123123123
+  expiration: 3218000
