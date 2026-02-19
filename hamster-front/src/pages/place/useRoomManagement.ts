@@ -32,7 +32,7 @@ export function useRoomManagement() {
     const fetchRooms = useCallback(async () => {
         try {
             setIsLoading(true);
-            const response = await axios.get<Room[]>(`${API_URL}/api/rooms`);
+            const response = await axios.get<Room[]>(`${API_URL}/api/v0/admin/places/rooms`);
             setRooms(response.data);
         } finally {
             setIsLoading(false);

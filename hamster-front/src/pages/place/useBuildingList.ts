@@ -22,7 +22,7 @@ export function useBuildingList() {
         try {
             setIsLoading(true);
             setError(null);
-            const response = await axios.get<Building[]>(`${API_URL}/api/buildings`);
+            const response = await axios.get<Building[]>(`${API_URL}/api/v0/places/buildings`);
             setData(response.data);
 
         } catch (err) {

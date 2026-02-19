@@ -35,7 +35,7 @@ export function usePlaceDashboard() {
         try {
             setIsLoading(true);
             setError(null);
-            const response = await axios.get<PlaceDashboardDto>(`${API_URL}/api/places/dashboard`);
+            const response = await axios.get<PlaceDashboardDto>(`${API_URL}/api/v0/places/dashboard`);
             setData(response.data);
         } catch (err: any) {
             console.error('Data Fetch Error:', err);

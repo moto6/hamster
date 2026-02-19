@@ -26,7 +26,7 @@ export function useReservationManagement() {
     const fetchReservations = useCallback(async () => {
         try {
             setIsLoading(true);
-            const response = await axios.get<Reservation[]>(`${API_URL}/api/reservations`);
+            const response = await axios.get<Reservation[]>(`${API_URL}/api/v0/admin/places/reservations`);
             setData(response.data);
         } catch (err: unknown) {
             setError('예약 데이터를 가져오는 중 오류가 발생했습니다.');
