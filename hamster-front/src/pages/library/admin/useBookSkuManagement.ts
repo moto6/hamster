@@ -56,7 +56,7 @@ export function useBookSkuManagement() {
             params.append('page', filter.page.toString());
             params.append('pageSize', filter.pageSize.toString());
             const response = await libraryApiClient.get<PaginatedResponse<BookSkuMaster>>(
-                `/book/sku?${params.toString()}`
+                `/api/v0/admin/books/sku?${params.toString()}`
             );
             setBooks(response.data);
         } catch (error) {
