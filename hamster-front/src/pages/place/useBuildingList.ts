@@ -1,5 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
-import axios, {AxiosError} from 'axios';
+import {libraryApiClient} from "@/core/libraryClient.ts";
+import {AxiosError} from "axios";
 
 export interface Building {
     id: string;
@@ -22,7 +23,7 @@ export function useBuildingList() {
         try {
             setIsLoading(true);
             setError(null);
-            const response = await axios.get<Building[]>(`${API_URL}/api/v0/places/buildings`);
+            const response = await libraryApiClient.get<Building[]>(`${API_URL}/api/v0/places/buildings`);
             setData(response.data);
 
         } catch (err) {

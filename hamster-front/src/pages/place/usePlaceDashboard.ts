@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
-import axios from 'axios';
 import type {ReservationStatus} from "@/pages/place/useSchedule.ts";
+import {libraryApiClient} from "@/core/libraryClient.ts";
 
 export interface PlaceSummary {
     totalPlaces: number;
@@ -35,7 +35,7 @@ export function usePlaceDashboard() {
         try {
             setIsLoading(true);
             setError(null);
-            const response = await axios.get<PlaceDashboardDto>(`${API_URL}/api/v0/places/dashboard`);
+            const response = await libraryApiClient.get<PlaceDashboardDto>(`${API_URL}/api/v0/places/dashboard`);
             setData(response.data);
         } catch (err: any) {
             console.error('Data Fetch Error:', err);

@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useState} from 'react';
-import axios from 'axios';
+import {libraryApiClient} from "@/core/libraryClient.ts";
 
 export const RESOURCE_CATEGORIES = ["디스플레이", "필기도구", "전자기기", "음향장비", "기타"] as const;
 export type ResourceCategory = (typeof RESOURCE_CATEGORIES)[number];
@@ -22,7 +22,7 @@ export function useResourceManagement() {
     const fetchResources = useCallback(async () => {
         try {
             setIsLoading(true);
-            const response = await axios.get<Resource[]>(`${API_URL}/api/v0/admin/places/room-resources`);
+            const response = await libraryApiClient.get<Resource[]>(`${API_URL}/api/v0/admin/places/room-resources`);
             setData(response.data);
         } catch (err: unknown) {
             setError('리소스 데이터를 불러오지 못했습니다.');

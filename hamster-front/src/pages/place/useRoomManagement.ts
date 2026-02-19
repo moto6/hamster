@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
-import axios from 'axios';
 import type {Resource} from "@/pages/place/uesResourceManagement.ts";
+import {libraryApiClient} from "@/core/libraryClient.ts";
 
 export interface Building {
     id: string;
@@ -32,7 +32,7 @@ export function useRoomManagement() {
     const fetchRooms = useCallback(async () => {
         try {
             setIsLoading(true);
-            const response = await axios.get<Room[]>(`${API_URL}/api/v0/admin/places/rooms`);
+            const response = await libraryApiClient.get<Room[]>(`${API_URL}/api/v0/admin/places/rooms`);
             setRooms(response.data);
         } finally {
             setIsLoading(false);
