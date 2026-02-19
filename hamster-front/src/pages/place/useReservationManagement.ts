@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
 import axios from 'axios';
-import type {ReservationStatus} from "@/pages/place/useSchedule.ts";
+//import type {ReservationStatus} from "@/pages/place/useSchedule.ts";
 
 export interface Reservation {
     reservationId: string;
@@ -12,7 +12,7 @@ export interface Reservation {
     startTime: string;
     endTime: string;
     purpose: string;
-    reservationStatus: ReservationStatus;
+    // reservationStatus: ReservationStatus;
     createdAt: string;
 }
 
@@ -38,7 +38,7 @@ export function useReservationManagement() {
 
     useEffect(() => { fetchReservations(); }, [fetchReservations]);
 
-    const updateStatus = (id: string, newStatus: ReservationStatus) => {
+    const updateStatus = (id: string, newStatus: string) => {
         setData(prev => prev.map(res => res.reservationId === id ? { ...res, reservationStatus: newStatus } : res));
     };
 

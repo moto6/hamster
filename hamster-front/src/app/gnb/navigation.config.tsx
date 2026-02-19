@@ -5,10 +5,10 @@ import type {ReactNode} from "react";
 import {PlaceDashboardPage} from "@/pages/place/PlaceDashboardPage.tsx";
 import BuildingManagementPage from "@/pages/place/BuildingManagementPage.tsx";
 
-import ReservationManagementPage from "@/pages/place/ReservationManagementPage.tsx";
+// import ReservationManagementPage from "@/pages/place/ReservationManagementPage.tsx";
 import ResourceManagementPage from "@/pages/place/ResourceManagementPage.tsx";
 import RoomManagementPage from "@/pages/place/RoomManagementPage.tsx";
-import {SchedulePage} from "@/pages/place/SchedulePage.tsx";
+// import {SchedulePage} from "@/pages/place/SchedulePage.tsx";
 import {DashboardPage} from "@/pages/playground/DashboardPage.tsx";
 import {MyAdminPage} from "@/pages/playground/MyAdminPage.tsx";
 import {UserPage} from "@/pages/playground/DemoPage.tsx";
@@ -77,12 +77,12 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         element: <BuildingManagementPage/>,
         category: "PLACE"
     },
-    {
-        label: '예약 관리자 페이지',
-        path: '/place/reservation',
-        element: <ReservationManagementPage/>,
-        category: "PLACE"
-    },
+    // {
+    //     label: '예약 관리자 페이지',
+    //     path: '/place/reservation',
+    //     element: <ReservationManagementPage/>,
+    //     category: "PLACE"
+    // },
     {
         label: '리소스 관리',
         path: '/place/resource',
@@ -95,12 +95,12 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         element: <RoomManagementPage/>,
         category: "PLACE"
     },
-    {
-        label: '(유저) 스케쥴 화면',
-        path: '/place/schedules',
-        element: <SchedulePage/>,
-        category: "PLACE"
-    },
+    // {
+    //     label: '(유저) 스케쥴 화면',
+    //     path: '/place/schedules',
+    //     element: <SchedulePage/>,
+    //     category: "PLACE"
+    // },
     //
     {
         label: '장서/SKU 관리',
