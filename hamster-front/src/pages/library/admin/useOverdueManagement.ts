@@ -36,7 +36,7 @@ export function useOverdueManagement() {
       params.append('pageSize', filter.pageSize.toString());
 
       const response = await libraryApiClient.get<PaginatedResponse<LoanOverdue>>(
-        `/admin/overdue?${params.toString()}`
+        `/api/v0/admin/books/overdue?${params.toString()}`
       );
       setOverdues(response.data);
     } catch (error) {

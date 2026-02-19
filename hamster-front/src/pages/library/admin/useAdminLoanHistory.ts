@@ -80,7 +80,7 @@ export function useAdminLoanHistory() {
             params.append('pageSize', filter.pageSize.toString());
 
             const response = await libraryApiClient.get<PaginatedResponse<LoanHistoryResult>>(
-                `/api/v0/admin/loans?${params.toString()}`
+                `/api/v0/admin/books/loans?${params.toString()}`
             );
             setLoans(response.data);
         } catch (error) {

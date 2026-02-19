@@ -78,7 +78,7 @@ export function useAdminReservation() {
             params.append('pageSize', filter.pageSize.toString());
 
             const response = await libraryApiClient.get<PaginatedResponse<Reservation>>(
-                `/admin/reservations?${params.toString()}`
+                `/api/v0/admin/books/reservations?${params.toString()}`
             );
             setReservations(response.data);
         } catch (error) {

@@ -40,7 +40,7 @@ export function useBookRatingManagement() {
       params.append('pageSize', filter.pageSize.toString());
 
       const response = await libraryApiClient.get<PaginatedResponse<RatingWithStats>>(
-        `/admin/ratings?${params.toString()}`
+        `/api/v0/admin/library/books/ratings?${params.toString()}`
       );
       setRatings(response.data);
     } catch (error) {
