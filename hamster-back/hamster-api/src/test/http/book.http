@@ -12,13 +12,16 @@ Authorization: Bearer {{token}}
 }
 
 
-### 에러 핸들링 예시
+### 에러 핸들링 예시 (잘못된 호출)
 POST {{server}}/api/library/v0/books
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-"isbn": "9788960777330",
-"title": "클린 아키텍처",
-"quantity": 10
+"test": "rrr"
 }
+
+### 책 스큐 조회
+GET {{server}}/api/v0/admin/library/books
+Content-Type: application/json
+Authorization: Bearer {{token}}

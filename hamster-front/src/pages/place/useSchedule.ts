@@ -1,6 +1,5 @@
-import { useState, useCallback, useMemo } from 'react';
+import {useCallback, useMemo, useState} from 'react';
 import type {Room} from "@/pages/place/useRoomManagement.ts";
-import {BUILDINGS_MOCK, RESERVATIONS_MOCK, ROOMS_MOCK} from "@/core/mock/mockData.ts";
 import type {Reservation} from "@/pages/place/useReservationManagement.ts";
 
 export const RESERVATION_STATUS_LIST = [
@@ -18,13 +17,14 @@ export interface TimeSlot {
 }
 
 export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
+export const API_URL: string = import.meta.env.VITE_API_URL; //`${API_URL}
 
 export function useSchedule() {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedBuilding, setSelectedBuilding] = useState<string>('all');
-    const [rooms] = useState<Room[]>(IS_MOCK ? ROOMS_MOCK : []);
-    const [reservations] = useState<Reservation[]>(IS_MOCK ? RESERVATIONS_MOCK : []);
-    const [buildings] = useState(IS_MOCK ? BUILDINGS_MOCK : []);
+    const [rooms] = useState<Room[]>([]);
+    const [reservations] = useState<Reservation[]>([]);
+    const [buildings] = useState([]);
 
     const timeSlots: TimeSlot[] = useMemo(() =>
         Array.from({ length: 13 }, (_, i) => ({

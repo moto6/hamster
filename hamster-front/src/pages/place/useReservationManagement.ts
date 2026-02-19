@@ -1,6 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import axios from 'axios';
-import {RESERVATIONS_MOCK} from "@/core/mock/mockData.ts";
 import type {ReservationStatus} from "@/pages/place/useSchedule.ts";
 
 export interface Reservation {
@@ -18,7 +17,7 @@ export interface Reservation {
 }
 
 export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
-
+export const API_URL: string = import.meta.env.VITE_API_URL; //`${API_URL}
 export function useReservationManagement() {
     const [data, setData] = useState<Reservation[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -27,13 +26,8 @@ export function useReservationManagement() {
     const fetchReservations = useCallback(async () => {
         try {
             setIsLoading(true);
-            if (IS_MOCK) {
-
-                setData(RESERVATIONS_MOCK);
-            } else {
-                const response = await axios.get<Reservation[]>('/api/reservations');
-                setData(response.data);
-            }
+            const response = await axios.get<Reservation[]>(`${API_URL}/api/reservations`);
+            setData(response.data);
         } catch (err: unknown) {
             setError('예약 데이터를 가져오는 중 오류가 발생했습니다.');
             console.error(err);

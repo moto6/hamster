@@ -1,0 +1,42 @@
+### 환경 변수 설정
+#@server = http://localhost:8080
+#@token = your_access_token_here
+
+### 장소 대시보드 요약 정보 조회
+GET {{server}}/api/v0/places/dashboard
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 전체 빌딩 리스트 조회
+GET {{server}}/api/v0/buildings
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 전체 회의실(Room) 리스트 조회
+GET {{server}}/api/v0/places
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 특정 회의실 예약 내역 조회 (태평로 타운홀 예시)
+GET {{server}}/api/v0/places/room-v1/reservations
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### [TBD/WIP] 특정 회의실 예약 내역 조회 (강남 컨퍼런스룸 예시)
+GET {{server}}/api/v0/places/room-v0/reservations
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### [TBD/WIP] 회의실 정보 업데이트 샘플
+PUT {{server}}/api/v0/places/room-v0
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "roomName": "타운홀 (리뉴얼)",
+  "capacity": 60,
+  "roomAvailable": true
+}

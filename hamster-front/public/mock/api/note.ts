@@ -5,7 +5,7 @@ interface ApiConfig {
 
 export const API_MAP: ApiConfig[] = [
     // ==================== [Admin Domain] ====================
-    {url: '/api/library/v0/admin/books', description: "adminBookSku"},
+    {url: '/api/library/v0/admin/books', description: "adminBookSku/도서관 관리자가 책SKU 관리하고, 장서수량, 장서고유ID(UUID)"},
     {url: '/api/library/v0/admin/loans', description: "adminLoans"},
     {url: '/api/library/v0/admin/overdue', description: "adminLoans"},
     {url: '/api/library/v0/admin/reservations', description: "adminReservations"},

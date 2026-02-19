@@ -1,5 +1,8 @@
 package com.hasterapi.book.api
 
+import collections.CursorPage
+import com.hasterapi.auth.app.AuthPrincipal
+import com.hasterapi.auth.app.payload.AuthInfo
 import com.hasterapi.book.api.dto.BookRegisterRequest
 import com.hasterapi.book.api.dto.BookRegisterResponse
 import com.hasterapi.book.api.dto.BookUpdateRequest
@@ -20,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/v0/library/admin/books")
+@RequestMapping("/api/v0/admin/library/books")
 class AdminBookController(
     private val bookSkuUseCase: AdminBookSkuUseCase,
     private val reservationUseCase: AdminReservationUseCase,
@@ -28,15 +31,18 @@ class AdminBookController(
     private val log: Logger = LoggerFactory.getLogger(AdminBookController::class.java)
 
     @PostMapping
-    suspend fun registerBook(@RequestBody request: BookRegisterRequest): BookRegisterResponse {
+    suspend fun registerBook(
+        @RequestBody request: BookRegisterRequest,
+        @AuthPrincipal authInfo: AuthInfo,
+    ): BookRegisterResponse {
+        log.info(authInfo.toString())
         val result = bookSkuUseCase.register(request.toCommand())
         return BookRegisterResponse.fromResult(result)
     }
 
     @GetMapping
-    suspend fun getSkus(params: BookSkuSearchQuery): BookSkuResult {
-        bookSkuUseCase.listSkus(params)
-        TODO("")
+    suspend fun getSkus(params: BookSkuSearchQuery): CursorPage<BookSkuResult> {
+        return bookSkuUseCase.listSkus(params)
     }
 
     @PutMapping("/{bookSkuId}")

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "res-a1b2c3d4",
+    "name": "4K 프로젝터",
+    "category": "디스플레이",
+    "description": "4K 고해상도 빔 프로젝터"
+  },
+  {
+    "id": "res-e5f6g7h8",
+    "name": "화이트보드",
+    "category": "필기도구",
+    "description": "대형 이동식 화이트보드"
+  },
+  {
+    "id": "res-i9j0k1l2",
+    "name": "화상회의 시스템",
+    "category": "전자기기",
+    "description": "Logitech Rally Bar"
+  },
+  {
+    "id": "res-m3n4o5p6",
+    "name": "65인치 모니터",
+    "category": "디스플레이",
+    "description": "삼성 스마트 사이니지"
+  },
+  {
+    "id": "res-q7r8s9t0",
+    "name": "무선 마이크",
+    "category": "음향장비",
+    "description": "Shure 무선 마이크 세트"
+  },
+  {
+    "id": "res-app-4k",
+    "name": "AppleTV 4K",
+    "category": "전자기기",
+    "description": "최신형 Apple TV"
+  }
+]

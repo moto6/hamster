@@ -1,6 +1,5 @@
 import {useCallback, useEffect, useState} from 'react';
 import axios, {AxiosError} from 'axios';
-import {BUILDINGS_MOCK, mockDelay} from "@/core/mock/mockData.ts";
 
 export interface Building {
     id: string;
@@ -12,6 +11,7 @@ export interface Building {
 }
 
 export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
+export const API_URL: string = import.meta.env.VITE_API_URL; //${API_URL}
 
 export function useBuildingList() {
     const [data, setData] = useState<Building[]>([]);
@@ -22,13 +22,9 @@ export function useBuildingList() {
         try {
             setIsLoading(true);
             setError(null);
-            if (IS_MOCK) {
-                await mockDelay();
-                setData(BUILDINGS_MOCK);
-            } else {
-                const response = await axios.get<Building[]>('http://localhost:8080/api/buildings');
-                setData(response.data);
-            }
+            const response = await axios.get<Building[]>(`${API_URL}/api/buildings`);
+            setData(response.data);
+
         } catch (err) {
             if (err instanceof AxiosError) {
                 setError(err.message);

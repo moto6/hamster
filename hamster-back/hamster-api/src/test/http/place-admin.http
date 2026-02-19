@@ -1,0 +1,21 @@
+### 환경 변수 설정
+#@server = http://localhost:8080
+#@token = your_access_token_here
+
+
+### 등록된 리소스 목록 조회
+GET {{server}}/api/v0/admin/places/room-resource
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 등록된 공간정보 조회
+GET {{server}}/api/v0/admin/places/rooms
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 예약정보 조회
+GET {{server}}/api/v0/admin/places/reservations
+Content-Type: application/json
+Authorization: Bearer {{token}}

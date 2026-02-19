@@ -1,0 +1,3 @@
+```
+@AuthPrincipal authInfo: AuthInfo
+```

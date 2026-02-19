@@ -1,6 +1,6 @@
 package com.hasterapi.auth.app
 
-import com.hasterapi.auth.api.AuthInfo
+import com.hasterapi.auth.app.payload.AuthInfo
 import com.hasterapi.auth.app.payload.IssueTokenCommand
 
 interface AuthTokenPort {

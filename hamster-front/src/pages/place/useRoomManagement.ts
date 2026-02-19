@@ -1,6 +1,5 @@
 import {useCallback, useEffect, useState} from 'react';
 import axios from 'axios';
-import {BUILDINGS_MOCK, mockDelay, RESOURCES_MOCK, ROOMS_MOCK} from "@/core/mock/mockData.ts";
 import type {Resource} from "@/pages/place/uesResourceManagement.ts";
 
 export interface Building {
@@ -22,23 +21,19 @@ export interface Room {
 }
 
 export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
+export const API_URL: string = import.meta.env.VITE_API_URL; //`${API_URL}
 
 export function useRoomManagement() {
     const [rooms, setRooms] = useState<Room[]>([]);
-    const [buildings] = useState<Building[]>(BUILDINGS_MOCK);
-    const [availableResources] = useState<Resource[]>(RESOURCES_MOCK);
+    const [buildings] = useState<Building[]>([]);
+    const [availableResources] = useState<Resource[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const fetchRooms = useCallback(async () => {
         try {
             setIsLoading(true);
-            if (IS_MOCK) {
-                await mockDelay();
-                setRooms(ROOMS_MOCK);
-            } else {
-                const response = await axios.get<Room[]>('/api/rooms');
-                setRooms(response.data);
-            }
+            const response = await axios.get<Room[]>(`${API_URL}/api/rooms`);
+            setRooms(response.data);
         } finally {
             setIsLoading(false);
         }

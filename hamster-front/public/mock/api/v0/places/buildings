@@ -1,0 +1,26 @@
+[
+    {
+        "id": "bld-9f2d1a3c",
+        "name": "태평로 A-Space",
+        "address": "서울시 중구 태평로 123",
+        "floors": 20,
+        "roomCount": 10,
+        "buildingAvailable": true
+    },
+    {
+        "id": "bld-4e7b8c2d",
+        "name": "서초 R&D 센터",
+        "address": "서울시 서초구 R&D로 456",
+        "floors": 5,
+        "roomCount": 6,
+        "buildingAvailable": true
+    },
+    {
+        "id": "bld-1a5c9f2d",
+        "name": "의왕 Next-Academy",
+        "address": "경기도 의왕시 연수원길 789",
+        "floors": 2,
+        "roomCount": 4,
+        "buildingAvailable": true
+    }
+]

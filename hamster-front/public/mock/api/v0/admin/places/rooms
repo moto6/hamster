@@ -1,0 +1,429 @@
+[
+  {
+    "roomId": "room-v1",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "타운홀",
+    "roomFloor": "20층",
+    "capacity": 50,
+    "resourceIds": [
+      "res-a1b2c3d4",
+      "res-q7r8s9t0",
+      "res-i9j0k1l2"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-v2",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "Summit Room #1",
+    "roomFloor": "20층",
+    "capacity": 12,
+    "resourceIds": [
+      "res-m3n4o5p6",
+      "res-i9j0k1l2",
+      "res-app-4k"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-v203",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "Summit Room #2",
+    "roomFloor": "20층",
+    "capacity": 12,
+    "resourceIds": [
+      "res-m3n4o5p6",
+      "res-i9j0k1l2",
+      "res-app-4k"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-v3",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "Terceira",
+    "roomFloor": "10층",
+    "capacity": 15,
+    "resourceIds": [
+      "res-a1b2c3d4",
+      "res-e5f6g7h8"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-v401",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "Las Palmas",
+    "roomFloor": "10층",
+    "capacity": 15,
+    "resourceIds": [
+      "res-a1b2c3d4"
+    ],
+    "roomAvailable": false,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-v402",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "Cuba",
+    "roomFloor": "10층",
+    "capacity": 15,
+    "resourceIds": [
+      "res-a1b2c3d4"
+    ],
+    "roomAvailable": false,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-v5",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "Point NEMO",
+    "roomFloor": "3층",
+    "capacity": 8,
+    "resourceIds": [
+      "res-m3n4o5p6"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-v6",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "Parabellum",
+    "roomFloor": "3층",
+    "capacity": 8,
+    "resourceIds": [
+      "res-e5f6g7h8"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-v7",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "HEAT",
+    "roomFloor": "3층",
+    "capacity": 4,
+    "resourceIds": [
+      "res-e5f6g7h8"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-v801",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "Cancun",
+    "roomFloor": "3층",
+    "capacity": 2,
+    "resourceIds": [],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-v802",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "Mallorca",
+    "roomFloor": "3층",
+    "capacity": 2,
+    "resourceIds": [],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-v803",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "Madeira",
+    "roomFloor": "3층",
+    "capacity": 2,
+    "resourceIds": [],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-v9",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "Diego Garcia",
+    "roomFloor": "3층",
+    "capacity": 2,
+    "resourceIds": [],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-v10",
+    "buildingId": "bld-9f2d1a3c",
+    "buildingName": "태평로 A-Space",
+    "roomName": "Tripoli",
+    "roomFloor": "3층",
+    "capacity": 30,
+    "resourceIds": [
+      "res-a1b2c3d4",
+      "res-q7r8s9t0"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-r1",
+    "buildingId": "bld-4e7b8c2d",
+    "buildingName": "과천 R&D 센터",
+    "roomName": "집중 연구실 1",
+    "roomFloor": "5층",
+    "capacity": 10,
+    "resourceIds": [
+      "res-m3n4o5p6"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-r2",
+    "buildingId": "bld-4e7b8c2d",
+    "buildingName": "과천 R&D 센터",
+    "roomName": "집중 연구실 2",
+    "roomFloor": "5층",
+    "capacity": 10,
+    "resourceIds": [
+      "res-m3n4o5p6"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-r3",
+    "buildingId": "bld-4e7b8c2d",
+    "buildingName": "과천 R&D 센터",
+    "roomName": "스크럼룸 A",
+    "roomFloor": "2층",
+    "capacity": 6,
+    "resourceIds": [
+      "res-e5f6g7h8"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-r4",
+    "buildingId": "bld-4e7b8c2d",
+    "buildingName": "과천 R&D 센터",
+    "roomName": "스크럼룸 B",
+    "roomFloor": "2층",
+    "capacity": 6,
+    "resourceIds": [
+      "res-e5f6g7h8"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-r5",
+    "buildingId": "bld-4e7b8c2d",
+    "buildingName": "과천 R&D 센터",
+    "roomName": "비전 홀",
+    "roomFloor": "2층",
+    "capacity": 25,
+    "resourceIds": [
+      "res-a1b2c3d4",
+      "res-i9j0k1l2"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-r6",
+    "buildingId": "bld-4e7b8c2d",
+    "buildingName": "과천 R&D 센터",
+    "roomName": "지하 프로젝트룸",
+    "roomFloor": "지하 1층",
+    "capacity": 12,
+    "resourceIds": [
+      "res-i9j0k1l2"
+    ],
+    "roomAvailable": false,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-a1",
+    "buildingId": "bld-1a5c9f2d",
+    "buildingName": "강남 Next-Academy",
+    "roomName": "컨퍼런스룸",
+    "roomFloor": "1층",
+    "capacity": 120,
+    "resourceIds": [
+      "res-a1b2c3d4",
+      "res-q7r8s9t0",
+      "res-i9j0k1l2"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-a2",
+    "buildingId": "bld-1a5c9f2d",
+    "buildingName": "강남 Next-Academy",
+    "roomName": "세미나 101",
+    "roomFloor": "10층",
+    "capacity": 20,
+    "resourceIds": [
+      "res-m3n4o5p6"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-a3",
+    "buildingId": "bld-1a5c9f2d",
+    "buildingName": "강남 Next-Academy",
+    "roomName": "세미나 102",
+    "roomFloor": "10층",
+    "capacity": 20,
+    "resourceIds": [
+      "res-m3n4o5p6"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-a4",
+    "buildingId": "bld-1a5c9f2d",
+    "buildingName": "강남 Next-Academy",
+    "roomName": "세미나 103",
+    "roomFloor": "10층",
+    "capacity": 20,
+    "resourceIds": [
+      "res-m3n4o5p6"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-a5",
+    "buildingId": "bld-1a5c9f2d",
+    "buildingName": "강남 Next-Academy",
+    "roomName": "세미나 104",
+    "roomFloor": "10층",
+    "capacity": 20,
+    "resourceIds": [
+      "res-m3n4o5p6"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-a6",
+    "buildingId": "bld-1a5c9f2d",
+    "buildingName": "강남 Next-Academy",
+    "roomName": "세미나 105",
+    "roomFloor": "10층",
+    "capacity": 20,
+    "resourceIds": [
+      "res-m3n4o5p6"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-a7",
+    "buildingId": "bld-1a5c9f2d",
+    "buildingName": "강남 Next-Academy",
+    "roomName": "사일로 7",
+    "roomFloor": "10층",
+    "capacity": 30,
+    "resourceIds": [
+      "res-a1b2c3d4",
+      "res-i9j0k1l2"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-a8",
+    "buildingId": "bld-1a5c9f2d",
+    "buildingName": "강남 Next-Academy",
+    "roomName": "사일로 8",
+    "roomFloor": "10층",
+    "capacity": 30,
+    "resourceIds": [
+      "res-a1b2c3d4",
+      "res-i9j0k1l2"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-a9",
+    "buildingId": "bld-1a5c9f2d",
+    "buildingName": "강남 Next-Academy",
+    "roomName": "사일로 9",
+    "roomFloor": "10층",
+    "capacity": 30,
+    "resourceIds": [
+      "res-a1b2c3d4",
+      "res-i9j0k1l2"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  },
+  {
+    "roomId": "room-a10",
+    "buildingId": "bld-1a5c9f2d",
+    "buildingName": "강남 Next-Academy",
+    "roomName": "사일로 10",
+    "roomFloor": "10층",
+    "capacity": 30,
+    "resourceIds": [
+      "res-a1b2c3d4",
+      "res-i9j0k1l2"
+    ],
+    "roomAvailable": true,
+    "roomFloorMap": "",
+    "roomLocationNote": ""
+  }
+]

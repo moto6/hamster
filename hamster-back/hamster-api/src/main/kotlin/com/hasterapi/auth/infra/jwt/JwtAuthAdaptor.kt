@@ -1,8 +1,8 @@
 package com.hasterapi.auth.infra.jwt
 
-import com.hasterapi.auth.api.AuthInfo
 import com.hasterapi.auth.app.AuthHistoryOutPort
 import com.hasterapi.auth.app.AuthTokenPort
+import com.hasterapi.auth.app.payload.AuthInfo
 import com.hasterapi.auth.app.payload.IssueTokenCommand
 import io.jsonwebtoken.JwtException
 import io.jsonwebtoken.Jwts

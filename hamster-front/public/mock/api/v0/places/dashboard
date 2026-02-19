@@ -1,0 +1,42 @@
+{
+  "summary": {
+    "totalPlaces": 26,
+    "activeReservations": 32,
+    "todayBookings": 24,
+    "occupancyRate": 78
+  },
+  "recentReservations": [
+    {
+      "reservationId": "rev-v1-01",
+      "placeName": "타운홀",
+      "userName": "경영지원팀",
+      "startTime": "2026-02-11T09:00",
+      "endTime": "2026-02-11T11:00",
+      "status": "CHECKED_OUT"
+    },
+    {
+      "reservationId": "rev-v2-02",
+      "placeName": "Summit Room #1",
+      "userName": "다스베이더",
+      "startTime": "2026-02-11T14:00",
+      "endTime": "2026-02-11T15:30",
+      "status": "CHECKED_IN"
+    },
+    {
+      "reservationId": "rev-v5-05",
+      "placeName": "Point NEMO",
+      "userName": "성도왕 사마영",
+      "startTime": "2026-02-11T14:00",
+      "endTime": "2026-02-11T15:00",
+      "status": "BOOKED"
+    },
+    {
+      "reservationId": "rev-r3-04",
+      "placeName": "스크럼룸 A",
+      "userName": "글랜리벳",
+      "startTime": "2026-02-11T15:00",
+      "endTime": "2026-02-11T17:00",
+      "status": "BOOKED"
+    }
+  ]
+}

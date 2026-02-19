@@ -6,20 +6,6 @@ import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import './index.css'
 import {GNB_NAV_ITEMS} from "@/app/gnb/navigation.config.tsx";
 
-async function enableMocking() {
-    if (import.meta.env.VITE_IS_MOCK !== 'true') {
-        return
-    }
-    const { worker } = await import('./mocks/browser')
-    return worker.start({
-        onUnhandledRequest: 'bypass',
-        serviceWorker: {
-            url: '/mockServiceWorker.js',
-        }
-    })
-}
-enableMocking().then(() => {
-// Main BEGIN
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
         <BrowserRouter>
@@ -37,6 +23,4 @@ createRoot(document.getElementById('root')!).render(
             </Routes>
         </BrowserRouter>
     </StrictMode>,
-)
-// Main END
-})
+);
