@@ -1,5 +1,6 @@
 // @/app/Header.tsx
 import React from "react";
+import ProfileCard from "@/app/ProfileCard.tsx";
 
 interface HeaderProps {
     className?: string;
@@ -19,22 +20,25 @@ export default function Header({ className = "", children }: HeaderProps) {
                 ${className}
             `}
         >
-            {/* 좌측 타이틀 (크기 축소) */}
+
             <h1 className="text-sm font-bold tracking-tight text-slate-900 dark:text-slate-100 shrink-0 mr-4">
                 Admin Demo
             </h1>
 
-            {/* 중간 영역: 여기에 TabBar가 들어갑니다 */}
+            {/* 중간 영역: 여기에 TabBar가 들어감 */}
             <div className="flex-1 h-full overflow-hidden">
                 {children}
             </div>
 
             {/* 우측 유저 영역 (간소화) */}
             <div className="ml-auto flex items-center gap-2 shrink-0">
-                <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold">
-                    U
+                <div className="ml-auto">
+                    <ProfileCard/>
                 </div>
-                <span className="text-xs text-slate-500 hidden sm:inline">User</span>
+                {/*<span className="text-xs text-slate-500 hidden sm:inline">User</span>*/}
+                {/*<div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold">*/}
+                {/*    U*/}
+                {/*</div>*/}
             </div>
         </header>
     );
