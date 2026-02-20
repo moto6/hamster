@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useState} from 'react';
-import {libraryApiClient} from "@/core/libraryClient.ts";
+import {libraryApiClient} from "@/core/http/libraryClient.ts";
 import {AxiosError} from "axios";
 
 export interface Building {

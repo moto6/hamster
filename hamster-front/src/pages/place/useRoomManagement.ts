@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
 import type {Resource} from "@/pages/place/uesResourceManagement.ts";
-import {libraryApiClient} from "@/core/libraryClient.ts";
+import {libraryApiClient} from "@/core/http/libraryClient.ts";
 
 export interface Building {
     id: string;

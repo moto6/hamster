@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import type {BookRating, BookRatingStats} from "@/pages/library/libraryTypes.ts";
-import {libraryApiClient} from "@/core/libraryClient.ts";
+import {libraryApiClient} from "@/core/http/libraryClient.ts";
 
 interface RatingViewData {
     stats: BookRatingStats;

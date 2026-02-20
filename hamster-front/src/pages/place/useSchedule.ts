@@ -10,7 +10,7 @@ export const RESERVATION_STATUS_LIST = [
     'CHECKED_OUT'    // 체크아웃 (사용 종료, 종료 시간 경과)
 ] as const;
 //
-export type ReservationStatus = (typeof RESERVATION_STATUS_LIST)[number];
+export type PlaceReservationStatus = (typeof RESERVATION_STATUS_LIST)[number];
 export interface TimeSlot {
     hour: number;
     label: string;

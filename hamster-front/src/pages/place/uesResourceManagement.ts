@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useState} from 'react';
-import {libraryApiClient} from "@/core/libraryClient.ts";
+import {libraryApiClient} from "@/core/http/libraryClient.ts";
 
 export const RESOURCE_CATEGORIES = ["디스플레이", "필기도구", "전자기기", "음향장비", "기타"] as const;
 export type ResourceCategory = (typeof RESOURCE_CATEGORIES)[number];

@@ -5,9 +5,7 @@ import {
     type PaginatedResponse,
     SEARCH_TYPES
 } from "@/pages/library/libraryTypes.ts";
-import {libraryApiClient} from "@/core/libraryClient.ts";
-
-// ===== Hook =====
+import {libraryApiClient} from "@/core/http/libraryClient.ts";
 
 export function useBookSearch() {
     const [books, setBooks] = useState<PaginatedResponse<BookSearchResult>>({

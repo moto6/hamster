@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import type {LoanDetail, LoanMaster, PaginatedResponse} from '@/pages/library/libraryTypes.ts';
-import {libraryApiClient} from "@/core/libraryClient.ts";
+import {libraryApiClient} from "@/core/http/libraryClient.ts";
 
 const SEARCH_TYPES = ['유저이름', '도서명'] as const;
 type SearchType = typeof SEARCH_TYPES[number];

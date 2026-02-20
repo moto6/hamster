@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {RANKING_PERIODS, type RankingBook, type RankingPeriod} from "@/pages/library/libraryTypes.ts";
-import {libraryApiClient} from "@/core/libraryClient.ts";
+import {libraryApiClient} from "@/core/http/libraryClient.ts";
 
 export function useRealtimeRanking() {
     const [rankings, setRankings] = useState<RankingBook[]>([]);

@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import type {HotRankingBook, HotRankingParams} from "@/pages/library/libraryTypes.ts";
-import {libraryApiClient} from "@/core/libraryClient.ts";
+import {libraryApiClient} from "@/core/http/libraryClient.ts";
 // ===== Hook =====
 
 export function useHotRanking() {

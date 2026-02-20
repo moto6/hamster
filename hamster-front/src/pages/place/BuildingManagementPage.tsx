@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Building2, Edit2, MapPin, Plus, Trash2, X } from 'lucide-react';
-import { useBuildingList, type Building } from './useBuildingList';
+import React, {useState} from 'react';
+import {Building2, Edit2, MapPin, Plus, Trash2, X} from 'lucide-react';
+import {type Building, useBuildingList} from './useBuildingList';
 
-export default function BuildingManagementPage() {
+export function BuildingManagementPage() {
     const { data, isLoading, error, addBuilding, updateBuilding, deleteBuilding } = useBuildingList();
 
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

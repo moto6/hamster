@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {libraryApiClient} from "@/core/libraryClient.ts";
+import {libraryApiClient} from "@/core/http/libraryClient.ts";
 import type {BookRating, BookRatingStats, PaginatedResponse} from "@/pages/library/libraryTypes.ts";
 
 // ===== Interfaces =====

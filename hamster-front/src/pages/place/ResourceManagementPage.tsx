@@ -12,7 +12,7 @@ import {
     useResourceManagement
 } from "@/pages/place/uesResourceManagement.ts";
 
-export default function ResourceManagementPage() {
+export function ResourceManagementPage() {
     const {data, isLoading, addResource, updateResource, deleteResource} = useResourceManagement();
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [editingResource, setEditingResource] = useState<Resource | null>(null);

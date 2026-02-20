@@ -9,7 +9,7 @@ import {type Room, useRoomManagement} from "@/pages/place/useRoomManagement.ts";
 import type {Resource} from "@/pages/place/uesResourceManagement.ts";
 
 
-export default function RoomManagementPage() {
+export function RoomManagementPage() {
     const {
         rooms,
         buildings,

@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
-import type {ReservationStatus} from "@/pages/place/useSchedule.ts";
-import {libraryApiClient} from "@/core/libraryClient.ts";
+import type {PlaceReservationStatus} from "@/pages/place/useSchedule.ts";
+import {libraryApiClient} from "@/core/http/libraryClient.ts";
 
 export interface PlaceSummary {
     totalPlaces: number;
@@ -15,7 +15,7 @@ export interface ReservationSummary {
     userName: string;
     startTime: string;
     endTime: string;
-    status: ReservationStatus;
+    status: PlaceReservationStatus;
 }
 
 export interface PlaceDashboardDto {

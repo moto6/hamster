@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {libraryApiClient} from "@/core/libraryClient.ts";
+import {libraryApiClient} from "@/core/http/libraryClient.ts";
 import type {BookSkuMaster, PaginatedResponse} from "@/pages/library/libraryTypes.ts";
 
 interface BookSkuFormData {

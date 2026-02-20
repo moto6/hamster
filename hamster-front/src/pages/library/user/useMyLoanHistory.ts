@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import type {LoanDetail, PaginatedResponse} from "@/pages/library/libraryTypes.ts";
-import {libraryApiClient} from "@/core/libraryClient.ts";
+import {libraryApiClient} from "@/core/http/libraryClient.ts";
 
 interface MyLoanFilter {
   startDate: string;
