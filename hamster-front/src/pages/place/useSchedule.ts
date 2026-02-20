@@ -17,7 +17,7 @@ export interface TimeSlot {
 }
 //
 // export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
-// export const API_URL: string = import.meta.env.VITE_API_URL; //`${API_URL}
+// export const API_URL: string = import.meta.env.VITE_API_URL; //
 //
 // export function useSchedule() {
 //     const [selectedDate, setSelectedDate] = useState(new Date());

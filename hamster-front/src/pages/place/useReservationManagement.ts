@@ -16,8 +16,6 @@ export interface PlaceReservation {
     createdAt: string;
 }
 
-export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
-export const API_URL: string = import.meta.env.VITE_API_URL; //`${API_URL}
 export function useReservationManagement() {
     const [data, setData] = useState<PlaceReservation[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -26,7 +24,7 @@ export function useReservationManagement() {
     const fetchReservations = useCallback(async () => {
         try {
             setIsLoading(true);
-            const response = await libraryApiClient.get<PlaceReservation[]>(`${API_URL}/api/v0/admin/places/reservations`);
+            const response = await libraryApiClient.get<PlaceReservation[]>(`/api/v0/admin/places/reservations`);
             setData(response.data);
         } catch (err: unknown) {
             setError('예약 데이터를 가져오는 중 오류가 발생했습니다.');

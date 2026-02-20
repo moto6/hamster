@@ -11,9 +11,6 @@ export interface Building {
     buildingAvailable: boolean;
 }
 
-export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
-export const API_URL: string = import.meta.env.VITE_API_URL; //${API_URL}
-
 export function useBuildingList() {
     const [data, setData] = useState<Building[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -23,7 +20,7 @@ export function useBuildingList() {
         try {
             setIsLoading(true);
             setError(null);
-            const response = await libraryApiClient.get<Building[]>(`${API_URL}/api/v0/places/buildings`);
+            const response = await libraryApiClient.get<Building[]>(`/api/v0/places/buildings`);
             setData(response.data);
 
         } catch (err) {

@@ -23,9 +23,6 @@ export interface PlaceDashboardDto {
     recentReservations: ReservationSummary[];
 }
 
-export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
-export const API_URL: string = import.meta.env.VITE_API_URL; //`${API_URL}
-
 export function usePlaceDashboard() {
     const [data, setData] = useState<PlaceDashboardDto | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -35,7 +32,7 @@ export function usePlaceDashboard() {
         try {
             setIsLoading(true);
             setError(null);
-            const response = await libraryApiClient.get<PlaceDashboardDto>(`${API_URL}/api/v0/places/dashboard`);
+            const response = await libraryApiClient.get<PlaceDashboardDto>(`/api/v0/places/dashboard`);
             setData(response.data);
         } catch (err: any) {
             console.error('Data Fetch Error:', err);
