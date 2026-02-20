@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/mock';
-
+const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
+const API_URL = import.meta.env.VITE_API_URL;
+const API_BASE_URL = IS_MOCK ? '/mock' : API_URL;
 export const libraryApiClient = axios.create({
   baseURL: API_BASE_URL,
   timeout: 10000,

@@ -11,9 +11,6 @@ export interface Resource {
     description: string;
 }
 
-export const IS_MOCK = import.meta.env.VITE_IS_MOCK === 'true';
-export const API_URL: string = import.meta.env.VITE_API_URL;
-
 export function useResourceManagement() {
     const [data, setData] = useState<Resource[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -22,7 +19,7 @@ export function useResourceManagement() {
     const fetchResources = useCallback(async () => {
         try {
             setIsLoading(true);
-            const response = await libraryApiClient.get<Resource[]>(`${API_URL}/api/v0/admin/places/room-resources`);
+            const response = await libraryApiClient.get<Resource[]>(`/api/v0/admin/places/room-resources`);
             setData(response.data);
         } catch (err: unknown) {
             setError('리소스 데이터를 불러오지 못했습니다.');
