@@ -1,13 +1,14 @@
 package identity
 
+import id.IdGenerator
 import java.util.UUID
 
 class AdminId(
-    val id: String
+    val id: UUID,
 ) {
     companion object {
-        fun create(): BookInventoryId {
-            return BookInventoryId(UUID.randomUUID().toString())
+        fun create(idGenerator: IdGenerator<UUID> = IdGenerator.default): BookInventoryId {
+            return BookInventoryId(idGenerator.generate())
         }
     }
 }

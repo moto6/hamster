@@ -1,5 +1,8 @@
 package com.librarycore.review
 
+import org.springframework.stereotype.Service
+
+@Service
 class ReviewService : ReviewUseCase {
     override fun getRatingStats(isbn: String): Any {
         TODO("Not yet implemented")

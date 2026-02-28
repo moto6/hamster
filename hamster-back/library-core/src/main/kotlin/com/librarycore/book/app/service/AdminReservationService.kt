@@ -2,7 +2,9 @@ package com.librarycore.book.app.service
 
 import com.librarycore.book.app.cotract.AdminReservationUseCase
 import com.librarycore.book.app.cotract.ReservationOutPort
+import org.springframework.stereotype.Service
 
+@Service
 class AdminReservationService(
     private val reservationOutPort: ReservationOutPort,
 ) : AdminReservationUseCase {

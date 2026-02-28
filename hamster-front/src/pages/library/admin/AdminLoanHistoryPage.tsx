@@ -8,32 +8,53 @@ import {Badge} from '@/components/library/badge.tsx';
 import {Input} from "@/components/library/input.tsx";
 import {Button} from "@/components/library/button.tsx";
 import {Label} from "@/components/core/label.tsx";
+import {cn} from "@/core/utils.ts";
 
+type BookLoanStatus = 'RESERVED' | 'ACTIVE' | 'RETURNED' | 'OVERDUE';
+
+interface StatusStyle {
+    label: string;
+    className: string;
+}
+
+const STATUS_CONFIG: Record<BookLoanStatus, StatusStyle> = {
+    RESERVED: {
+        label: "예약됨",
+        className: "text-sm text-gray-500",
+    },
+    ACTIVE: {
+        label: "대출중",
+        className: "bg-emerald-100 text-emerald-700 border-emerald-200",
+    },
+    RETURNED: {
+        label: "반납완료",
+        className: "bg-slate-100 text-slate-600 border-slate-200",
+    },
+    OVERDUE: {
+        label: "연체중",
+        className: "bg-rose-100 text-rose-700 border-rose-200 animate-pulse",
+    },
+};
 
 export function AdminLoanHistoryPage() {
     const {loans, loading, filter, setFilter, dateError, SEARCH_TYPES} = useAdminLoanHistory();
 
-    // 가이드라인: 상태에 따른 배지 생성 (정석적인 매핑 방법)
     const getStatusBadge = (status: string) => {
-        const variants: Record<string, "default" | "secondary" | "destructive"> = {
-            'ACTIVE': 'default',
-            'RETURNED': 'secondary',
-            'OVERDUE': 'destructive',
-        };
-        const labels: Record<string, string> = {
-            'ACTIVE': '대출중',
-            'RETURNED': '반납완료',
-            'OVERDUE': '연체중',
+        const config = STATUS_CONFIG[status as BookLoanStatus] || {
+            label: status,
+            className: "bg-gray-100 text-gray-500",
         };
 
         return (
-            <Badge variant={variants[status] ?? 'default'}>
-                {labels[status] ?? status}
+            <Badge
+                variant="outline"
+                className={cn("px-2.5 py-0.5 font-semibold transition-colors", config.className)}
+            >
+                {config.label}
             </Badge>
         );
     };
 
-    // 가이드라인: 핸들러에서 any 제거 및 명시적 if/else 사용 (필요 시 확장)
     const handleSearchTypeChange = (value: typeof filter.searchType) => {
         setFilter({
             ...filter,

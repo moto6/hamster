@@ -4,8 +4,11 @@ import collections.CursorPage
 import com.librarycore.book.app.cotract.SearchBookUseCase
 import com.librarycore.book.app.cotract.payload.BookSkuSearchQuery
 import com.librarycore.book.app.cotract.payload.BookSkuSearchResult
+import org.springframework.stereotype.Service
 
-class SearchBookService : SearchBookUseCase {
+@Service
+class SearchBookService(
+) : SearchBookUseCase {
     override suspend fun search(query: BookSkuSearchQuery): CursorPage<BookSkuSearchResult> {
         TODO("Not yet implemented")
     }

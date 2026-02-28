@@ -7,7 +7,7 @@ import {BuildingManagementPage} from "@/pages/place/BuildingManagementPage.tsx";
 import {ReservationManagementPage} from "@/pages/place/ReservationManagementPage.tsx";
 import {ResourceManagementPage} from "@/pages/place/ResourceManagementPage.tsx";
 import {RoomManagementPage} from "@/pages/place/RoomManagementPage.tsx";
-// import {SchedulePage} from "@/pages/place/SchedulePage.tsx";
+import {SchedulePage} from "@/pages/place/SchedulePage.tsx";
 import {DashboardPage} from "@/pages/playground/DashboardPage.tsx";
 import {MyAdminPage} from "@/pages/playground/MyAdminPage.tsx";
 import {UserPage} from "@/pages/playground/DemoPage.tsx";
@@ -94,22 +94,23 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         element: <RoomManagementPage/>,
         category: "PLACE"
     },
-    // {
-    //     label: '(유저) 스케쥴 화면',
-    //     path: '/place/schedules',
-    //     element: <SchedulePage/>,
-    //     category: "PLACE"
-    // },
-    //
+    {
+        label: '(유저) 스케쥴 화면',
+        path: '/place/schedules',
+        element: <SchedulePage/>,
+        category: "PLACE"
+    },
+
+    {
+        label: '장서/SKU 관리_DEPRECATED',
+        path: '/admin/book/sku-depre',
+        element: <BookSkuManagementPage/>,
+        category: "LIBRARY-ADMIN",
+        hidden: true,
+    },
     {
         label: '장서/SKU 관리',
         path: '/admin/book/sku',
-        element: <BookSkuManagementPage/>,
-        category: "LIBRARY-ADMIN"
-    },
-    {
-        label: '장서/SKU 관리_v2',
-        path: '/admin/book/sku2',
         element: <BookSkuManagementPageV2/>,
         category: "LIBRARY-ADMIN"
     },
@@ -182,8 +183,6 @@ export const GNB_NAV_ITEMS: NavItem[] = [
             category: "PLACE"
         },
     */
-
-
 // {
 //     label: 'TEST',
 //     path: '/playground1',

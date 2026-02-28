@@ -1,10 +1,12 @@
-package com.hasterapi.book.app.persistence
+package com.hasterapi.book.app
 
 import com.hasterapi.book.app.jpa.BookSkuMasterRecord
-import com.hasterapi.book.app.jpa.BookSkuMasterRepository
+import com.hasterapi.book.infra.persistence.BookSkuMasterRepository
 import com.librarycore.book.app.cotract.BookOutPort
 import com.librarycore.book.domain.BookSku
+import org.springframework.stereotype.Component
 
+@Component
 class BookPersistenceAdapter(
     private val repository: BookSkuMasterRepository
 ) : BookOutPort {

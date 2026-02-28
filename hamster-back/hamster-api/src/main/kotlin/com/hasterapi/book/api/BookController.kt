@@ -35,7 +35,7 @@ class BookController(
 
     @GetMapping("/reserve")
     suspend fun getMyReservations(@AuthPrincipal authInfo: AuthInfo) {
-        reservationUseCase.findMyReservations(UserId(authInfo.userId))
+        reservationUseCase.findMyReservations(UserId.of(authInfo.userId))
     }
 
     @PostMapping("/reserve")

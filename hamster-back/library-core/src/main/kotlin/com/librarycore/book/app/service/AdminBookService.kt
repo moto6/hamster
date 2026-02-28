@@ -11,16 +11,17 @@ import com.librarycore.book.app.cotract.payload.BookUpdateCommand
 import com.librarycore.book.domain.BookSku
 import identity.BookSkuId
 import name.Isbn
+import org.springframework.stereotype.Service
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.UUID
 
+@Service
 class AdminBookService(
     private val bookOutPort: BookOutPort,
 ) : AdminBookSkuUseCase {
     override suspend fun register(bookSkuRegisterCommand: BookSkuRegisterCommand): BookSkuRegisterResult {
         val bookSku = BookSku(
-            BookSkuId(UUID.randomUUID().toString()),
+            BookSkuId.create(),
             bookSkuRegisterCommand.title,
             "auth",
             Isbn(bookSkuRegisterCommand.isbn),

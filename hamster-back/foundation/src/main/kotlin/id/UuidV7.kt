@@ -1,14 +1,14 @@
-package uuid
+package id
 
 import java.nio.ByteBuffer
 import java.security.SecureRandom
 import java.util.UUID
 import java.util.concurrent.atomic.AtomicLong
 
-object IdGenerator {
-    private val random = SecureRandom()
-    private val lastTimestamp = AtomicLong(-1)
-    private val counter = AtomicLong(0)
+class UuidV7 : IdGenerator<UUID> {
+    override fun generate(): UUID {
+        return uuidV7.createV7()
+    }
 
     fun createV7(): UUID {
         var now = System.currentTimeMillis()
@@ -37,5 +37,12 @@ object IdGenerator {
         lsb = lsb or randB
 
         return UUID(msb, lsb)
+    }
+
+    companion object {
+        private val random = SecureRandom()
+        private val lastTimestamp = AtomicLong(-1)
+        private val counter = AtomicLong(0)
+        private val uuidV7 = UuidV7()
     }
 }

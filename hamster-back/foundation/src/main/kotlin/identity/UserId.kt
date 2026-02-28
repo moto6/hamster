@@ -1,18 +1,19 @@
 package identity
 
+import id.IdGenerator
 import java.util.UUID
 
 @JvmRecord
 data class UserId(
-    val id: String,
+    val id: UUID,
 ) {
-    init {
-        require(id.isBlank()) { "UserId must not be null or blank" }
-    }
-
     companion object {
-        fun generate(): UserId {
-            return UserId(UUID.randomUUID().toString())
+        fun generate(idGenerator: IdGenerator<UUID> = IdGenerator.default): UserId {
+            return UserId(idGenerator.generate())
+        }
+
+        fun of(userId: String): UserId {
+            return UserId(UUID.fromString(userId))
         }
     }
 }

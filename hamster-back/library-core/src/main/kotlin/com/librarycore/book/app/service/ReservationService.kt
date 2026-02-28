@@ -4,7 +4,9 @@ import collections.CursorPage
 import com.librarycore.book.app.cotract.ReservationUseCase
 import com.librarycore.book.app.cotract.payload.UserReservationResult
 import identity.UserId
+import org.springframework.stereotype.Service
 
+@Service
 class ReservationService : ReservationUseCase {
     override fun findMyReservations(userId: UserId): CursorPage<UserReservationResult> {
         TODO("Not yet implemented")

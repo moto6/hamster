@@ -7,7 +7,6 @@ import com.librarycore.book.app.cotract.payload.BookSkuResult
 import com.librarycore.book.app.cotract.payload.BookSkuSearchQuery
 import com.librarycore.book.app.cotract.payload.BookUpdateCommand
 
-
 interface AdminBookSkuUseCase {
     suspend fun register(bookSkuRegisterCommand: BookSkuRegisterCommand): BookSkuRegisterResult
     suspend fun update(id: Long, command: BookUpdateCommand): BookSkuResult

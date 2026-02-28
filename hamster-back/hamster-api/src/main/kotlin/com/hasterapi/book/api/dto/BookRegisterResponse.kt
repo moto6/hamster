@@ -1,6 +1,7 @@
 package com.hasterapi.book.api.dto
 
 import com.librarycore.book.app.cotract.payload.BookSkuRegisterResult
+import identity.BookSkuId
 
 data class BookRegisterResponse(
     val bookSkuId: String,
@@ -11,7 +12,7 @@ data class BookRegisterResponse(
     companion object {
         fun fromResult(result: BookSkuRegisterResult): BookRegisterResponse {
             return BookRegisterResponse(
-                bookSkuId = result.bookSkuId.id,
+                bookSkuId = result.bookSkuId.value(),
                 title = result.title,
                 author = result.author,
                 isbn = result.isbn.name,

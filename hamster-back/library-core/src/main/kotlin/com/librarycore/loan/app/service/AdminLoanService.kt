@@ -5,7 +5,9 @@ import com.librarycore.loan.app.contract.LoanPersistenceOutPort
 import com.librarycore.loan.app.contract.payload.ManageLoanQuery
 import com.librarycore.loan.app.contract.payload.ManageLoanResult
 import com.librarycore.loan.app.contract.payload.ManageOverdueResult
+import org.springframework.stereotype.Service
 
+@Service
 class AdminLoanService(
     private val loanPersistenceOutPort: LoanPersistenceOutPort,
 ) : AdminLoanUseCase {
