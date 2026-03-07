@@ -33,17 +33,29 @@ export function Gnb() {
 
                             {/* 그룹 메뉴 */}
                             <div className="space-y-1">
-                                {items.map(item => (
-                                    <button
-                                        key={item.path}
-                                        onClick={() => navigate(item.path)}
-                                        className="w-full text-left px-3 py-2 rounded transition text-sm
-                                                text-slate-600 dark:text-slate-300
-                                                hover:bg-slate-200 dark:hover:bg-slate-800
-                                                hover:text-slate-900 dark:hover:text-slate-100">
-                                        {item.label}
-                                    </button>
-                                ))}
+                                {items.map(item => {
+                                        const Icon = item.icon;
+                                        return (
+                                            <button
+                                                key={item.path}
+                                                onClick={() => navigate(item.path)}
+                                                className="w-full flex items-center gap-2 px-3 py-2 rounded transition text-sm
+                                                        text-slate-600 dark:text-slate-300
+                                                        hover:bg-slate-200 dark:hover:bg-slate-800
+                                                        hover:text-slate-900 dark:hover:text-slate-100">
+
+                                                {Icon && (
+                                                    <Icon
+                                                        size={18}
+                                                        strokeWidth={1.5}
+                                                        className="flex-shrink-0"
+                                                    />
+                                                )}
+                                                <span>{item.label}</span>
+                                            </button>
+                                        )
+                                    }
+                                )}
                             </div>
                         </div>
                     )

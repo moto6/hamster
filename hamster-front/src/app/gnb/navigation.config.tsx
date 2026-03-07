@@ -1,6 +1,6 @@
 // @/app/gnb/config/navigation.config.tsx
 
-import type {ReactNode} from "react";
+import type {ComponentType, ReactNode} from "react";
 
 import {PlaceDashboardPage} from "@/pages/place/PlaceDashboardPage.tsx";
 import {BuildingManagementPage} from "@/pages/place/BuildingManagementPage.tsx";
@@ -23,8 +23,12 @@ import {HotRankingPage} from "@/pages/library/user/HotRankingPage.tsx";
 import {BookSearchPage} from "@/pages/library/user/BookSearchPage.tsx";
 import {BookRatingViewPage} from "@/pages/library/user/BookRatingViewPage.tsx";
 import {BookSkuManagementPageV2} from "@/pages/library/admin/BookSkuManagementPageV2.tsx";
+import {IssuesListPage} from "@/pages/jira/IssuesListPage.tsx";
+import {Layers, ListChecks, type LucideProps, MapPin} from "lucide-react";
+import {ComponentsPage} from "@/pages/jira/ComponentsPage.tsx";
+import {ReleasesPage} from "@/pages/jira/ReleasesPage.tsx";
 
-export type NavCategory = "TEST" | "LIBRARY-USER" | "SYSTEM" | "PLACE" | "LIBRARY-ADMIN"
+export type NavCategory = "TEST" | "LIBRARY-USER" | "SYSTEM" | "PLACE" | "LIBRARY-ADMIN" | "JIRA"
 
 interface NavGroup {
     category: NavCategory
@@ -36,12 +40,15 @@ interface NavItem {
     path: string
     label: string
     element: ReactNode
+    category: NavCategory
     //
-    category?: NavCategory
-    //
+    icon?: ComponentType<LucideProps>
+    //icon?: ComponentType<LucideProps | any>
     description?: string
     hidden?: boolean;
 }
+
+const PROJECT_KEY = 'KAFKA';
 
 export const GNB_NAV_ITEMS: NavItem[] = [
     {
@@ -174,13 +181,50 @@ export const GNB_NAV_ITEMS: NavItem[] = [
         element: <BookRatingViewPage/>,
         category: "LIBRARY-USER"
     },
+    {
+        label: 'IssuesListPage',
+        path: `/jira/projects/${PROJECT_KEY}/issues`,
+        element: <IssuesListPage/>,
+        icon: ListChecks,
+        category: "JIRA",
+    },
+    //
+    {
+        label: 'Components',
+        path: `/jira/projects/${PROJECT_KEY}/components`,
+        element: <ComponentsPage/>,
+        icon: Layers,
+        category: "JIRA",
+    },
+    {
+        label: 'Roadmap',
+        path: `/jira/projects/${PROJECT_KEY}/releases`,
+        element: <ReleasesPage/>,
+        icon: MapPin,
+        category: "JIRA",
+    },
 ]
     /*
+
+
+    {
+{
+label: 'Components',
+icon: Layers,
+to: `/jira/projects/${PROJECT_KEY}/components`,
+},
+{
+label: 'Roadmap',
+icon: MapPin,
+to: `/jira/projects/${PROJECT_KEY}/releases`,
+},
+
+
         {
             label: '',
             path: '/',
             element: </>,
-            category: "PLACE"
+            category: "JIRA"
         },
     */
 // {
@@ -197,6 +241,11 @@ export const GNB_NAV_ITEMS: NavItem[] = [
 
 export const GNB_NAV_GROUPS: NavGroup[] = [
     {
+        category: "JIRA",
+        title: "지라",
+        hidden: false,
+    },
+    {
         category: "TEST",
         title: "🎯개발테스트",
         hidden: false,
@@ -209,13 +258,16 @@ export const GNB_NAV_GROUPS: NavGroup[] = [
     {
         category: "LIBRARY-ADMIN",
         title: "도서관 관리자",
+        hidden: true,
     },
     {
         category: "LIBRARY-USER",
         title: "👤도서관 이용자",
+        hidden: true,
     },
     {
         category: "PLACE",
         title: "공간예약",
+        hidden: true,
     },
 ]
