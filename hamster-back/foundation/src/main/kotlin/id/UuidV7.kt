@@ -8,6 +8,7 @@ import java.util.concurrent.atomic.AtomicLong
 class UuidV7 : IdGenerator<UUID> {
     override fun generate(): UUID {
         return uuidV7.createV7()
+        UUID.randomUUID()
     }
 
     fun createV7(): UUID {

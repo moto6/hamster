@@ -1,5 +1,5 @@
 ### 정상적으로 책이 등록되어야 한다
-POST {{server}}/api/v0/library/admin/books
+POST {{server}}/api/v0/admin/library/books
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -11,15 +11,6 @@ Authorization: Bearer {{token}}
   "quantity": 10
 }
 
-
-### 에러 핸들링 예시 (잘못된 호출)
-POST {{server}}/api/library/v0/books
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-{
-"test": "rrr"
-}
 
 ### 책 스큐 조회
 GET {{server}}/api/v0/admin/library/books
