@@ -79,6 +79,8 @@ web_modules/
 .env.test.local
 .env.production.local
 .env.local
+# 로컬 테스트 전용 값만 담고 있어 의도적으로 추적한다(시크릿 없음).
+!infra/.env.local
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

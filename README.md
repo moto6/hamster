@@ -66,8 +66,14 @@ hamster/
 
 ## 4. 빠른 시작 (로컬)
 
-### 사전 준비 — PostgreSQL (DB: `library`)
-로컬에 `library` DB/유저(`localuser`/`localpass`)가 있다고 가정한다(또는 `infra/docker-compose.yml` 의 postgres 사용).
+### 사전 준비 — PostgreSQL (DB: `library`, 계정: `hamster`/`hamster`)
+로컬 DB 설정값은 `infra/.env.local` 한 곳에 모여 있다(로컬 전용 값이라 커밋됨).
+
+```bash
+cd infra && docker compose --env-file .env.local up -d postgres   # localhost:5432
+```
+
+앱은 `application.yml` 기본값이 이 계정과 동일하므로 별도 env 주입 없이 붙는다.
 테이블은 앱 기동 시 Flyway 마이그레이션(`hamster-api/src/main/resources/db/migration`)으로 생성된다.
 
 ### 백엔드 (local 프로파일 · Mock IDP)

@@ -1,4 +1,4 @@
-# local : 개발자 PC. 로컬 Postgres(library/localuser/localpass), Mock IDP, 비보안 쿠키.
+# local : 개발자 PC. 로컬 Postgres(library/hamster/hamster — infra/.env.local), Mock IDP, 비보안 쿠키.
 # base(application.yml) 의 기본값으로 대부분 커버되며, 여기서는 개발 편의 설정만 얹는다.
 auth:
   idp: mock

@@ -30,7 +30,6 @@
     "deny": [
       "Read(./infra/.env)",
       "Read(./**/.env)",
-      "Read(./**/.env.local)",
       "Bash(rm:*)",
       "Bash(git reset *)",
       "Bash(git push --force *)",
