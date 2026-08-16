@@ -17,6 +17,8 @@ dependencies {
     implementation(project(":foundation"))
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
+    // suspend 유스케이스(AdminBookService 등)를 테스트하려면 runTest 가 필요하다. 버전은 부트 BOM 이 관리.
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     implementation 'org.springframework:spring-context'

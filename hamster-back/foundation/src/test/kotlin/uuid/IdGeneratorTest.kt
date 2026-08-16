@@ -1,5 +1,6 @@
 package uuid
 
+import id.IdGenerator
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Assertions.fail
 import org.junit.jupiter.api.Disabled
@@ -22,7 +23,7 @@ class IdGeneratorTest {
     @DisplayName("client code 예제")
     fun clientCode_Example() {
         repeat(10000) { idx ->
-            val id = IdGenerator.createV7()
+            val id = IdGenerator.default.generate()
             log.info {
                 "[$idx] : UUID=[$id] , TS=[${System.currentTimeMillis()}]"
             }
@@ -36,7 +37,7 @@ class IdGeneratorTest {
         val count = 100_000
 
         // when
-        val ids = List(count) { IdGenerator.createV7() }
+        val ids = List(count) { IdGenerator.default.generate() }
         val uniqueIds = ids.distinct()
 
         // then
@@ -51,7 +52,7 @@ class IdGeneratorTest {
         val count = 10_000 // 단조성 체크는 1만 개
 
         // when
-        val ids = List(count) { IdGenerator.createV7() }
+        val ids = List(count) { IdGenerator.default.generate() }
 
         // then
         for (i in 0 until ids.size - 1) {
@@ -85,7 +86,7 @@ class IdGeneratorTest {
         repeat(reTestCount) { idx ->
             // when
             val elapsed = measureTimeMillis {
-                repeat(count) { IdGenerator.createV7() }
+                repeat(count) { IdGenerator.default.generate() }
             }
 
             // then
@@ -97,26 +98,26 @@ class IdGeneratorTest {
     @Test
     @DisplayName("RFC 9562: UUIDv7 버전 및 변체(Variant) 비트 검증")
     fun verifyRfcLayout() {
-        val uuid = IdGenerator.createV7()
+        val uuid = IdGenerator.default.generate()
         val msb = uuid.mostSignificantBits
         val lsb = uuid.leastSignificantBits
 
         // 1. Version 필드 검증 (비트 48-51 위치, 값은 7)
         // MSB Long에서 하위 12~15비트가 버전 영역임 (shl 12 했으므로)
-        val version = (msb shr 12) and 0b0111
-        assertEquals(0b0111, version, "버전 비트는 반드시 7이어야 함 (0111)")
+        val version = (msb shr 12) and 0b0111L
+        assertEquals(0b0111L, version, "버전 비트는 반드시 7이어야 함 (0111)")
 
         // 2. Variant 필드 검증 (비트 64-65 위치, 값은 2)
         // LSB Long에서 최상위 2비트 (shl 62 했으므로)
-        val variant = (lsb shr 62) and 0b0011
-        assertEquals(0b0010, variant, "변체 비트는 반드시 2이어야 함 (0010)")
+        val variant = (lsb shr 62) and 0b0011L
+        assertEquals(0b0010L, variant, "변체 비트는 반드시 2이어야 함 (0010)")
     }
 
     @Test
     @DisplayName("RFC 9562: 타임스탬프 정확도 검증 (48비트)")
     fun verifyTimestamp() {
         val before = System.currentTimeMillis()
-        val uuid = IdGenerator.createV7()
+        val uuid = IdGenerator.default.generate()
         val after = System.currentTimeMillis()
 
         // MSB 상위 48비트 추출
@@ -132,7 +133,7 @@ class IdGeneratorTest {
     @DisplayName("단조성 검증: 같은 밀리초 내에서 생성된 ID는 시간 순서대로 정렬되어야 함")
     fun verifyMonotonicity() {
         val count = 1000
-        val uuids = List(count) { IdGenerator.createV7() }
+        val uuids = List(count) { IdGenerator.default.generate() }
 
         for (i in 0 until count - 1) {
             val current = uuids[i]
@@ -159,7 +160,7 @@ class IdGeneratorTest {
         repeat(threadCount) {
             executor.submit {
                 repeat(iterations) {
-                    val id = IdGenerator.createV7()
+                    val id = IdGenerator.default.generate()
                     if (!generatedIds.add(id)) {
                         fail("충돌 발생! 중복된 ID: $id")
                     }
