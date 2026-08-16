@@ -42,7 +42,7 @@ dependencies {
     // 참고: SSO code↔token 교환에 쓰는 WebClient 는 이미 spring-boot-starter-webflux 에 포함되어 있어
     // 별도 의존성이 필요 없다. (validation 스타터를 추가했었으나 @Valid 사용처가 없어 제거)
 
-    runtimeOnly("io.r2dbc:r2dbc-postgresql:0.8.13.RELEASE")
+    runtimeOnly("org.postgresql:r2dbc-postgresql")
     runtimeOnly("org.postgresql:postgresql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-webflux-test")
