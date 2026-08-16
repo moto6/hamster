@@ -1,6 +1,6 @@
 package com.hamsterapi.book.app
 
-import com.hamsterapi.book.infra.persistence.BookReservationRepository
+import com.hamsterapi.book.infra.persistence.r2dbc.BookReservationRepository
 import com.librarycore.book.app.cotract.ReservationOutPort
 import com.librarycore.book.domain.BookReservation
 import org.springframework.stereotype.Component

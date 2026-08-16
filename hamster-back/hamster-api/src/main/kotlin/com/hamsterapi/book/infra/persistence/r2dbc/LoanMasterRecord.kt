@@ -1,4 +1,4 @@
-package com.hamsterapi.book.app.jpa
+package com.hamsterapi.book.infra.persistence.r2dbc
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table

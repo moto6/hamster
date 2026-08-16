@@ -1,6 +1,5 @@
-package com.hamsterapi.book.infra.persistence
+package com.hamsterapi.book.infra.persistence.r2dbc
 
-import com.hamsterapi.book.app.jpa.BookReservationRecord
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
 interface BookReservationRepository : CoroutineCrudRepository<BookReservationRecord, Long> {

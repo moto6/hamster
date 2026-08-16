@@ -1,8 +1,18 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.2.21'
     id 'org.jetbrains.kotlin.plugin.spring' version '2.2.21'
+    // JPA 엔티티(@Entity)에 no-arg 생성자를 합성한다. Hibernate 가 리플렉션으로 인스턴스화하려면 필수.
+    id 'org.jetbrains.kotlin.plugin.jpa' version '2.2.21'
     id 'org.springframework.boot' version '4.1.0'
     id 'io.spring.dependency-management' version '1.1.7'
+}
+
+// Hibernate 프록시/지연로딩은 엔티티 클래스가 final 이면 동작하지 않는다.
+// kotlin-spring 프리셋에는 @Entity 가 없으므로 직접 열어준다.
+allOpen {
+    annotation 'jakarta.persistence.Entity'
+    annotation 'jakarta.persistence.MappedSuperclass'
+    annotation 'jakarta.persistence.Embeddable'
 }
 
 group = 'com'
@@ -25,6 +35,9 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+    // 영속성 비교 학습용. 기본(local/dev/prod)에서는 오토컨피그가 제외되어 아무것도 뜨지 않고,
+    // 'jpa' 프로파일에서만 활성화된다. application.yml 의 spring.autoconfigure.exclude 참고.
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")

@@ -1,6 +1,5 @@
-package com.hamsterapi.book.infra.persistence
+package com.hamsterapi.book.infra.persistence.r2dbc
 
-import com.hamsterapi.book.app.jpa.BookSkuMasterRecord
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
 interface BookSkuMasterRepository : CoroutineCrudRepository<BookSkuMasterRecord, Long>

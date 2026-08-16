@@ -1,4 +1,4 @@
-package com.hamsterapi.book.app.jpa
+package com.hamsterapi.book.infra.persistence.r2dbc
 
 import com.librarycore.loan.domain.LoanStatus
 import org.springframework.data.annotation.Id
