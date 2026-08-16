@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew :hamster-api:compileKotlin*)",
+      "Bash(./gradlew :hamster-api:build*)",
+      "Bash(./gradlew :hamster-api:bootJar*)",
+      "Bash(./gradlew compileKotlin*)",
+      "Bash(./gradlew test*)",
+      "Bash(./gradlew projects*)",
+      "Bash(./gradlew tasks*)",
+      "Bash(npm ci)",
+      "Bash(npm install)",
+      "Bash(npm run build)",
+      "Bash(npm run lint)",
+      "Bash(./node_modules/.bin/tsc --noEmit)",
+      "Bash(./node_modules/.bin/eslint:*)",
+      "Bash(/usr/libexec/java_home:*)",
+      "Bash(docker compose config:*)",
+      "Bash(docker compose ps:*)",
+      "Bash(docker ps:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git check-ignore:*)"
+    ],
+    "deny": [
+      "Read(./infra/.env)",
+      "Read(./**/.env)",
+      "Read(./**/.env.local)",
+      "Bash(rm:*)",
+      "Bash(git reset *)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(git clean -fd *)",
+      "Bash(git clean -xfd *)",
+      "Bash(git checkout -- *)",
+      "Bash(git rebase *)"
+    ]
+  }
+}

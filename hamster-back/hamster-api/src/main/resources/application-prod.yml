@@ -1,0 +1,13 @@
+# prod : 운영. 전 값 env 주입 필수(기본값 의존 금지), 외부 SSO(OIDC), HTTPS 보안 쿠키.
+# 아래 항목은 배포 환경변수가 반드시 존재해야 한다: SPRING_R2DBC_*, SPRING_FLYWAY_*,
+# AUTH_JWT_SECRET, SSO_* , FRONTEND_BASE_URL, CORS_ALLOWED_ORIGINS.
+auth:
+  idp: ${AUTH_IDP:sso}
+  cookie:
+    secure: true
+    same-site: ${AUTH_COOKIE_SAMESITE:Lax}
+
+logging:
+  level:
+    root: WARN
+    com.hamsterapi: INFO

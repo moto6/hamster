@@ -1,6 +1,7 @@
 // @/app/gnb/config/navigation.config.tsx
 
 import type {ComponentType, ReactNode} from "react";
+import type {Role} from "@/core/auth/role.ts";
 
 import {PlaceDashboardPage} from "@/pages/place/PlaceDashboardPage.tsx";
 import {BuildingManagementPage} from "@/pages/place/BuildingManagementPage.tsx";
@@ -36,7 +37,7 @@ interface NavGroup {
     hidden?: boolean;
 }
 
-interface NavItem {
+export interface NavItem {
     path: string
     label: string
     element: ReactNode
@@ -46,6 +47,8 @@ interface NavItem {
     //icon?: ComponentType<LucideProps | any>
     description?: string
     hidden?: boolean;
+    /** 지정 시 이 역할 중 하나라도 가진 사용자에게만 노출/접근 허용(페이지/백엔드에서도 재검증). */
+    roles?: Role[];
 }
 
 const PROJECT_KEY = 'KAFKA';
@@ -271,3 +274,12 @@ export const GNB_NAV_GROUPS: NavGroup[] = [
         hidden: true,
     },
 ]
+
+/**
+ * 메뉴/라우트 접근 가능 여부. roles 가 없으면 누구나, 있으면 그중 하나라도 보유해야 한다.
+ * (SUPER_ADMIN 은 모든 관리자 메뉴의 roles 에 포함시켜 두면 전 메뉴 접근이 된다)
+ */
+export function canAccessNav(item: NavItem, roles: string[]): boolean {
+    if (!item.roles || item.roles.length === 0) return true
+    return item.roles.some(r => roles.includes(r))
+}

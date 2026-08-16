@@ -1,0 +1,90 @@
+# 단일 호스트 배포: hamster-front(nginx)이 80 포트로 SPA 서빙 + /api 를 hamster-back 으로 프록시.
+# 백엔드는 호스트로 직접 노출하지 않고 내부 네트워크에서만 접근(보안). 값은 infra/.env 로 주입.
+#   cp infra/.env.example infra/.env  &&  vi infra/.env  &&  cd infra && docker compose up -d
+#
+# 런타임은 R2DBC(reactive), Flyway 마이그레이션은 JDBC 커넥션을 따로 사용한다.
+
+services:
+  # PostgreSQL — DB명 library, public 스키마.
+  postgres:
+    image: postgres:16
+    container_name: hamster-postgres
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-library}
+      - POSTGRES_USER=${POSTGRES_USER:-hamster}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-hamster}
+    expose:
+      - "5432"
+    volumes:
+      - hamster-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      # 백엔드가 붙기 전에 DB 준비 완료를 보장.
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-hamster} -d ${POSTGRES_DB:-library}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - hamster-network
+    restart: unless-stopped
+
+  # Spring Boot(WebFlux + R2DBC) API. 컨텍스트는 ../hamster-back 멀티모듈 전체.
+  hamster-back:
+    build:
+      context: ../hamster-back
+      dockerfile: Dockerfile
+    image: ${REGISTRY:-localhost}/hamster-back:${TAG:-latest}
+    container_name: hamster-back
+    expose:
+      - "8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-dev}
+      # 런타임 R2DBC (reactive) — postgres 서비스명으로 접속.
+      - SPRING_R2DBC_URL=${SPRING_R2DBC_URL:-r2dbc:postgresql://postgres:5432/library}
+      - SPRING_R2DBC_USERNAME=${SPRING_R2DBC_USERNAME:-hamster}
+      - SPRING_R2DBC_PASSWORD=${SPRING_R2DBC_PASSWORD:-hamster}
+      # Flyway 마이그레이션용 JDBC 커넥션 (R2DBC 와 별개).
+      - SPRING_FLYWAY_JDBC_URL=${SPRING_FLYWAY_JDBC_URL:-jdbc:postgresql://postgres:5432/library}
+      - SPRING_FLYWAY_USER=${SPRING_FLYWAY_USER:-hamster}
+      - SPRING_FLYWAY_PASSWORD=${SPRING_FLYWAY_PASSWORD:-hamster}
+      # 인증 — 운영은 반드시 강한 시크릿/실제 IDP 로 교체.
+      - AUTH_JWT_SECRET=${AUTH_JWT_SECRET:-dev-only-insecure-secret-please-override-min-32-bytes!!}
+      - AUTH_IDP=${AUTH_IDP:-mock}
+      - FRONTEND_BASE_URL=${FRONTEND_BASE_URL:-http://localhost:3000}
+      - AUTH_COOKIE_SECURE=${AUTH_COOKIE_SECURE:-false}
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:-http://localhost:3000}
+      # 외부 SSO (AUTH_IDP=sso 일 때만 필요)
+      - SSO_ISSUER=${SSO_ISSUER:-}
+      - SSO_CLIENT_ID=${SSO_CLIENT_ID:-}
+      - SSO_CLIENT_SECRET=${SSO_CLIENT_SECRET:-}
+      - SSO_REDIRECT_URI=${SSO_REDIRECT_URI:-}
+    networks:
+      - hamster-network
+    restart: unless-stopped
+
+  # nginx 가 SPA 서빙 + /api 프록시. 컨텍스트는 ../hamster-front.
+  hamster-front:
+    build:
+      context: ../hamster-front
+      dockerfile: Dockerfile
+    image: ${REGISTRY:-localhost}/hamster-front:${TAG:-latest}
+    container_name: hamster-front
+    ports:
+      # 호스트 3000 → 컨테이너 80
+      - "${FRONT_PORT:-3000}:80"
+    depends_on:
+      - hamster-back
+    networks:
+      - hamster-network
+    restart: unless-stopped
+
+volumes:
+  hamster-postgres-data:
+    name: hamster-postgres-data
+
+networks:
+  hamster-network:
+    driver: bridge
+    name: hamster-network

@@ -1,9 +1,14 @@
 import {useEffect, useRef, useState} from "react";
-import {authService} from "@/core/authService.ts";
+import {useAuth} from "@/core/auth/AuthContext.tsx";
 
 export default function ProfileCard() {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const {user, logout} = useAuth();
+
+    const displayName = user?.displayName ?? 'User';
+    const email = user?.email ?? '';
+    const initials = user?.initials ?? 'U';
 
     // 외부 클릭 시 닫기
     useEffect(() => {
@@ -18,14 +23,14 @@ export default function ProfileCard() {
 
     return (
         <div className="relative flex items-center gap-2 shrink-0" ref={dropdownRef}>
-            <span className="text-xs text-slate-500 hidden sm:inline">User</span>
+            <span className="text-xs text-slate-500 hidden sm:inline">{displayName}</span>
 
             {/* 트리거 버튼 */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-8 h-8 rounded-full bg-blue-400 flex items-center justify-center text-[12px] text-white font-bold hover:shadow-md transition-all active:scale-95"
             >
-                U
+                {initials}
             </button>
 
             {/* 팝업 카드 */}
@@ -33,14 +38,14 @@ export default function ProfileCard() {
                 <div
                     className="absolute right-0 top-10 w-72 bg-[#E9EEF6] rounded-[24px] p-4 shadow-xl z-50 border border-slate-200 animate-in fade-in zoom-in duration-150 origin-top-right">
                     <div className="flex flex-col items-center">
-                        <span className="text-[12px] font-medium text-slate-600 mb-4">demo@deno.com</span>
+                        <span className="text-[12px] font-medium text-slate-600 mb-4">{email}</span>
 
                         <div
                             className="w-16 h-16 rounded-full bg-blue-400 flex items-center justify-center text-white text-2xl font-bold mb-3">
-                            U
+                            {initials}
                         </div>
 
-                        <h3 className="text-lg font-medium text-slate-900 mb-5">안녕하세요, User님.</h3>
+                        <h3 className="text-lg font-medium text-slate-900 mb-5">안녕하세요, {displayName}님.</h3>
 
                         <button
                             className="w-full py-2 bg-white hover:bg-slate-50 border border-slate-300 rounded-full text-sm font-medium text-blue-500 mb-3 transition-colors">
@@ -48,7 +53,7 @@ export default function ProfileCard() {
                         </button>
                         <button
                             className="w-full py-2 bg-white rounded-full text-sm border border-slate-300 font-medium text-slate-700 mb-3 hover:bg-slate-50 transition-colors"
-                            onClick={() => authService.logout()}>
+                            onClick={() => { void logout(); }}>
                             로그아웃
                         </button>
 

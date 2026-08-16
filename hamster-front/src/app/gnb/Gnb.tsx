@@ -1,9 +1,11 @@
 // @/app/gnb/Gnb.tsx
 import {useNavigate} from 'react-router-dom'
-import {GNB_NAV_GROUPS, GNB_NAV_ITEMS} from "@/app/gnb/navigation.config.tsx";
+import {canAccessNav, GNB_NAV_GROUPS, GNB_NAV_ITEMS} from "@/app/gnb/navigation.config.tsx";
+import {useAuth} from "@/core/auth/AuthContext.tsx";
 
 export function Gnb() {
     const navigate = useNavigate()
+    const {roles} = useAuth()
 
     return (
         <div className="flex flex-col">
@@ -18,7 +20,7 @@ export function Gnb() {
                 {GNB_NAV_GROUPS.map(group => {
                     if (group.hidden) return
                     const items = GNB_NAV_ITEMS.filter(
-                        i => i.category === group.category && !i.hidden
+                        i => i.category === group.category && !i.hidden && canAccessNav(i, roles)
                     )
 
                     if (items.length === 0) return null

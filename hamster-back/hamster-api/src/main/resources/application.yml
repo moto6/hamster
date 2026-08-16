@@ -1,20 +1,60 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# 공통(base) 설정. 환경별 값은 프로파일 파일에서 override 한다.
+#   - local : 개발자 PC.   application-local.yml  (로컬 Postgres, mock idp)
+#   - dev   : 개발 배포 VM. application-dev.yml    (관리형 dev DB, mock idp, 비보안 쿠키)
+#   - prod  : 운영.        application-prod.yml   (전 값 env 주입, sso idp, https 보안 쿠키)
+# 활성 프로파일은 SPRING_PROFILES_ACTIVE 로 지정(미지정 시 local).
+# 시크릿류(AUTH_JWT_SECRET, DB 비밀번호, SSO_CLIENT_SECRET 등)는 반드시 환경변수로 주입(레포 커밋 금지).
+# ─────────────────────────────────────────────────────────────────────────────
 spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+  application:
+    name: hamster-api
+  # 런타임 영속성 — R2DBC(논블로킹). 로컬 기본값 제공, 배포는 env 주입.
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/library
-    username: localuser
-    password: localpass
+    url: ${SPRING_R2DBC_URL:r2dbc:postgresql://localhost:5432/library}
+    username: ${SPRING_R2DBC_USERNAME:localuser}
+    password: ${SPRING_R2DBC_PASSWORD:localpass}
+
+# 마이그레이션 — Flyway 는 JDBC 로 동작(R2DBC 미지원)하므로 별도 JDBC 접속을 쓴다.
+custom:
+  flyway:
+    url: ${SPRING_FLYWAY_JDBC_URL:jdbc:postgresql://localhost:5432/library}
+    user: ${SPRING_FLYWAY_USER:localuser}
+    password: ${SPRING_FLYWAY_PASSWORD:localpass}
+    path: classpath:db/migration
+    baseline-on-migrate: true
+
+# CORS 허용 origin(CSV). 운영은 nginx 프록시로 same-origin 이라 불필요하나, 개발(vite)·직접호출 대비 유지.
+cors:
+  allowed-origins: ${CORS_ALLOWED_ORIGINS:http://127.0.0.1:5173,http://localhost:5173}
+
+# ── 인증(자체 SSO 토큰) ────────────────────────────────────────────────────
+# 외부 IDP(SSO)는 신원확인 전용. 우리 백엔드가 access(JWT)+refresh(불투명/회전) 를 발급한다.
+# 기본 idp=mock 이라 SSO 없이도 로컬 구동된다.
+auth:
+  idp: ${AUTH_IDP:mock}                          # sso | mock
+  frontend-base-url: ${FRONTEND_BASE_URL:http://127.0.0.1:5173}
+  jwt:
+    issuer: hamster
+    secret: ${AUTH_JWT_SECRET:dev-only-insecure-secret-please-override-min-32-bytes!!}
+    access-ttl-seconds: ${AUTH_ACCESS_TTL:1800}        # 30m
+    refresh-ttl-seconds: ${AUTH_REFRESH_TTL:1209600}   # 14d
+  cookie:
+    secure: ${AUTH_COOKIE_SECURE:false}          # 운영(HTTPS)에서는 true
+    same-site: ${AUTH_COOKIE_SAMESITE:Lax}
+  sso:
+    issuer: ${SSO_ISSUER:https://sso.example.com}
+    authorize-uri: ${SSO_AUTHORIZE_URI:https://sso.example.com/oauth/authorize}
+    token-uri: ${SSO_TOKEN_URI:https://sso.example.com/oauth/token}
+    userinfo-uri: ${SSO_USERINFO_URI:https://sso.example.com/user/me}
+    logout-uri: ${SSO_LOGOUT_URI:https://sso.example.com/logout}
+    client-id: ${SSO_CLIENT_ID:}
+    client-secret: ${SSO_CLIENT_SECRET:}
+    redirect-uri: ${SSO_REDIRECT_URI:http://127.0.0.1:8080/api/v0/auth/callback}
+    scope: ${SSO_SCOPE:openid email profile}
 
 logging:
   level:
-    org.springframework.r2dbc: DEBUG
-
-custom:
-  flyway:
-    url: jdbc:postgresql://localhost:5432/library
-    user: localuser
-    password: localpass
-    path: classpath:db/migration
-    baseline-on-migrate: true
-  jwt:
-    secret: asqwecfqwfqwfqwfqwfqwfqwfqwfqwfqwfqwf123123123123123123123
-    expiration: 3218000
+    org.springframework.r2dbc: INFO

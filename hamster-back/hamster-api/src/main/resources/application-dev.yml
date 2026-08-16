@@ -1,0 +1,11 @@
+# dev : 개발 배포 VM. 관리형 dev DB(env 주입), Mock IDP(외부 SSO 없이 데모 로그인), 비보안 쿠키(http).
+# DB 접속/시크릿은 docker-compose / VM 환경변수로 주입한다. (application.yml 의 env 플레이스홀더 사용)
+auth:
+  idp: ${AUTH_IDP:mock}
+  cookie:
+    secure: false
+
+logging:
+  level:
+    root: INFO
+    com.hamsterapi: DEBUG

@@ -1,6 +1,8 @@
 package com.hamsterapi.config
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException
+import com.hamsterapi.auth.iam.exception.UnauthorizedException
+import com.hamsterapi.auth.support.AdminAuthorizeOnlyException
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -14,6 +16,24 @@ class GlobalExceptionHandler {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
+    // 0-a. 인증 실패 계열 → 401 (토큰 없음/만료/위조, refresh 실패 등)
+    @ExceptionHandler(UnauthorizedException::class)
+    fun handleUnauthorized(e: UnauthorizedException): ResponseEntity<ErrorResponse> {
+        log.debug("Unauthorized: ${e.message}")
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
+            ErrorResponse(code = "UNAUTHORIZED", message = e.message ?: "인증이 필요합니다.", detail = null),
+        )
+    }
+
+    // 0-b. RBAC 인가 실패 → 403
+    @ExceptionHandler(AdminAuthorizeOnlyException::class)
+    fun handleForbidden(e: AdminAuthorizeOnlyException): ResponseEntity<ErrorResponse> {
+        log.debug("Forbidden: ${e.message}")
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(
+            ErrorResponse(code = "FORBIDDEN", message = e.message ?: "접근 권한이 없습니다.", detail = null),
+        )
+    }
+
     // 1. 최상위 부모 예외 (정의되지 않은 모든 에러)
     @ExceptionHandler(Exception::class)
     fun handleDefaultException(e: Exception): ResponseEntity<ErrorResponse> {
@@ -21,10 +41,11 @@ class GlobalExceptionHandler {
         return ResponseEntity
             .status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(
+                // 예외 원문은 로그에만. 클라이언트에는 상태코드 + 한 문장만 내려보낸다.
                 ErrorResponse(
                     code = "INTERNAL_SERVER_ERROR",
                     message = "서버 내부 오류가 발생했습니다.",
-                    detail = e.message
+                    detail = null
                 )
             )
     }
@@ -50,10 +71,11 @@ class GlobalExceptionHandler {
         }
 
         return ResponseEntity.badRequest().body(
+            // Jackson 내부 메시지(클래스/필드 경로)가 새어나가지 않도록 원문은 로그에만 남긴다.
             ErrorResponse(
                 code = "BAD_REQUEST",
                 message = "요청 본문을 읽을 수 없거나 형식이 잘못되었습니다.",
-                detail = rootCause.message
+                detail = null
             )
         )
     }
