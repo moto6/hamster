@@ -26,16 +26,17 @@ custom:
     path: classpath:db/migration
     baseline-on-migrate: true
 
-# CORS 허용 origin(CSV). 운영은 nginx 프록시로 same-origin 이라 불필요하나, 개발(vite)·직접호출 대비 유지.
+# CORS 허용 origin(CSV). 개발(vite)·운영(nginx) 모두 /api 프록시로 same-origin 이라 평소엔 쓰이지 않고,
+# 백엔드를 8080 으로 직접 호출하는 경우에만 필요하다.
 cors:
-  allowed-origins: ${CORS_ALLOWED_ORIGINS:http://127.0.0.1:5173,http://localhost:5173}
+  allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
 
 # ── 인증(자체 SSO 토큰) ────────────────────────────────────────────────────
 # 외부 IDP(SSO)는 신원확인 전용. 우리 백엔드가 access(JWT)+refresh(불투명/회전) 를 발급한다.
 # 기본 idp=mock 이라 SSO 없이도 로컬 구동된다.
 auth:
   idp: ${AUTH_IDP:mock}                          # sso | mock
-  frontend-base-url: ${FRONTEND_BASE_URL:http://127.0.0.1:5173}
+  frontend-base-url: ${FRONTEND_BASE_URL:http://localhost:5173}
   jwt:
     issuer: hamster
     secret: ${AUTH_JWT_SECRET:dev-only-insecure-secret-please-override-min-32-bytes!!}
@@ -52,7 +53,9 @@ auth:
     logout-uri: ${SSO_LOGOUT_URI:https://sso.example.com/logout}
     client-id: ${SSO_CLIENT_ID:}
     client-secret: ${SSO_CLIENT_SECRET:}
-    redirect-uri: ${SSO_REDIRECT_URI:http://127.0.0.1:8080/api/v0/auth/callback}
+    # 콜백은 프론트 origin 으로 받는다(개발 vite / 배포 nginx 가 /api 를 백엔드로 프록시).
+    # 그래야 refresh 쿠키가 프론트와 같은 origin 에 심긴다.
+    redirect-uri: ${SSO_REDIRECT_URI:http://localhost:5173/api/v0/auth/callback}
     scope: ${SSO_SCOPE:openid email profile}
 
 logging:

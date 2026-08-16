@@ -17,7 +17,7 @@ import org.springframework.web.reactive.result.method.annotation.ArgumentResolve
 @EnableConfigurationProperties(AuthProperties::class)
 class WebConfig(
     private val authPrincipalArgumentResolver: AuthPrincipalArgumentResolver,
-    @Value("\${cors.allowed-origins:http://127.0.0.1:5173,http://localhost:5173}")
+    @Value("\${cors.allowed-origins:http://localhost:5173}")
     private val allowedOrigins: String,
 ) : WebFluxConfigurer {
 
